@@ -27,6 +27,7 @@ const config = {
 				src:
 					'https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js',
 			},
+			{ src: './js/createjs-2015.11.26.min.js' },
 		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: './favicon.ico' },

@@ -24,27 +24,35 @@ export default {
 	head() {
 		return {
 			script: [
-				{ src: 'js/createjs-2015.11.26.min.js' },
-				{ src: 'js/kv.js' },
-				{ src: 'js/initCanvas.js' },
+                /**
+                 * *重要* 
+                 * 要載全域, 否則ROUTE切換回來時, 重新載createjs已經來不及,
+                 * initCanvas() 會無作用, STO延遲治標不治本.
+                 * 於是直接全域引用
+                 */                
+				// { src: './js/createjs-2015.11.26.min.js' },
+				{ src: './js/kv.js' },
+				{ src: './js/initCanvas.js' },
 			],
 		};
 	},
 	layout: 'layoutIndex',
+	data() {
+		return {};
+	},
 	created() {},
 
 	mounted() {
 		this.$nextTick(() => {
-            console.log(1);
 			initCanvas();
-        });
-       
+		});
 	},
+
+	methods: {},
 };
 </script>
 
 <style scoped>
 @import '~/assets/css/index.css';
-
 </style>
 
