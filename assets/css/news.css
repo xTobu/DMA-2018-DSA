@@ -1,0 +1,34 @@
+@-webkit-keyframes donut-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes donut-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.news .item {
+  width: 280px;
+}
+
+.news .pic {
+  width: 100%;
+  position: relative;
+  padding-bottom: 64%;
+  background: url(../img/news-img.png) no-repeat center center/cover;
+}
+
+/*# sourceMappingURL=news.css.map */
