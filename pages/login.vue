@@ -80,7 +80,7 @@
                     <label class="label" for="password">密碼</label>
                 </div>
                 <div class="btn_wrap">
-                    <a href="#" class="btn_login">
+                    <a href="./register" class="btn_login" @click.prevent="util_LinkTo('/register')">
                             <span class="txt">註冊</span>
                             <span class="arrow"></span>
                         </a>
@@ -102,6 +102,11 @@
 
 <script>
 export default {
+	head() {
+		return {
+			title: '登入',
+		};
+	},
 	layout: 'layoutIndex',
 	created() {},
 	mounted() {},
@@ -110,6 +115,5 @@ export default {
 
 <style scoped>
 @import '~/assets/css/regist.css';
-
 </style>
 

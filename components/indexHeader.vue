@@ -2,7 +2,7 @@
   <header>
         <nav>
             <div class="logo">
-                <a href="" @click.prevent="LinkTo('/')">
+                <a href="" @click.prevent="util_LinkTo('/')">
                     <img src="~assets/svg/logo.svg" width="100%" alt="">
                 </a>
             </div>
@@ -12,7 +12,7 @@
                         <a href="#">報名文件</a>
                     </li>
                     <li>
-                        <a href="login" @click.prevent="LinkTo('/login')">線上報名</a>
+                        <a href="login" @click.prevent="util_LinkTo('/login')">線上報名</a>
                     </li>
                     <li>
                         <a href="#">線上評選</a>
@@ -44,8 +44,8 @@
         </nav>
         <div class="clear"></div>
         <!-- 手機 -->
-        <div class="menu-toggle">
-            <a href="javascript:;">
+        <div class="menu-toggle" @click.prevent="handleBur">
+            <a href="javascript:;"  >
                 <div class="one"></div>
                 <div class="two"></div>
                 <div class="three"></div>
@@ -93,16 +93,23 @@
 
 <script>
 export default {
-	methods:{
-        LinkTo:function(path){
-            $nuxt._router.push(path)
-        }
-    },
+	head() {
+		return {
+			script: [
+				// { src: './js/nav.js' },
+			],
+		};
+	},
+	methods: {
+        // 控制手機漢堡
+		handleBur(e) {
+			$(e.currentTarget).toggleClass('on');
+			$('.menu-section').toggleClass('on');
+		},
+	},
 	created() {},
 
-	mounted() {
-
-	},
+	mounted() {},
 };
 </script>
 

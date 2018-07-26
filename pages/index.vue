@@ -23,6 +23,7 @@
 export default {
 	head() {
 		return {
+            title: '首頁',
 			script: [
                 /**
                  * *重要* 

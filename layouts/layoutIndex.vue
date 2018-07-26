@@ -23,7 +23,7 @@ export default {
 /* transition */
 .layout-enter-active,
 .layout-leave-active {
-	transition: opacity 0.5s;
+	transition: opacity .8s;
 }
 
 .layout-enter,
