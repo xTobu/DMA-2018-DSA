@@ -101,7 +101,7 @@ export default {
 		};
 	},
 	methods: {
-        // 控制手機漢堡
+		// 控制手機漢堡
 		handleBur(e) {
 			$(e.currentTarget).toggleClass('on');
 			$('.menu-section').toggleClass('on');
