@@ -68,7 +68,7 @@ export default {
 			var left = width / 2 - 400 / 2 + dualScreenLeft;
 			var top = height / 2 - 400 / 2 + dualScreenTop;
 
-			fbshareWindow = window.open(
+			var fbshareWindow = window.open(
 				final_url,
 				'',
 				'top=' + top + ',left=' + left + ',width=' + 400 + ',height=' + 400
@@ -103,7 +103,7 @@ export default {
 			var left = width / 2 - 500 / 2 + dualScreenLeft;
 			var top = height / 2 - 500 / 2 + dualScreenTop;
 
-			shareWindow = window.open(
+			var shareWindow = window.open(
 				final_url,
 				'',
 				'top=' + top + ',left=' + left + ',width=' + 500 + ',height=' + 500
@@ -113,9 +113,7 @@ export default {
 	created() {},
 
 	mounted() {
-		// this.$nextTick(() => {});
-		console.log('mounted');
-		init();
+
 	},
 };
 </script>

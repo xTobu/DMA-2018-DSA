@@ -1,5 +1,6 @@
 const resolve = require('path').resolve
 const config = {
+	
 	/*
   ** Headers of the page
   */
@@ -41,11 +42,13 @@ const config = {
 			// },
 		],
 	},
-	css: ['~assets/css/style.css'],
+	css: ['~assets/css/style.css', '~assets/css/tech/custom.css'],
 	/*
   ** Customize the progress bar color
   */
-	loading: { color: '#3B8070' },
+	// loading: { color: '#3B8070' },
+	//關閉上方讀取條
+	loading: false,
 	/*
   ** Build configuration
   */

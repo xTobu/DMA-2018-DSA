@@ -2,7 +2,7 @@
   <header>
         <nav>
             <div class="logo">
-                <a href="index.html">
+                <a href="" @click.prevent="LinkTo('/')">
                     <img src="~assets/svg/logo.svg" width="100%" alt="">
                 </a>
             </div>
@@ -12,7 +12,7 @@
                         <a href="#">報名文件</a>
                     </li>
                     <li>
-                        <a href="login.html">線上報名</a>
+                        <a href="login" @click.prevent="LinkTo('/login')">線上報名</a>
                     </li>
                     <li>
                         <a href="#">線上評選</a>
@@ -90,6 +90,21 @@
         </div>
     </header>
 </template>
+
+<script>
+export default {
+	methods:{
+        LinkTo:function(path){
+            $nuxt._router.push(path)
+        }
+    },
+	created() {},
+
+	mounted() {
+
+	},
+};
+</script>
 
 <style>
 </style>

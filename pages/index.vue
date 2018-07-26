@@ -34,14 +34,17 @@ export default {
 	created() {},
 
 	mounted() {
-		// this.$nextTick(() => {});
-		console.log('mounted');
-		init();
+		this.$nextTick(() => {
+            console.log(1);
+			initCanvas();
+        });
+       
 	},
 };
 </script>
 
 <style scoped>
 @import '~/assets/css/index.css';
+
 </style>
 
