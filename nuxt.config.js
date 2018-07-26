@@ -4,7 +4,7 @@ const config = {
   ** Headers of the page
   */
 	head: {
-		title: '2018-dsa',
+		title: 'dma-2018-dsa',
 		meta: [
 			{ charset: 'utf-8' },
 			{

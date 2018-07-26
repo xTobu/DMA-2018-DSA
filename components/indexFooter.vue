@@ -20,16 +20,105 @@
             </div>
             <div class="share foot">
                 <p>SHARE</p>
-                <a class="fb" href="">
+                <a class="fb" href="" @click.prevent="shareFacebook">
                     <span class="icon-fb"></span>
                 </a>
-                <a class="line" href="">
+                <a class="line" href="" @click.prevent="shareLine">
                     <span class="icon-line"></span>
                 </a>
             </div>
         </div>
     </footer>
 </template>
+<script>
+export default {
+	data() {
+		return {
+			shareURL: {
+				Facebook: 'http://webgene.com.tw/',
+				Line: 'http://webgene.com.tw/',
+			},
+		};
+	},
+	methods: {
+		shareFacebook: function() {
+			var paramsTrack = '?site';
+			var fb_url = is.mobile()
+				? 'http://m.facebook.com/sharer.php?u='
+				: 'http://www.facebook.com/sharer/sharer.php?u=';
+			var final_url =
+				fb_url + encodeURIComponent(this.shareURL.Facebook + paramsTrack);
+
+			var dualScreenLeft =
+				window.screenLeft != undefined ? window.screenLeft : screen.left;
+			var dualScreenTop =
+				window.screenTop != undefined ? window.screenTop : screen.top;
+
+			var width = window.innerWidth
+				? window.innerWidth
+				: document.documentElement.clientWidth
+					? document.documentElement.clientWidth
+					: screen.width;
+			var height = window.innerHeight
+				? window.innerHeight
+				: document.documentElement.clientHeight
+					? document.documentElement.clientHeight
+					: screen.height;
+
+			var left = width / 2 - 400 / 2 + dualScreenLeft;
+			var top = height / 2 - 400 / 2 + dualScreenTop;
+
+			fbshareWindow = window.open(
+				final_url,
+				'',
+				'top=' + top + ',left=' + left + ',width=' + 400 + ',height=' + 400
+			);
+		},
+		shareLine: function() {
+			var paramsTrack = '?';
+			// var fb_url = is.mobile()
+			// 	? 'http://m.facebook.com/sharer.php?u='
+			// 	: 'http://www.facebook.com/sharer/sharer.php?u=';
+			var final_url =
+				'https://social-plugins.line.me/lineit/share?url=' +
+				this.shareURL.Line +
+				paramsTrack;
+
+			var dualScreenLeft =
+				window.screenLeft != undefined ? window.screenLeft : screen.left;
+			var dualScreenTop =
+				window.screenTop != undefined ? window.screenTop : screen.top;
+
+			var width = window.innerWidth
+				? window.innerWidth
+				: document.documentElement.clientWidth
+					? document.documentElement.clientWidth
+					: screen.width;
+			var height = window.innerHeight
+				? window.innerHeight
+				: document.documentElement.clientHeight
+					? document.documentElement.clientHeight
+					: screen.height;
+
+			var left = width / 2 - 500 / 2 + dualScreenLeft;
+			var top = height / 2 - 500 / 2 + dualScreenTop;
+
+			shareWindow = window.open(
+				final_url,
+				'',
+				'top=' + top + ',left=' + left + ',width=' + 500 + ',height=' + 500
+			);
+		},
+	},
+	created() {},
+
+	mounted() {
+		// this.$nextTick(() => {});
+		console.log('mounted');
+		init();
+	},
+};
+</script>
 
 <style>
 </style>

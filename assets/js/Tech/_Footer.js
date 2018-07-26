@@ -52,7 +52,9 @@ var _Footer = {
 					400
 			);
 		});
+
 		
+
 		// line
 		share.find('a.line').on('click', function(e) {
 			e.preventDefault();

@@ -31,24 +31,17 @@ export default {
 		};
 	},
 	layout: 'layoutIndex',
-	// components: {},
-	created() {
-		// console.log('created');
-	},
+	created() {},
 
-	// mounted() {
-	// 	// console.log('mounted');
-	// 	// init();
-	// },
 	mounted() {
-        this.$nextTick(() => {});
+		// this.$nextTick(() => {});
 		console.log('mounted');
 		init();
 	},
 };
 </script>
 
-<style>
+<style scoped>
 @import '~/assets/css/index.css';
 </style>
 

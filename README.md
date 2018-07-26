@@ -1,4 +1,4 @@
-# 2018-dsa
+# dma-2018-dsa
 
 > Nuxt.js project
 
