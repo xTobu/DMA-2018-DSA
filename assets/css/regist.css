@@ -20,8 +20,19 @@
   }
 }
 
+html,
+body {
+  height: 100vh;
+}
+
 .head_regist {
   background-image: url("../img/bg_head_regist.png");
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .head_regist {
+    display: none;
+  }
 }
 
 .login {
@@ -40,6 +51,12 @@
 @media screen and (max-width: 860px) {
   .login {
     width: 403px;
+  }
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .login {
+    display: none;
   }
 }
 
@@ -1047,6 +1064,111 @@
 .btn-center {
   display: block;
   margin: 0 auto;
+}
+
+.device-show {
+  width: 100%;
+  height: 100%;
+  background: #b88b01;
+  display: none;
+  position: relative;
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .device-show {
+    display: block;
+  }
+}
+
+.device-show .content {
+  padding: 0;
+  color: #f5f5f5;
+  text-align: center;
+  display: block;
+  width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-device-width: 1024px) {
+  .device-show .content {
+    width: 50%;
+    top: 55%;
+  }
+}
+
+@media only screen and (max-device-width: 414px) {
+  .device-show .content {
+    width: 90%;
+    top: 50%;
+  }
+}
+
+.device-show .content input {
+  width: 100%;
+  background-color: #b88b01;
+  border: 1px solid #f5f5f5;
+  height: 50px;
+  margin-top: 20px;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #f5f5f5;
+  font-size: 1em;
+}
+
+.device-show .content p {
+  line-height: 1.5;
+}
+
+.device-show .content img {
+  width: 200px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.device-show .content .tittle {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.btn_device {
+  width: 240px;
+  height: 75px;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #b88b01;
+  line-height: 75px;
+  font-weight: 500;
+  position: relative;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 35px;
+}
+
+.btn_device .txt {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.btn_device .arrow {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 6px;
+  height: 6px;
+  border: 2px solid #b88b01;
+  border-left: 0;
+  border-bottom: 0;
+  -webkit-transform: rotate(45deg) translateY(0);
+  transform: rotate(45deg) translateY(0);
+  margin-top: 1px;
 }
 
 /*# sourceMappingURL=regist.css.map */

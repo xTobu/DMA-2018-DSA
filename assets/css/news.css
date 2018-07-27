@@ -45,6 +45,12 @@
   }
 }
 
+@media screen and (max-width: 414px) {
+  .news {
+    width: 80%;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .news {
     width: 90%;

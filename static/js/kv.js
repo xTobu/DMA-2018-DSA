@@ -684,7 +684,7 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"img/kv_atlas_.png?", id:"kv_atlas_"}
+		{src:"img/kv_atlas_.png?1531993024537", id:"kv_atlas_"}
 	],
 	preloads: []
 };
