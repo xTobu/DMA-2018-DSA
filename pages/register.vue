@@ -273,7 +273,7 @@ export default {
 		},
 		resetForm() {
 			$('input:radio').prop('checked', false);   
-      
+      // 將template建成 function
 			Object.assign(this.Form, templateFormData());
 			
 		},
