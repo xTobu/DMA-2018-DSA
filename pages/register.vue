@@ -264,10 +264,12 @@ export default {
 				.catch(function(response) {
 					alert(response.data.message.replace(/\\n/g, '\n'));
 				});
-		},
+    },
+    // 綁定地址資料
 		updateAreaData(country) {
 			this.$store.commit('area/updateData', country);
-		},
+    },
+    // 綁定郵遞區號
 		updateZip(zip) {
 			this.Form.zip = zip;
 		},
