@@ -416,6 +416,7 @@ export const state = () => ({
 			湖西鄉: '885',
 		},
 	},
+	selectedCountry: undefined,
 });
 
 export const mutations = {};
