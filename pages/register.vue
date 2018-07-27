@@ -186,7 +186,7 @@
 </template>
 
 <script>
-import templateFormData from '~/plugins/templateFormData';
+import templateRegisterForm from '~/plugins/templateRegisterForm';
 export default {
 	head() {
 		return {
@@ -196,7 +196,7 @@ export default {
 	layout: 'layoutIndex',
 	data() {
 		return {
-			Form: templateFormData(),
+			Form: templateRegisterForm(),
 			recaptchaForm: undefined,
 		};
 	},
@@ -234,8 +234,8 @@ export default {
 						var text = $(target)
 							.text()
 							.trim();
-            parent.removeClass('is-open');
-            // 關閉填字, 與v-model綁定
+						parent.removeClass('is-open');
+						// 關閉填字, 與v-model綁定
 						// .find('.placeholder')
 						// .text(text);
 
@@ -250,9 +250,9 @@ export default {
 					}.bind(this)
 				);
 		},
+		// 送出表單
 		handleSubmit() {
 			this.Form.vcode = grecaptcha.getResponse(this.recaptchaForm);
-			console.log(this.Form);
 			const options = {
 				method: 'POST',
 				data: $.param(this.Form),
@@ -260,25 +260,26 @@ export default {
 			};
 			this.$axios(options)
 				.then(function(response) {
-					alert(response.data);
+					alert('Success');
 				})
 				.catch(function(response) {
 					alert(response.data.message.replace(/\\n/g, '\n'));
 				});
-    },
-    // 綁定地址資料
+		},
+		// 綁定地址資料
 		updateAreaData(country) {
 			this.$store.commit('area/updateData', country);
-    },
-    // 綁定郵遞區號
+		},
+		// 綁定郵遞區號
 		updateZip(zip) {
 			this.Form.zip = zip;
 		},
 		resetForm() {
-			$('input:radio').prop('checked', false);   
-      // 將template建成 function
-			Object.assign(this.Form, templateFormData());
-			
+			$('input:radio').prop('checked', false);
+			// 將template建成 function
+			Object.assign(this.Form, templateRegisterForm());
+
+			grecaptcha.reset(this.recaptchaForm);
 		},
 	},
 	created() {},
