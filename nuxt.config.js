@@ -75,6 +75,7 @@ const config = {
 		/*
     ** Run ESLint on save
     */
+		vendor: ['axios'],
 		babel: {
 			presets: ['es2015', 'stage-0'],
 			plugins: ['transform-runtime'],
@@ -95,9 +96,6 @@ const config = {
 			return config;
 		},
 	},
-	// generate: {
-	//   dir: 'generate'
-	// },
 
 	router: {
 		// 改變基準路徑
@@ -120,5 +118,22 @@ const config = {
 	env: {
 		API_URL: 'http://localhost:3000/api',
 	},
+	modules: [
+		'@nuxtjs/axios', // With options
+		'@nuxtjs/proxy',
+	],
+	/**
+	 * @nuxtjs/axios 設定預設
+	 */
+
+	//axios: { prefix: '/api', proxy: true },
+	proxy: {
+		'/api': {
+			target: 'https://www.dsaawards.com',
+			// 路徑複寫
+			pathRewrite: { '^/api': '/api' },
+		},
+	},
 };
+
 module.exports = config;

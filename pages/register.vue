@@ -195,9 +195,7 @@
 export default {
 	data() {
 		return {
-      Form:{
-
-      },
+			Form: {},
 			recaptchaForm: undefined,
 		};
 	},
@@ -234,6 +232,20 @@ export default {
 		},
 		handleSubmit() {
 			console.log(grecaptcha.getResponse(this.recaptchaForm));
+			const data = { bar: 123 };
+			const options = {
+				method: 'POST',
+				headers: { Accetp:'application/json' },
+				data: {},
+				url: '/user.ashx',
+			};
+			this.$axios(options)
+				.then(function(response) {
+					console.log(response);
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
 		},
 	},
 	mounted() {
@@ -241,7 +253,7 @@ export default {
 			this.initSelect();
 			// 搭配：https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit
 			this.recaptchaForm = grecaptcha.render('recaptcha-main', {
-				sitekey: '6LfUEBoUAAAAAC7lNi3ahQp2Mdn6CQm8VLTZPWyj',
+				sitekey: '6LdcigETAAAAAEou1LlaY6NWZF3wIDnfLnMURdvy',
 			});
 		});
 	},
