@@ -42,10 +42,9 @@ const config = {
 			 */
 
 			{
-				src:
-					'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit',
+				src: 'https://www.google.com/recaptcha/api.js?render=explicit',
 			},
-			{ src: './js/createjs-2015.11.26.min.js' },
+			{ src: 'https://code.createjs.com/createjs-2015.11.26.min.js' },
 		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: './favicon.ico' },
@@ -125,13 +124,16 @@ const config = {
 	/**
 	 * @nuxtjs/axios 設定預設
 	 */
-
-	//axios: { prefix: '/api', proxy: true },
+	axios: { prefix: '/api', proxy: true },
 	proxy: {
 		'/api': {
-			target: 'https://www.dsaawards.com',
+			target:
+				// 'production','development'
+				process.env.NODE_ENV !== 'production'
+					? 'https://dsaaward.iprefer.com.tw'
+					: 'https://www.dsaawards.com',
 			// 路徑複寫
-			pathRewrite: { '^/api': '/api' },
+			// pathRewrite: { '^/api': '/api' },
 		},
 	},
 };
