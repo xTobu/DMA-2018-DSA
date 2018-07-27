@@ -236,8 +236,8 @@ export default {
 		};
 	},
 	computed: {
-		dataArea() {
-			return this.$store.state.area.list;
+		vuexArea() {
+			return this.$store.state.area;
 		},
 	},
 	methods: {
@@ -301,6 +301,9 @@ export default {
 			// 		console.log(error);
 			// 	});
 		},
+		updateAreaData(country) {
+			this.$store.commit('area/updateData', country);
+		},
 	},
 	created() {},
 
@@ -315,11 +318,8 @@ export default {
 					process.env.NODE_ENV !== 'production'
 						? '6LdcigETAAAAAEou1LlaY6NWZF3wIDnfLnMURdvy'
 						: '6Lf27y8UAAAAAIu-CAB7R-dGq19c6rHKBZKIR8nT',
-			});
-
-
-      
-      console.log(this.dataArea)
+      });
+      console.log(this.vuexArea)
 		});
 	},
 };

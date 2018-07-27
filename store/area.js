@@ -416,7 +416,13 @@ export const state = () => ({
 			湖西鄉: '885',
 		},
 	},
-	selectedCountry: undefined,
+	data: {
+		selectedCountry: 'selectedCountry',
+	},
 });
 
-export const mutations = {};
+export const mutations = {
+	updateData(state, country) {
+		state.data.selectedCountry = country
+	},
+};
