@@ -89,13 +89,10 @@
           <div class="add-wrap">
             <div class="wrap-data"></div>
             <div class="select select--white form-add" data-form-type="county"><span class="placeholder">地址縣市*</span>
-              <ul>
-                <li>台北市</li>
-                <li>新北市</li>
-                <li>新竹市</li>
-                <li>桃園縣</li>
-                <li>台中市</li>
-                <li>高雄市</li>
+              <ul>                
+                <li v-for="(value, key, index) in vuexArea.list" :key="index" @click="updateAreaData(key)">
+                  {{ key }} 
+                </li>
               </ul>
             </div>
             <div class="select select--white form-add" data-form-type="district"><span class="placeholder">行政區域*</span>
@@ -108,6 +105,9 @@
                 <li>萬華區</li>
                 <li>內湖區</li>
                 <li>天母區</li>
+                <li v-for="(value, key, index) in vuexArea.list[vuexArea.data.selectedCountry]" :key="index">
+                  {{ key }}
+                </li>
               </ul>
             </div>
             <div class="input-container form-50">
@@ -266,7 +266,7 @@ export default {
 					function(e) {
 						var target = e.target;
 						var parent = $(target).closest('.select');
-						var text = $(target).text();
+						var text = $(target).text().trim();
 						parent
 							.removeClass('is-open')
 							.find('.placeholder')
@@ -284,13 +284,12 @@ export default {
 				);
 		},
 		handleSubmit() {
-			// console.log(grecaptcha.getResponse(this.recaptchaForm));
+			this.Form.vcode = grecaptcha.getResponse(this.recaptchaForm);
 			console.log(this.Form);
-			const data = { bar: 123 };
 			const options = {
 				method: 'POST',
 				headers: { Accetp: 'application/json' },
-				data: {},
+				data: this.Form,
 				url: '/user.ashx',
 			};
 			// this.$axios(options)
@@ -318,8 +317,8 @@ export default {
 					process.env.NODE_ENV !== 'production'
 						? '6LdcigETAAAAAEou1LlaY6NWZF3wIDnfLnMURdvy'
 						: '6Lf27y8UAAAAAIu-CAB7R-dGq19c6rHKBZKIR8nT',
-      });
-      console.log(this.vuexArea)
+			});
+			console.log(this.vuexArea);
 		});
 	},
 };
