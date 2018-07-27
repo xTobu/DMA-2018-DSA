@@ -23,14 +23,15 @@
 export default {
 	head() {
 		return {
-            title: '首頁',
+			title: '首頁',
 			script: [
-                /**
-                 * *重要* 
-                 * 要載全域, 否則ROUTE切換回來時, 重新載createjs已經來不及,
-                 * initCanvas() 會無作用, STO延遲治標不治本.
-                 * 於是直接全域引用
-                 */                
+				/**
+				 * *重要*
+				 * 要載全域, 否則ROUTE切換回來時, 重新載createjs已經來不及,
+				 * initCanvas() 會無作用, STO延遲治標不治本.
+				 * 於是直接全域引用
+				 */
+
 				// { src: './js/createjs-2015.11.26.min.js' },
 				{ src: './js/kv.js' },
 				{ src: './js/initCanvas.js' },
@@ -45,8 +46,8 @@ export default {
 
 	mounted() {
 		this.$nextTick(() => {
-            initCanvas();
-            console.log(process.env.API_URL);
+			initCanvas();
+			console.log(process.env.API_URL);
 		});
 	},
 

@@ -244,27 +244,59 @@ export default {
 						 */
 						// 取得 data('form-type')
 						var FormType = parent.data('form-type');
-						// 女士 = 0, 先生 = 1
-						if (FormType === 'gender') text = text === '先生' ? 1 : 0;
 						this.Form[FormType] = text;
 					}.bind(this)
 				);
 		},
 		// 送出表單
 		handleSubmit() {
-			this.Form.vcode = grecaptcha.getResponse(this.recaptchaForm);
+            this.Form.vcode = grecaptcha.getResponse(this.recaptchaForm);
+            
+			/**
+			 * Deep Copy
+			 * https://ithelp.ithome.com.tw/articles/10193783
+			 * Object.assign()
+			 * https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+			 */
+			let $FormData = Object.assign({}, this.Form);
+
+			// 女士 = 0, 先生 = 1
+			$FormData.gender = $FormData.gender === '先生' ? 1 : 0;
+
 			const options = {
 				method: 'POST',
-				data: $.param(this.Form),
+				data: $.param($FormData),
 				url: '/user.ashx',
 			};
-			this.$axios(options)
-				.then(function(response) {
-					alert('Success');
-				})
-				.catch(function(response) {
-					alert(response.data.message.replace(/\\n/g, '\n'));
-				});
+			this.$swal({
+				type: 'info',
+				title: '努力為您處理中...',
+				// 外面點擊取消 防連續點擊
+				allowOutsideClick: false,
+				onOpen: () => {
+					this.$swal.enableLoading();
+					setTimeout(() => {
+						this.$axios(options)
+							.then(response => {
+								alert('Success');
+								this.$swal({
+									type: 'success',
+									title: '註冊完成',
+									text: '(๑•̀ㅂ•́)و✧',
+								}).then(() => {
+									$nuxt._router.push('/login');
+								});
+							})
+							.catch(response => {
+								let text = response.data.message.replace(/\\n/g, '\n\n');
+								this.$swal({
+									type: 'error',
+									title: text,
+								});
+							});
+					}, 1000);
+				},
+			});
 		},
 		// 綁定地址資料
 		updateAreaData(country) {
@@ -296,6 +328,23 @@ export default {
 						? '6LdcigETAAAAAEou1LlaY6NWZF3wIDnfLnMURdvy'
 						: '6Lf27y8UAAAAAIu-CAB7R-dGq19c6rHKBZKIR8nT',
 			});
+
+			// this.$swal({
+			// 	type: 'info',
+			// 	title: '努力為您處理中...',
+			// 	// text: 'Something went wrong!',
+			// 	onOpen: () => {
+			// 		this.$swal.enableLoading();
+
+			// 	},
+			// }).then(
+			// 	function() {
+			// 		// 確定要做的事
+			// 	},
+			// 	function() {
+			// 		// 取消要做的事
+			// 	}
+			// );
 		});
 	},
 };
@@ -303,5 +352,6 @@ export default {
 
 <style scoped>
 @import '~/assets/css/regist.css';
+/* @import '~sweetalert2/src/sweetalert2.scss'; */
 </style>
 
