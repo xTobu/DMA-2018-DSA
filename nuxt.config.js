@@ -38,10 +38,13 @@ const config = {
 			/**
 			 * google recaptcha
 			 * 搭配：grecaptcha.render('recaptcha-main');
-			 * 避免 route 渲染時出錯 
+			 * 避免 route 渲染時出錯
 			 */
-			
-			{ src: 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' },
+
+			{
+				src:
+					'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit',
+			},
 			{ src: './js/createjs-2015.11.26.min.js' },
 		],
 		link: [
@@ -107,10 +110,15 @@ const config = {
 			});
 		},
 		// 所有頁面渲染後滾動至頂部
-		scrollBehavior: function (to, from, savedPosition) {
-			return { x: 0, y: 0 }
-		  }
+		scrollBehavior: function(to, from, savedPosition) {
+			return { x: 0, y: 0 };
+		},
 	},
+	// 增加 utils.js
 	plugins: ['~/plugins/util.js'],
+	// 增加環境變數
+	env: {
+		API_URL: 'http://localhost:3000/api',
+	},
 };
 module.exports = config;

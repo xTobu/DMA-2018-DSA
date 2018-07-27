@@ -195,8 +195,10 @@
 export default {
 	data() {
 		return {
+      Form:{
+
+      },
 			recaptchaForm: undefined,
-			a: 1,
 		};
 	},
 	head() {

@@ -45,7 +45,8 @@ export default {
 
 	mounted() {
 		this.$nextTick(() => {
-			initCanvas();
+            initCanvas();
+            console.log(process.env.API_URL);
 		});
 	},
 

@@ -6,15 +6,24 @@
 
 <script>
 export default {
-	
+	asyncData({ redirect }) {
+		return redirect('/');
+	},
+	head() {
+		return {
+			title: '登入',
+		};
+	},
+	layout: 'layoutIndex',
+	data() {
+		return {};
+	},
+	methods: {},
 	created() {
 		// console.log('created');
 	},
 
-	
-	mounted() {
-		
-	},
+	mounted() {},
 };
 </script>
 
