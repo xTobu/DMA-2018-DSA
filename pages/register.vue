@@ -39,7 +39,7 @@
       <div class="wrap-form">
         <h5>個人資料編輯</h5>
         <div class="wrap-data">
-          <div class="select select--white form-50" data-form-type="gender"><span class="placeholder">稱謂*</span>
+          <div class="select select--white form-50" data-form-type="gender"><span class="placeholder">{{Form.gender}}</span>
             <ul>
               <li>先生</li>
               <li>女士</li>
@@ -88,24 +88,16 @@
           </div>
           <div class="add-wrap">
             <div class="wrap-data"></div>
-            <div class="select select--white form-add" data-form-type="county"><span class="placeholder">地址縣市*</span>
+            <div class="select select--white form-add" data-form-type="county"><span class="placeholder">{{Form.county}}</span>
               <ul>                
                 <li v-for="(value, key, index) in vuexArea.list" :key="index" @click="updateAreaData(key)">
                   {{ key }} 
                 </li>
               </ul>
             </div>
-            <div class="select select--white form-add" data-form-type="district"><span class="placeholder">行政區域*</span>
-              <ul>
-                <li>大安區</li>
-                <li>信義區</li>
-                <li>中山區</li>
-                <li>五股區</li>
-                <li>松山區</li>
-                <li>萬華區</li>
-                <li>內湖區</li>
-                <li>天母區</li>
-                <li v-for="(value, key, index) in vuexArea.list[vuexArea.data.selectedCountry]" :key="index">
+            <div class="select select--white form-add" data-form-type="district"><span class="placeholder">{{Form.district}}</span>
+              <ul>                
+                <li v-for="(value, key, index) in vuexArea.list[vuexArea.data.selectedCountry]" :key="index" @click="updateZip(value)">
                   {{ key }}
                 </li>
               </ul>
@@ -163,7 +155,7 @@
           <div class="wrap-from">
             <input class="radio-custom" id="from-r-PA" name="from-r-PA" type="radio">
             <label class="radio-custom-label radio-from" for="from-r-PA"></label>
-            <div class="select select--white form-from2" data-form-type="association"><span class="placeholder">公協會*</span>
+            <div class="select select--white form-from2" data-form-type="association"><span class="placeholder">{{Form.association}}</span>
               <ul>
                 <li>MMA</li>
                 <li>4A</li>
@@ -188,50 +180,23 @@
         <!-- <img src="img/google.gif"> -->
         <div class="g-recaptcha" id="recaptcha-main"></div>
       </div>
-      <div class="btn_wrap btn_wrap2"><a class="btn-confirm" href="#" @click.prevent="handleSubmit"><span class="txt">確定提交</span><span class="arrow"></span></a><a class="btn-cancel" href="#"><span class="txt">取消編輯</span><span class="arrow"></span></a></div>
+      <div class="btn_wrap btn_wrap2"><a class="btn-confirm" href="#" @click.prevent="handleSubmit"><span class="txt">確定提交</span><span class="arrow"></span></a><a class="btn-cancel" href="#" @click.prevent="resetForm"><span class="txt">取消編輯</span><span class="arrow"></span></a></div>
     </main>
 	</div>
 </template>
 
 <script>
+import templateFormData from '~/plugins/templateFormData';
 export default {
 	head() {
 		return {
 			title: '註冊',
-			// script: [{ src: 'https://www.google.com/recaptcha/api.js' }],
 		};
 	},
 	layout: 'layoutIndex',
 	data() {
 		return {
-			Form: {
-				act_mode: 'register',
-				uniformno: undefined,
-				password: undefined,
-				repassword: undefined,
-				gender: undefined,
-				name: undefined,
-				job_title: undefined,
-				phone: undefined,
-				mobile: undefined,
-				email: undefined,
-				secondemail: undefined,
-				company_name: undefined,
-				company_engname: undefined,
-				company_phone: undefined,
-				zip: undefined,
-				county: undefined,
-				district: undefined,
-				addr: undefined,
-				offical_channel: undefined,
-				partner_name: undefined,
-				media_name: undefined,
-				expert_name: undefined,
-				dma_member_name: undefined,
-				association: undefined,
-				other: undefined,
-				vcode: undefined,
-			},
+			Form: templateFormData(),
 			recaptchaForm: undefined,
 		};
 	},
@@ -266,11 +231,12 @@ export default {
 					function(e) {
 						var target = e.target;
 						var parent = $(target).closest('.select');
-						var text = $(target).text().trim();
-						parent
-							.removeClass('is-open')
-							.find('.placeholder')
-							.text(text);
+						var text = $(target)
+							.text()
+							.trim();
+						parent.removeClass('is-open');
+						// .find('.placeholder')
+						// .text(text);
 
 						/**
 						 * 填入 data
@@ -288,20 +254,28 @@ export default {
 			console.log(this.Form);
 			const options = {
 				method: 'POST',
-				headers: { Accetp: 'application/json' },
-				data: this.Form,
+				data: $.param(this.Form),
 				url: '/user.ashx',
 			};
-			// this.$axios(options)
-			// 	.then(function(response) {
-			// 		console.log(response);
-			// 	})
-			// 	.catch(function(error) {
-			// 		console.log(error);
-			// 	});
+			this.$axios(options)
+				.then(function(response) {
+					alert(response.data);
+				})
+				.catch(function(response) {
+					alert(response.data.message.replace(/\\n/g, '\n'));
+				});
 		},
 		updateAreaData(country) {
 			this.$store.commit('area/updateData', country);
+		},
+		updateZip(zip) {
+			this.Form.zip = zip;
+		},
+		resetForm() {
+			$('input:radio').prop('checked', false);   
+      
+			Object.assign(this.Form, templateFormData());
+			
 		},
 	},
 	created() {},
@@ -318,7 +292,6 @@ export default {
 						? '6LdcigETAAAAAEou1LlaY6NWZF3wIDnfLnMURdvy'
 						: '6Lf27y8UAAAAAIu-CAB7R-dGq19c6rHKBZKIR8nT',
 			});
-			console.log(this.vuexArea);
 		});
 	},
 };

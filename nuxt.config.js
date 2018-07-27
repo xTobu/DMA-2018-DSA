@@ -112,7 +112,7 @@ const config = {
 		},
 	},
 	// 增加 utils.js
-	plugins: ['~/plugins/util.js'],
+	plugins: ['~/plugins/util.js', '~/plugins/axios'],
 	// 增加環境變數
 	env: {
 		API_URL: 'http://localhost:3000/api',

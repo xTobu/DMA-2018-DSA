@@ -417,7 +417,7 @@ export const state = () => ({
 		},
 	},
 	data: {
-		selectedCountry: 'selectedCountry',
+		selectedCountry: '',
 	},
 });
 
