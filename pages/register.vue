@@ -234,7 +234,8 @@ export default {
 						var text = $(target)
 							.text()
 							.trim();
-						parent.removeClass('is-open');
+            parent.removeClass('is-open');
+            // 關閉填字, 與v-model綁定
 						// .find('.placeholder')
 						// .text(text);
 
