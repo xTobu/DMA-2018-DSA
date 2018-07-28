@@ -5,7 +5,16 @@
     </div>
     <main class="award">
       <div class="award-submenu">
-        <div class="award-submenu2"><a class="btn-award-sub" href="#"><span class="txt">數位創意類</span><span class="arrow"></span></a><a class="btn-award-sub" href="#"><span class="txt">創新應用技術類</span><span class="arrow"></span></a><a class="btn-award-sub" href="#"><span class="txt">整合行銷類</span><span class="arrow"></span></a><a class="btn-award-sub" href="#"><span class="txt">媒體應用類</span><span class="arrow"></span></a><a class="btn-award-sub" href="#"><span class="txt">年度獎</span><span class="arrow"></span></a></div>
+        <div class="award-submenu2">
+            <a class="btn-award-sub" href="award#digital-creative">
+                <span class="txt">數位創意類</span>
+                <span class="arrow"></span>
+            </a>
+            <a class="btn-award-sub" href="#"><span class="txt">創新應用技術類</span><span class="arrow"></span></a>
+            <a class="btn-award-sub" href="#"><span class="txt">整合行銷類</span><span class="arrow"></span></a>
+            <a class="btn-award-sub" href="#"><span class="txt">媒體應用類</span><span class="arrow"></span></a>
+            <a class="btn-award-sub" href="#"><span class="txt">年度獎</span><span class="arrow"></span></a>
+        </div>
       </div>
       <div class="award-content-wrap">
         <div class="award-content">
@@ -18,6 +27,7 @@
           <div class="grey-bg">
             <ul>
               <div class="award-item"><img src="~assets/svg/award_01.svg">
+                
                 <div class="tittle">數位創意類</div>
                 <div class="item-spec">
                   <ul>
@@ -91,25 +101,35 @@
           <h5>獎項介紹</h5>
           <p>數位創意類、創新應用技術類、整合行銷類、媒體應用類：由各類項中各選出金獎、銀獎、銅獎一名，頒予獎座乙座。</p>
         </div>
+        <a name="digital-creative"></a>
         <div class="award-content">
           <h5>數位創意類</h5>
           <p>評分標準：創意40%、策略20%、執行20％、影響效果20%</p>
+          <a name="digital-creative-1"></a>
           <h6>最佳廣告文案創意獎</h6>
           <p>契合所運用之數位廣告形式的特性，能準確讓人明瞭溝通內容或某種情緒傳達，引起成功、明確的迴響。</p>
+          <a name="digital-creative-2"></a>
           <h6>最佳社群文案創意獎</h6>
-          <p>運用社群互動的特性，充分發揮文字交流的創意，創造最佳溝通效益，引起成功、明確的迴響。</p>
+          <p>運用社群互動的特性，充分發揮文字交流的創意，創造最佳溝通效益，引起成功、明確的迴響。</p>          
+          <a name="digital-creative-3"></a>
           <h6>最佳展示廣告創意獎</h6>
           <p>在數位媒體上所展示，充分發揮創意的橫幅廣告、插播式廣告、蓋版廣告、原生廣告等類似展示型廣告形式。</p>
+          <a name="digital-creative-4"></a>
           <h6>最佳影片創意獎</h6>
           <p>在數位媒體上充分發揮創意的行銷影片，包含 CF、made for web film。</p>
+          <a name="digital-creative-5"></a>
           <h6>最佳短影片創意獎</h6>
           <p>10 秒（含）以下，在數位媒體上充分發揮創意的行銷影片，包含 CF、made for wed film 等動態格式。</p>
+          <a name="digital-creative-6"></a>
           <h6>最佳互動影片創意獎</h6>
           <p>於影片上運用數位媒體「互動」的特性，將創意展現於數位環境，透過與消費者的互動，達成最佳溝通效果。</p>
+          <a name="digital-creative-7"></a>
           <h6>最佳使用者體驗(UX)創意獎</h6>
           <p>注重操作介面、使用情境、用戶需求且符合實用性、有效性之特點，包含使用時相關的行為、態度與情緒，產生有意義、有價值的交流。</p>
+          <a name="digital-creative-8"></a>
           <h6>最佳活動網站及APP 創意獎</h6>
           <p>專為品牌或產品的單一行銷或廣告活動目的而製作的短期創意網站及APP。</p>
+          <a name="digital-creative-9"></a>
           <h6>最佳企業網站及 APP 創意獎</h6>
           <p>特定單一企業之企業形象、品牌推廣、產品行銷、客戶服務或商業運營而規劃設計的網站及APP。</p>
         </div>
