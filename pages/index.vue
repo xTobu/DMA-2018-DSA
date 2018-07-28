@@ -3,7 +3,7 @@
         <div class="content">
             <p>在這個充滿異想的數位世界，每一點都是創意力、科技力、行銷力的碰撞驚奇，發現智能奇點，開啟無限想像，共生共存，互助互利，向世界發聲，讓好事發生，我們正激盪出一個不思議的大未來
             </p>
-            <a class="btn_index" href="award"  @click.prevent="handleGoto">
+            <a class="btn_index" href="award"  @click.prevent="handleGotoSingularity">
                 <span class="txt">深入奇點</span>
                 <span class="arrow"></span>
             </a>
@@ -54,9 +54,9 @@ export default {
 		return {};
 	},
 	methods: {
-		handleGoto() {
+		handleGotoSingularity() {
 			this.util_LinkTo('/award');
-		}
+        },
 	},
 	created() {},
 
@@ -75,7 +75,6 @@ export default {
 		});
 	},
 
-	methods: {},
 };
 </script>
 
