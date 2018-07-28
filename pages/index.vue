@@ -20,6 +20,15 @@
 </template>
 
 <script>
+// import initCanvas from '~/plugins/initCanvas';
+// import('~/plugins/kv')
+// var initCanvas= require('~/plugins/initCanvas');
+// import initCanvas from '~/plugins/initCanvas';
+
+//import tools from '~/plugins/tools';
+if (process.client) {
+	// import tools from '~/plugins/tools'
+}
 export default {
 	head() {
 		return {
@@ -32,9 +41,9 @@ export default {
 				 * 於是直接全域引用
 				 */
 
-				// { src: './js/createjs-2015.11.26.min.js' },
-				{ src: './js/kv.js' },
-				{ src: './js/initCanvas.js' },
+				//{ src: './js/createjs-2015.11.26.min.js',  defer: true },
+				{ src: './js/kv.js', defer: true },
+				{ src: './js/initCanvas.js', defer: true },
 			],
 		};
 	},
@@ -46,8 +55,21 @@ export default {
 
 	mounted() {
 		this.$nextTick(() => {
-			initCanvas();
-			console.log(process.env.API_URL);
+			
+			// tools.ExternalHook(initCanvas).then(() => {
+            //     console.log(1);
+			// 	initCanvas();
+			// });
+			const detectLibrary = window.setInterval(function() {
+				if (typeof initCanvas !== undefined) {
+                    initCanvas();
+					window.clearInterval(detectLibrary);
+				}
+			}, 20);
+
+		
+			//initCanvas.init()
+			// console.log(process.env.API_URL);
 		});
 	},
 

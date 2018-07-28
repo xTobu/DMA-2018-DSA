@@ -1,4 +1,3 @@
-
 (function (cjs, an) {
 
 var p; // shortcut to reference prototypes
@@ -745,5 +744,3 @@ an.getComposition = function(id) {
 
 })(createjs = createjs||{}, AdobeAn = AdobeAn||{});
 var createjs, AdobeAn;
-
-// console.log(AdobeAn);
