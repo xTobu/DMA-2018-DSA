@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import swal from 'sweetalert2/dist/sweetalert2.all.min.js'
+import swal from 'sweetalert2'
 const swalPlugin = {}
 
 swalPlugin.install = function (Vue) {
 
-	swal.setDefaults({
+	swal.mixin({
 		// confirmButtonClass: 'btn btn-primary',
 		// cancelButtonClass: 'btn btn-default',
 		// buttonsStyling: false,

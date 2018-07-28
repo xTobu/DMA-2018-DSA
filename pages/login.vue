@@ -58,13 +58,25 @@
         </div>
     </div>
 
+
     <div class="head head_regist">
         <div class="tittle">
             <span>線上報名</span>
             <span class="sub">REGISTRATION</span>
         </div>
     </div>
-
+    <div class="device-show">
+        <div class="content">
+            <div class="tittle">線上報名請使用桌機作業</div>
+            <p>請輸入email以便獲取資訊</p>
+            <input id="email" type="email">
+            <a class="btn_device" href="#">
+                <span class="txt">送出</span>
+                <span class="arrow"></span>
+            </a>
+        </div>
+    </div>
+    
     <div class="login">
         <div class="left"></div>
         <div class="right">

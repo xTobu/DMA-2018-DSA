@@ -80,7 +80,7 @@
                         <a href="grading.html">報名文件</a>
                     </li>
                     <li class="m2">
-                        <a href="login.html">線上報名</a>
+                        <a href="/login" @click.prevent="util_LinkTo('/login')">線上報名</a>
                     </li>
                     <li class="m2">
                         <a href="#">線上評選</a>
