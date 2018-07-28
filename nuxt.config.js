@@ -55,10 +55,20 @@ const config = {
 
 			{
 				src: 'https://www.google.com/recaptcha/api.js?render=explicit',
+
 			},
 			{
-				src: 'https://code.createjs.com/createjs-2015.11.26.min.js'
+				src: 'https://code.createjs.com/createjs-2015.11.26.min.js',
+				defer: true
 			},
+			// {
+			// 	src: '~/assets/js/kv.js',
+			// 	defer: true
+			// },
+			// {
+			// 	src: '~/assets/js/initCanvas.js',
+			// 	defer: true
+			// },
 		],
 		link: [{
 				rel: 'icon',
@@ -76,9 +86,9 @@ const config = {
 			// },
 		],
 	},
-    css: ['~assets/css/style.css', '~assets/css/tech/custom.css',
-    //  { src: 'sweetalert2/dist/sweetalert2.min.css', lang: 'css' }
-    ],
+	css: ['~assets/css/style.css', '~assets/css/tech/custom.css',
+		//  { src: 'sweetalert2/dist/sweetalert2.min.css', lang: 'css' }
+	],
 	/*
 	 ** Customize the progress bar color
 	 */

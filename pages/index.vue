@@ -27,7 +27,9 @@
 
 //import tools from '~/plugins/tools';
 if (process.client) {
-	// import tools from '~/plugins/tools'
+    // import tools from '~/plugins/tools'
+    // require('~/plugins/createjs-2015.11.26.min.js')
+    // require('~/plugins/kv')
 }
 export default {
 	head() {
@@ -41,7 +43,7 @@ export default {
 				 * 於是直接全域引用
 				 */
 
-				//{ src: './js/createjs-2015.11.26.min.js',  defer: true },
+				{ src: './js/createjs-2015.11.26.min.js',  defer: true },
 				{ src: './js/kv.js', defer: true },
 				{ src: './js/initCanvas.js', defer: true },
 			],
@@ -56,13 +58,11 @@ export default {
 	mounted() {
 		this.$nextTick(() => {
 			
-			// tools.ExternalHook(initCanvas).then(() => {
-            //     console.log(1);
-			// 	initCanvas();
-			// });
+		
+            initCanvas();
 			const detectLibrary = window.setInterval(function() {
 				if (typeof initCanvas !== undefined) {
-                    initCanvas();
+                    // initCanvas();
 					window.clearInterval(detectLibrary);
 				}
 			}, 20);
