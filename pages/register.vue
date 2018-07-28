@@ -250,8 +250,8 @@ export default {
 		},
 		// 送出表單
 		handleSubmit() {
-            this.Form.vcode = grecaptcha.getResponse(this.recaptchaForm);
-            
+			this.Form.vcode = grecaptcha.getResponse(this.recaptchaForm);
+
 			/**
 			 * Deep Copy
 			 * https://ithelp.ithome.com.tw/articles/10193783
@@ -352,6 +352,8 @@ export default {
 
 <style scoped>
 @import '~/assets/css/regist.css';
+
+
 /* @import '~sweetalert2/src/sweetalert2.scss'; */
 </style>
 
