@@ -191,7 +191,7 @@ export default {
 	asyncData({ redirect }) {},
 	head() {
 		return {
-			title: '404',
+			title: '獎項介紹',
 		};
 	},
 	layout: 'layoutIndex',
