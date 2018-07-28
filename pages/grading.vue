@@ -260,9 +260,7 @@
 
 <script>
 export default {
-	asyncData({ redirect }) {
-		
-	},
+	asyncData({ redirect }) {},
 	head() {
 		return {
 			title: '評審辦法',
