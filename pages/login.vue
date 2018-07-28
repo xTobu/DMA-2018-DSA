@@ -84,19 +84,19 @@
                 <h3>使用者登入</h3>
                 <p>若還未有帳號密碼請點選註冊取得</p>
                 <div class="input-container">
-                    <input id="account" class="input" type="text" pattern=".+" required />
+                    <input id="account" class="input" type="text" pattern=".+" required v-model="Form.uniformno" />
                     <label class="label" for="account">帳號(您當初填寫的公司統編)</label>
                 </div>
                 <div class="input-container">
-                    <input id="password" class="input" type="password" pattern=".+" required />
+                    <input id="password" class="input" type="password" pattern=".+" required v-model="Form.password"  v-on:keyup.13="handleLogin" />
                     <label class="label" for="password">密碼</label>
                 </div>
                 <div class="btn_wrap">
-                    <a href="./register" class="btn_login" @click.prevent="util_LinkTo('/register')">
+                    <a href="register" class="btn_login" @click.prevent="handleRegister">
                             <span class="txt">註冊</span>
                             <span class="arrow"></span>
                         </a>
-                    <a href="#" class="btn_login">
+                    <a href="#" class="btn_login"  @click.prevent="handleLogin">
                             <span class="txt">登入</span>
                             <span class="arrow"></span>
                         </a>
@@ -120,6 +120,35 @@ export default {
 		};
 	},
 	layout: 'layoutIndex',
+	data() {
+		return {
+			Form: {
+				act_mode: 'login',
+				uniformno: '84598349',
+				password: 'wg1234',
+			},
+		};
+	},
+	methods: {
+		handleRegister() {
+			this.util_LinkTo('/register');
+		},
+		handleLogin() {
+			
+			let payload = {
+				FormData: this.Form,
+				reqURL: '/user.ashx',
+				resTitle: '登入成功',
+			};
+			this.util_request(payload)
+				.then(data => {
+					// $nuxt._router.push('/');
+				})
+				.catch(err => {
+					// 失敗訊息 (立即)
+				});
+		},
+	},
 	created() {},
 	mounted() {},
 };
@@ -127,11 +156,13 @@ export default {
 
 <style scoped>
 @import '~/assets/css/regist.css';
+.popup-forget {
+	position: fixed;
+}
 @media only screen and (max-device-width: 1024px) {
 	.device-show {
 		height: 100vh;
 	}
 }
-
 </style>
 

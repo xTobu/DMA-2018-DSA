@@ -39,11 +39,11 @@ export default {
 				/**
 				 * *重要*
 				 * 要載全域, 否則ROUTE切換回來時, 重新載createjs已經來不及,
-				 * initCanvas() 會無作用, STO延遲治標不治本.
+				 * initCanvas() 會無作用, STO 延遲治標不治本.
 				 * 於是直接全域引用
 				 */
 
-				{ src: './js/createjs-2015.11.26.min.js',  defer: true },
+				// { src: './js/createjs-2015.11.26.min.js',  defer: true },
 				{ src: './js/kv.js', defer: true },
 				{ src: './js/initCanvas.js', defer: true },
 			],
@@ -59,10 +59,10 @@ export default {
 		this.$nextTick(() => {
 			
 		
-            initCanvas();
+            // initCanvas();
 			const detectLibrary = window.setInterval(function() {
 				if (typeof initCanvas !== undefined) {
-                    // initCanvas();
+                     initCanvas();
 					window.clearInterval(detectLibrary);
 				}
 			}, 20);
