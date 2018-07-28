@@ -1,5 +1,5 @@
 <template>
-    <div class="404">
+    <div class="wrapper">
         404
     </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 	},
 	head() {
 		return {
-			title: '登入',
+			title: '404',
 		};
 	},
 	layout: 'layoutIndex',
@@ -27,6 +27,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+@import '~/assets/css/index.css';
 </style>
 

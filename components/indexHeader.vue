@@ -22,7 +22,7 @@
             <div class="menu">
                 <ul>
                     <li>
-                        <a href="news.html">最新消息</a>
+                        <a href="news" @click.prevent="util_LinkTo('/news')">最新消息</a>
                     </li>
                     <li>
                         <a href="award.html">獎項介紹</a>
