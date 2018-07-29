@@ -6,19 +6,14 @@ var canvas,
 	fnStartAnimation;
 
 function initCanvas() {
-// 	canvas = undefined;
-// 	stage = undefined;
-// 	exportRoot = undefined;
-// 	anim_container = undefined;
-// 	dom_overlay_container = undefined;
-// 	fnStartAnimation = undefined;
-// console.log(canvas);
+
+  
 	canvas = document.getElementById('canvas');
 	anim_container = document.getElementById('animation_container');
 	dom_overlay_container = document.getElementById('dom_overlay_container');
 	var comp = AdobeAn.getComposition('A4E129528A6B044284296302A6762275');
 	var lib = comp.getLibrary();
-
+    console.log(canvas);
 	var loader = new createjs.LoadQueue(true);
 
 	loader.addEventListener('fileload', function(evt) {

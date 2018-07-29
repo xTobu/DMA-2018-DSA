@@ -58,15 +58,18 @@ const config = {
 
 			},
 			{
-				src: 'https://code.createjs.com/createjs-2015.11.26.min.js',
-				defer: true
+                src: 'https://code.createjs.com/createjs-2015.11.26.min.js',
+                /**
+                 * 不要 defer, 否則會比頁面的 js 晚載入
+                 */
+                // defer: true
 			},
 			// {
-			// 	src: '~/assets/js/kv.js',
+			// 	src: '/2018/js/kv.js',
 			// 	defer: true
 			// },
 			// {
-			// 	src: '~/assets/js/initCanvas.js',
+			// 	src: '/2018/js/initCanvas.js',
 			// 	defer: true
 			// },
 		],
@@ -177,7 +180,10 @@ const config = {
 			// 路徑複寫
 			// pathRewrite: { '^/api': '/api' },
 		},
-	},
+    },
+    generate: {
+        dir: '2018'
+      },
 };
 
 module.exports = config;

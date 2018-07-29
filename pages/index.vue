@@ -27,9 +27,9 @@
 
 //import tools from '~/plugins/tools';
 //if (process.client) {
-	// import tools from '~/plugins/tools'
-	// require('~/plugins/createjs-2015.11.26.min.js')
-	// require('~/plugins/kv')
+// import tools from '~/plugins/tools'
+// require('~/plugins/createjs-2015.11.26.min.js')
+// require('~/plugins/kv')
 //}
 export default {
 	head() {
@@ -56,15 +56,17 @@ export default {
 	methods: {
 		handleGotoSingularity() {
 			this.util_LinkTo('/award');
-        },
+		},
 	},
 	created() {},
 
 	mounted() {
 		this.$nextTick(() => {
 			// initCanvas();
+			console.log(typeof initCanvas);
 			const detectLibrary = window.setInterval(function() {
 				if (typeof initCanvas !== undefined) {
+					console.log(1);
 					initCanvas();
 					window.clearInterval(detectLibrary);
 				}
@@ -74,7 +76,6 @@ export default {
 			// console.log(process.env.API_URL);
 		});
 	},
-
 };
 </script>
 
