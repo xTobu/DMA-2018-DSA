@@ -13,7 +13,7 @@ function initCanvas() {
 	dom_overlay_container = document.getElementById('dom_overlay_container');
 	var comp = AdobeAn.getComposition('A4E129528A6B044284296302A6762275');
 	var lib = comp.getLibrary();
-    console.log(canvas);
+    // console.log(canvas);
 	var loader = new createjs.LoadQueue(true);
 
 	loader.addEventListener('fileload', function(evt) {

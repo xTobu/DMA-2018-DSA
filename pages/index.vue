@@ -62,17 +62,20 @@ export default {
 
 	mounted() {
 		this.$nextTick(() => {
-			// initCanvas();
-			console.log(typeof initCanvas);
+			// if (process.browser) {
+			// 	window.onNuxtReady(app => {
+			// 	});
+			// }
+			// window.onload = function() {};
+			// $(function() {});
+
 			const detectLibrary = window.setInterval(function() {
 				if (typeof initCanvas !== undefined) {
-					console.log(1);
 					initCanvas();
 					window.clearInterval(detectLibrary);
 				}
 			}, 20);
 
-			//initCanvas.init()
 			// console.log(process.env.API_URL);
 		});
 	},
