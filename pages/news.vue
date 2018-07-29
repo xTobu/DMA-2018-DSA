@@ -182,7 +182,7 @@ export default {
 		// 		});
 	},
 	 async fetch({ store, params, app }) {
-		// console.warn('fetch');
+	
 		// await store.dispatch('news/fetchList');
 		await app
 			.$axios({
@@ -223,6 +223,7 @@ export default {
 		return {};
 	},
 	computed: {
+        // 表單資料
 		vuexNews() {
 			return this.$store.state.news;
 		},
@@ -231,9 +232,6 @@ export default {
 	created() {},
 
 	mounted() {
-		// fetch
-		console.log(this.vuexNews);
-		setInterval(() => {}, 1000);
 		// var bodyFormData = new FormData();
 		// bodyFormData.set('act_mode', 'list');
 	},
