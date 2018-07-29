@@ -150,7 +150,9 @@ const config = {
 	},
 	// 增加 utils.js
 	plugins: ['~/plugins/util.js', {
-		src: '~/plugins/axios'
+        src: '~/plugins/axios',
+        // 因為 fetch 和 asyncData 要用 axios module
+        ssr: true
 	}, {
 		src: '~/plugins/sweetalert2',
 		ssr: false
