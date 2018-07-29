@@ -154,8 +154,6 @@ export default {
 	asyncData({ redirect, app }) {		
 	},
 	 async fetch({ store, params, app }) {
-	
-		// await store.dispatch('news/fetchList');
 		await app
 			.$axios({
 				method: 'GET',

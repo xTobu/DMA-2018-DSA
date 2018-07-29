@@ -9,6 +9,7 @@ export const mutations = {
 	},
 };
 
+// dispatch
 export const actions = {
 	fetchList(context) {
 		context.commit('updateList', [{
