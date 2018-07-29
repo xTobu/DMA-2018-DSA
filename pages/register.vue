@@ -202,7 +202,7 @@ export default {
 	},
 	computed: {
 		vuexArea() {
-			return this.$store.state.area;
+			return this.$store.state.registerArea;
 		},
 	},
 	methods: {
@@ -278,7 +278,7 @@ export default {
 		},
 		// 綁定地址資料
 		updateAreaData(country) {
-			this.$store.commit('area/updateData', country);
+			this.$store.commit('registerArea/updateData', country);
 		},
 		// 綁定郵遞區號
 		updateZip(zip) {
