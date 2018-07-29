@@ -151,8 +151,39 @@
 // asyncData用於填充頁面組件的數據。當您返回一個對象時，它將在渲染前與數據輸出合併。
 // fetch用於填充Vuex Store。如果你返回一個promise，Nuxt將等待，直到它在渲染前解決。
 export default {
-	asyncData({ redirect, app }) {},
-	async fetch({ store, params, app }) {
+	asyncData({ redirect, app }) {
+		//     app
+		// 		.$axios({
+		// 			method: 'GET',
+		// 			// data: $.param({ act_mode: 'list' }),
+		// 			url: '/getNews.ashx?act_mode=list',
+		// 		})
+		// 		.then(response => {
+		// 			console.log(response.data);
+		// 		})
+		// 		.catch(err => {
+		// 			console.warn(err.data);
+		// 			app.store.commit('news/updateList', [
+		// 				{
+		// 					n_key: 'SYkWWfNItx',
+		// 					img_name: 'aaa.jpg',
+		// 					title: '我是標題',
+		// 					summary: '我是摘要',
+		// 					created_at: '2017/10/02',
+		// 				},
+		// 				{
+		// 					n_key: 'SYkWWfNItx',
+		// 					img_name: 'aaa.jpg',
+		// 					title: '我是標題',
+		// 					summary: '我是摘要',
+		// 					created_at: '2017/10/02',
+		// 				}
+		// 			]);
+		// 		});
+	},
+	 async fetch({ store, params, app }) {
+		// console.warn('fetch');
+		// await store.dispatch('news/fetchList');
 		await app
 			.$axios({
 				method: 'GET',
@@ -160,10 +191,9 @@ export default {
 				url: '/getNews.ashx?act_mode=list',
 			})
 			.then(response => {
-				console.log(response.data);
+                
 			})
 			.catch(err => {
-				console.log(err.data);
 				store.commit('news/updateList', [
 					{
 						n_key: 'SYkWWfNItx',
@@ -179,11 +209,9 @@ export default {
 						summary: '我是摘要',
 						created_at: '2017/10/02',
 					}
-					
+
 				]);
 			});
-		// let { data } = await app.$axios.get('/getNews.ashx?act_mode=list')
-		// console.log(data);
 	},
 	head() {
 		return {
@@ -193,33 +221,21 @@ export default {
 	layout: 'layoutIndex',
 	data() {
 		return {};
-    },
-    computed: {
+	},
+	computed: {
 		vuexNews() {
 			return this.$store.state.news;
 		},
 	},
 	methods: {},
-	created() {
-		// console.log('created');
-	},
+	created() {},
 
 	mounted() {
-        console.log(this.vuexNews);
+		// fetch
+		console.log(this.vuexNews);
+		setInterval(() => {}, 1000);
 		// var bodyFormData = new FormData();
 		// bodyFormData.set('act_mode', 'list');
-		// this
-		// 	.$axios({
-		// 		method: 'GET',
-		// 		data:$.param({act_mode:'list'}),
-		// 		url: '/getNews.ashx?act_mode=list',
-		// 	})
-		// 	.then(response => {
-		// 		console.log(response);
-		// 	})
-		// 	.catch(err => {
-		// 		console.log(err);
-		// 	});
 	},
 };
 </script>

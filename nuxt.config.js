@@ -150,8 +150,7 @@ const config = {
 	},
 	// 增加 utils.js
 	plugins: ['~/plugins/util.js', {
-		src: '~/plugins/axios',
-		ssr: false
+		src: '~/plugins/axios'
 	}, {
 		src: '~/plugins/sweetalert2',
 		ssr: false
