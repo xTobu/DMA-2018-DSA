@@ -151,35 +151,7 @@
 // asyncData用於填充頁面組件的數據。當您返回一個對象時，它將在渲染前與數據輸出合併。
 // fetch用於填充Vuex Store。如果你返回一個promise，Nuxt將等待，直到它在渲染前解決。
 export default {
-	asyncData({ redirect, app }) {
-		//     app
-		// 		.$axios({
-		// 			method: 'GET',
-		// 			// data: $.param({ act_mode: 'list' }),
-		// 			url: '/getNews.ashx?act_mode=list',
-		// 		})
-		// 		.then(response => {
-		// 			console.log(response.data);
-		// 		})
-		// 		.catch(err => {
-		// 			console.warn(err.data);
-		// 			app.store.commit('news/updateList', [
-		// 				{
-		// 					n_key: 'SYkWWfNItx',
-		// 					img_name: 'aaa.jpg',
-		// 					title: '我是標題',
-		// 					summary: '我是摘要',
-		// 					created_at: '2017/10/02',
-		// 				},
-		// 				{
-		// 					n_key: 'SYkWWfNItx',
-		// 					img_name: 'aaa.jpg',
-		// 					title: '我是標題',
-		// 					summary: '我是摘要',
-		// 					created_at: '2017/10/02',
-		// 				}
-		// 			]);
-		// 		});
+	asyncData({ redirect, app }) {		
 	},
 	 async fetch({ store, params, app }) {
 	
