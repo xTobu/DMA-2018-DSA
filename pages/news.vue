@@ -198,6 +198,7 @@ export default {
 	created() {},
 
 	mounted() {
+        console.log(this.vuexNews);
 		// var bodyFormData = new FormData();
 		// bodyFormData.set('act_mode', 'list');
 	},
