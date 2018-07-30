@@ -31,15 +31,18 @@
             </div>
           </div>
           <a class="wrap-news-pic" href="#">
-            <div class="news-pic"><img src="~assets/img/news-img.png"></div></a>
+            <div class="news-pic">
+              <img  :src="handleImgSrc(value.img_name)">
+            </div>
+          </a>
           <div class="wrap-news-content">
             <div class="news-content">
-              <div class="headline">趨勢觀察三 / 深化互動媒體再造新價值</div>
-              <p>隨著程序化購買日漸成熟，未來的媒體是不是也能發揮本身的社群 ....</p>
+              <div class="headline">{{ value.title }}</div>
+              <p>{{ value.summary }}</p>
             </div><a class="btn-news" href="#"><span class="txt">more</span><span class="arrow"></span></a>
           </div>
         </li>
-        <li>
+        <!-- <li>
           <div class="news-date">
             <div class="wrap-date">
               <div class="month">JUN</div>
@@ -54,7 +57,7 @@
               <p>隨著程序化購買日漸成熟，未來的媒體是不是也能發揮本身的社群 ....</p>
             </div><a class="btn-news" href="#"><span class="txt">more</span><span class="arrow"></span></a>
           </div>
-        </li>
+        </li> -->
         
       </ul>
     </main>
@@ -80,7 +83,7 @@ export default {
 				url: '/getNews.ashx',
 			})
 			.then(response => {
-        console.log(response.data.list);
+				console.log(response.data.list);
 				store.commit('news/updateList', response.data.list);
 			})
 			.catch(err => {});
@@ -100,24 +103,19 @@ export default {
 			return this.$store.state.news;
 		},
 	},
-	methods: {},
+	methods: {
+		handleImgSrc(src) {
+			return (
+				(process.env.NODE_ENV !== 'production'
+					? 'https://dsaaward.iprefer.com.tw/upload/News/'
+					: 'https://www.dsaawards.com/upload/News/') + src
+			);
+		},
+	},
 	created() {},
 
 	mounted() {
-		console.log(this.vuexNews);
-		// var bodyFormData = new FormData();
-		// bodyFormData.set('act_mode', 'list');
-		// this.$axios({
-		// 	method: 'POST',
-		// 	data: $.param({ act_mode: 'list' }),
-		// 	url: '/getNews.ashx',
-		// })
-		// 	.then(response => {
-		// 		console.log(response);
-		// 	})
-		// 	.catch(err => {
-		// 		console.log(err);
-		// 	});
+		// console.log(this.vuexNews);
 	},
 };
 </script>
