@@ -4,7 +4,7 @@
       <div class="tittle"><span>最新消息</span><span class="sub">NEWS</span></div>
     </div>
     <main class="news">
-      <div class="popup-news" style="display:none;">
+      <!-- <div class="popup-news" style="display:none;">
         <div class="news-expand"><a class="btn-close" href="#"></a>
           <div class="news-date-expand">
             <div class="wrap-date">
@@ -21,25 +21,28 @@
             <p>比如老字號《華盛頓郵報》或是中國新品牌《今日頭條》，一個轉型成功，一個新創有成，關鍵因素不在於內容製作，而是導入新的科技，透過跨平台串接、數據整合到社群互動，幫助媒體不論在內容遞送，或是廣告推播上，都做到了以前媒體不太能做到的事，因此對於轉型或發展中的數位媒體，需要更多的整合工具，加入技術的思考與資源，協助品牌客戶在符合屬性的傳播媒體管道上，搭配不同的素材組合推出合適的廣告類型。事實上，台灣本地已有網路原生媒體平台積極操作此種路線。</p>
           </div>
         </div>
-      </div>
+      </div> -->
+      <transition name='nuxtchild' mode=''>
+        <nuxt-child :key="$route.params.id"/>
+      </transition>
       <ul>
-        <li v-for="(value, key, index) in vuexNews.list" :key="index">
+        <li v-for="(value, key, index) in vuexNewsList" :key="index">
           <div class="news-date">
             <div class="wrap-date">
-              <div class="month">JUN</div>
-              <div class="day">25</div>
+              <div class="month">{{value.dateMonth}}</div>
+              <div class="day">{{value.dateDay}}</div>
             </div>
           </div>
-          <a class="wrap-news-pic" href="#">
+          <a class="wrap-news-pic" href="#" @click.prevent="handleDetail(value.n_key)">
             <div class="news-pic">
-              <img  :src="handleImgSrc(value.img_name)">
+              <img :src="value.imgURL">
             </div>
           </a>
           <div class="wrap-news-content">
             <div class="news-content">
-              <div class="headline">{{ value.title }}</div>
+              <div class="headline">{{ value.shortenTitle }}</div>
               <p>{{ value.summary }}</p>
-            </div><a class="btn-news" href="#"><span class="txt">more</span><span class="arrow"></span></a>
+            </div><a class="btn-news" href="#" @click.prevent="handleDetail(value.n_key)"><span class="txt">more</span><span class="arrow"></span></a>
           </div>
         </li>
         <!-- <li>
@@ -83,7 +86,7 @@ export default {
 				url: '/getNews.ashx',
 			})
 			.then(response => {
-				console.log(response.data.list);
+				// console.log(response.data.list);
 				store.commit('news/updateList', response.data.list);
 			})
 			.catch(err => {});
@@ -99,23 +102,20 @@ export default {
 	},
 	computed: {
 		// 表單資料
-		vuexNews() {
-			return this.$store.state.news;
+		vuexNewsList() {
+			return this.$store.getters['news/getterList'];
 		},
 	},
 	methods: {
-		handleImgSrc(src) {
-			return (
-				(process.env.NODE_ENV !== 'production'
-					? 'https://dsaaward.iprefer.com.tw/upload/News/'
-					: 'https://www.dsaawards.com/upload/News/') + src
-			);
+		handleDetail(id) {
+			$nuxt._router.push({ name: 'news-id', params: { id: id } });
 		},
+		
 	},
 	created() {},
 
 	mounted() {
-		// console.log(this.vuexNews);
+		console.log(this.vuexNewsList);
 	},
 };
 </script>
@@ -123,5 +123,29 @@ export default {
 
 <style scoped>
 @import '~/assets/css/news.css';
+/* transition */
+/* .nuxtchild-enter-active,
+.nuxtchild-leave-active {
+	transition: opacity .8s;
+}
+
+.nuxtchild-enter,
+.nuxtchild-leave-to {
+	opacity: 0;
+} */
+
+.page-enter-active,
+.page-leave-active {
+	transition: opacity 0.4s;
+}
+
+.popup-news-index.page-leave-active {
+	transition: opacity 0s;
+}
+
+.page-enter,
+.page-leave-to {
+	opacity: 0;
+}
 </style>
 
