@@ -70,6 +70,7 @@ export default {
 
 	mounted() {
     },
+    scrollToTop: false
 };
 </script>
 

@@ -58,11 +58,11 @@ const config = {
 
 			},
 			{
-                src: 'https://code.createjs.com/createjs-2015.11.26.min.js',
-                /**
-                 * 不要 defer, 否則會比頁面的 js 晚載入
-                 */
-                // defer: true
+				src: 'https://code.createjs.com/createjs-2015.11.26.min.js',
+				/**
+				 * 不要 defer, 否則會比頁面的 js 晚載入
+				 */
+				// defer: true
 			},
 			// {
 			// 	src: '/2018/js/kv.js',
@@ -105,7 +105,7 @@ const config = {
 		/*
 		 ** Run ESLint on save
 		 */
-		vendor: ['axios','qs'],
+		vendor: ['axios', 'qs'],
 		babel: {
 			presets: ['es2015', 'stage-0'],
 			plugins: ['transform-runtime'],
@@ -142,6 +142,11 @@ const config = {
 		},
 		// 所有頁面渲染後滾動至頂部
 		scrollBehavior: function (to, from, savedPosition) {
+			if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
+				// 頁面配置了 scrollToTop: false
+				// 不滾到頂部
+				return {}
+			}
 			return {
 				x: 0,
 				y: 0
@@ -150,9 +155,9 @@ const config = {
 	},
 	// 增加 utils.js
 	plugins: ['~/plugins/util.js', {
-        src: '~/plugins/axios',
-        // 因為 fetch 和 asyncData 要用 axios module
-        ssr: true
+		src: '~/plugins/axios',
+		// 因為 fetch 和 asyncData 要用 axios module
+		ssr: true
 	}, {
 		src: '~/plugins/sweetalert2',
 		ssr: false
@@ -181,10 +186,10 @@ const config = {
 			// 路徑複寫
 			// pathRewrite: { '^/api': '/api' },
 		},
-    },
-    generate: {
-        dir: '2018'
-      },
+	},
+	generate: {
+		dir: '2018'
+	},
 };
 
 module.exports = config;
