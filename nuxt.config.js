@@ -105,7 +105,7 @@ const config = {
 		/*
 		 ** Run ESLint on save
 		 */
-		vendor: ['axios'],
+		vendor: ['axios','qs'],
 		babel: {
 			presets: ['es2015', 'stage-0'],
 			plugins: ['transform-runtime'],

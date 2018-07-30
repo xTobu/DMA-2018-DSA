@@ -1,6 +1,7 @@
 export default function({ $axios, redirect }) {
 	$axios.onRequest(config => {
-        config.headers['Accept'] = 'application/json';
+		config.headers['Accept'] = 'application/json';
+		config.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
         // 傳送 cookies
 		config.withCredentials = true;
 		config.credentials = 'same-origin';
