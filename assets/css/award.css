@@ -203,6 +203,17 @@
   }
 }
 
+.award-content-wrap .award-content .grey-bg .award-item .item-spec .item-spec-btn {
+  color: #686868;
+  display: block;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.award-content-wrap .award-content .grey-bg .award-item .item-spec .item-spec-btn:hover {
+  color: #b88b01;
+}
+
 .award-content-wrap .award-content .grey-bg .award-item .item-spec ul {
   position: absolute;
   top: 50%;

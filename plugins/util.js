@@ -8,6 +8,7 @@ Vue.mixin({
 		util_request(payload) {
 			return new Promise((resolve, reject) => {
 				let $FormData = Object.assign({}, payload.FormData);
+				console.log($.param($FormData));
 				this.$swal({
 					type: 'info',
 					title: '努力為您處理中...',

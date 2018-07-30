@@ -287,7 +287,7 @@ export default {
 		resetForm() {
 			$('input:radio').prop('checked', false);
 			// 將template建成 function
-			Object.assign(this.Form, templateRegisterForm());
+			// Object.assign(this.Form, templateRegisterForm());
 
 			grecaptcha.reset(this.recaptchaForm);
 		},

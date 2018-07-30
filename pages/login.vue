@@ -124,8 +124,8 @@ export default {
 		return {
 			Form: {
 				act_mode: 'login',
-				uniformno: '84598349',
-				password: 'wg1234',
+				uniformno: '42656367',
+				password: 'wg0123',
 			},
 		};
 	},
@@ -134,7 +134,7 @@ export default {
 			this.util_LinkTo('/register');
 		},
 		handleLogin() {
-			
+			// console.log(this.Form);
 			let payload = {
 				FormData: this.Form,
 				reqURL: '/user.ashx',
