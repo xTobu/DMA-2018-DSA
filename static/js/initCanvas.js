@@ -6,14 +6,12 @@ var canvas,
 	fnStartAnimation;
 
 function initCanvas() {
-
-  
 	canvas = document.getElementById('canvas');
 	anim_container = document.getElementById('animation_container');
 	dom_overlay_container = document.getElementById('dom_overlay_container');
 	var comp = AdobeAn.getComposition('A4E129528A6B044284296302A6762275');
 	var lib = comp.getLibrary();
-    // console.log(canvas);
+	// console.log(canvas);
 	var loader = new createjs.LoadQueue(true);
 
 	loader.addEventListener('fileload', function(evt) {
@@ -97,7 +95,14 @@ function handleComplete(evt, comp) {
 			lastS = sRatio;
 		}
 	}
-	makeResponsive(false, 'width', false, 2);
+	window.innerWidth > 768
+		? makeResponsive(false, 'width', false, 2)
+		: makeResponsive(true, 'width', true, 2);
+
+	// 虎航
+	// http://cell2.webgene.com.tw/event/firstime/zh
+	// http://cell2.webgene.com.tw/event/firstime/public/js/vendor/CreateJS/tw/init.js
+	// makeResponsive(true, 'both', false, 1);
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 }
