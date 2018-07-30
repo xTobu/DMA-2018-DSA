@@ -28,13 +28,18 @@
 import qs from 'qs';
 import { mapGetters } from 'vuex';
 export default {
-	
+	// validate({ query }) {
+
+	// //    redirect(301, '/en')
+	//     // console.log(!isNaN(+params.id));
+	// 	// return !isNaN(+params.id); // You can also use redirect if you don't want to display a 404 page
+	// },
 	asyncData({ redirect }) {},
 	async fetch({ store, params, query, app }) {
 		await app
 			.$axios({
 				method: 'POST',
-				data: qs.stringify({ act_mode: 'detail', key: params.id }),
+				data: qs.stringify({ act_mode: 'detail', key: query.id }),
 				url: '/getNews.ashx',
 			})
 			.then(response => {
@@ -53,22 +58,55 @@ export default {
 	},
 	computed: {
 		vuexNewsDetail() {
-			return this.$store.getters['news/getterDetail'];			
+            console.log('computed vuexNewsDetail');
+			// return this.$store.state.news.detail;
+            console.log(this.$store.getters['news/getterDetail']);
+            // 進不去 getters
+			return this.$store.getters['news/getterDetail'];
+			// let detail = Object.assign({}, this.$store.state.news.detail);
+			// detail.imgURL =
+			// 	(process.env.NODE_ENV !== 'production'
+			// 		? 'https://dsaaward.iprefer.com.tw/upload/News/'
+			// 		: 'https://www.dsaawards.com/upload/News/') + detail.img_name;
+			// var months = [
+			// 	'JAN',
+			// 	'FEB',
+			// 	'MAR',
+			// 	'APR',
+			// 	'MAY',
+			// 	'JUN',
+			// 	'JUL',
+			// 	'AUG',
+			// 	'SEP',
+			// 	'OCT',
+			// 	'NOV',
+			// 	'DEC',
+			// ];
+			// detail.dateMonth = months[parseInt(detail.created_at.split('/')[1], 10)];
+			// detail.dateDay = detail.created_at.split('/')[2];
+			// detail.shortenTitle =
+			// 	detail.title.substring(0, 25) + (detail.title.length > 24 ? '…' : '');
+			// return detail;
 		},
 	},
-
+	// computed: {
+	// 	...mapGetters({
+	// 		vuexNewsDetail: 'news/getterDetail',
+	// 	}),
+	// },
 	methods: {
 		handleClose() {
-            console.log(document.referrer.indexOf('/2018/news') !== -1);
 			document.referrer.indexOf('/2018/news') !== -1
 				? $nuxt._router.back()
 				: $nuxt._router.push('/news');
 		},
 	},
 	created() {
+		// console.log('created');
 	},
 
 	mounted() {
+        // console.log('detail');
     },
 };
 </script>

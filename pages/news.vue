@@ -45,22 +45,7 @@
             </div><a class="btn-news" href="#" @click.prevent="handleDetail(value.n_key)"><span class="txt">more</span><span class="arrow"></span></a>
           </div>
         </li>
-        <!-- <li>
-          <div class="news-date">
-            <div class="wrap-date">
-              <div class="month">JUN</div>
-              <div class="day">25</div>
-            </div>
-          </div>
-          <a class="wrap-news-pic" href="#">
-            <div class="news-pic"><img src="~assets/img/news-img.png"></div></a>
-          <div class="wrap-news-content">
-            <div class="news-content">
-              <div class="headline">趨勢觀察三 / 深化互動媒體再造新價值</div>
-              <p>隨著程序化購買日漸成熟，未來的媒體是不是也能發揮本身的社群 ....</p>
-            </div><a class="btn-news" href="#"><span class="txt">more</span><span class="arrow"></span></a>
-          </div>
-        </li> -->
+        
         
       </ul>
     </main>
@@ -108,14 +93,14 @@ export default {
 	},
 	methods: {
 		handleDetail(id) {
-			$nuxt._router.push({ name: 'news-id', params: { id: id } });
+            // $nuxt._router.push({ name: 'news-detail', query: { id: id } });
+            $nuxt._router.push({ name: 'news-id', params: { id: id } });
 		},
-		
 	},
 	created() {},
 
 	mounted() {
-		console.log(this.vuexNewsList);
+		// console.log(this.$store.state.news);
 	},
 };
 </script>

@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 export const state = () => ({
 	list: undefined,
 	detail: undefined,
@@ -8,16 +10,53 @@ export const mutations = {
 		state.list = list;
 	},
 	updateDetail(state, detail) {
-		state.detail = detail;
+		console.log('mutations updateDetail');
+		// console.log('detail',detail);
+		// state.detail = detail;
+		console.log(state);
+		let imgURL =
+			(process.env.NODE_ENV !== 'production' ?
+				'https://dsaaward.iprefer.com.tw/upload/News/' :
+				'https://www.dsaawards.com/upload/News/') + detail.img_name;
+		var months = [
+			'JAN',
+			'FEB',
+			'MAR',
+			'APR',
+			'MAY',
+			'JUN',
+			'JUL',
+			'AUG',
+			'SEP',
+			'OCT',
+			'NOV',
+			'DEC',
+		];
+
+		let dateMonth =
+			months[parseInt(detail.created_at.split('/')[1], 10)];
+		let dateDay = detail.created_at.split('/')[2];
+		let shortenTitle =
+			detail.title.substring(0, 25) +
+			(detail.title.length > 24 ? '…' : '');
+		// vue 資料監控規則
+		//https://stackoverflow.com/questions/40860592/vuex-getter-not-updating
+		//https://vuejs.org/v2/guide/list.html#Caveats
+		Vue.set(state, 'detail', Object.assign(detail, {
+			imgURL,
+			dateMonth,
+			dateDay,
+			shortenTitle
+		}));
 	},
 };
 export const getters = {
 	getterList: state => {
-		return state.list.map(function(item, index, array) {
+		return state.list.map(function (item, index, array) {
 			item.imgURL =
-				(process.env.NODE_ENV !== 'production'
-					? 'https://dsaaward.iprefer.com.tw/upload/News/'
-					: 'https://www.dsaawards.com/upload/News/') + item.img_name;
+				(process.env.NODE_ENV !== 'production' ?
+					'https://dsaaward.iprefer.com.tw/upload/News/' :
+					'https://www.dsaawards.com/upload/News/') + item.img_name;
 
 			var months = [
 				'JAN',
@@ -42,42 +81,26 @@ export const getters = {
 			return item;
 		});
 	},
-	getterDetail: state =>{
-		let detail = Object.assign({}, state.detail);
-		console.log(detail);
-		detail.imgURL =
-			(process.env.NODE_ENV !== 'production'
-				? 'https://dsaaward.iprefer.com.tw/upload/News/'
-				: 'https://www.dsaawards.com/upload/News/') + detail.img_name;
-		var months = [
-			'JAN',
-			'FEB',
-			'MAR',
-			'APR',
-			'MAY',
-			'JUN',
-			'JUL',
-			'AUG',
-			'SEP',
-			'OCT',
-			'NOV',
-			'DEC',
-		];
-		detail.dateMonth =
-			months[parseInt(detail.created_at.split('/')[1], 10)];
-		detail.dateDay = detail.created_at.split('/')[2];
-		detail.shortenTitle =
-			detail.title.substring(0, 25) +
-			(detail.title.length > 24 ? '…' : '');
-		return detail;
+	getterDetail: state => {
+		console.log('getters getterDetail');
+
+		// Vue.set(state.detail, 'imgURL', imgURL)
+		// Vue.set(state, 'detail', {
+		// 	imgURL: imgURL,
+		// 	dateMonth: dateMonth,
+		// 	dateDay: dateDay,
+		// 	shortenTitle:shortenTitle,
+		// });
+
+		// console.log(state.detail);
+		return state.detail;
 	},
 };
 
 // dispatch
 export const actions = {
 	fetchList(context) {
-		context.commit('updateList', [
-			{
+		context.commit('updateList', [{
 				n_key: 'SYkWWfNItx',
 				img_name: 'aaa.jpg',
 				title: '我是標題',

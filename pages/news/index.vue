@@ -1,31 +1,42 @@
 <template>
-    <div class="popup-news-index" style="display:none;">
-        
-    </div>
+    <div class="popup-news-index" style="display:none">
+       
+      </div>
 </template>
 
 <script>
 export default {
-	asyncData({ redirect }) {
+	
+	asyncData({ redirect }) {},
+	fetch({ store, params, query, app }) {
+		
 	},
 	head() {
 		return {
 			title: '最新消息',
 		};
 	},
-	layout: 'layoutIndex',
 	data() {
 		return {};
 	},
-	methods: {},
+	computed: {
+		
+	},
+	
+	methods: {
+		
+	},
 	created() {
-		// console.log('created');
+		
 	},
 
-	mounted() {},
+	mounted() {
+	
+	},
 };
 </script>
 
 <style scoped>
+
 </style>
 
