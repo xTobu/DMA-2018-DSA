@@ -9,13 +9,13 @@
             <div class="menu2">
                 <ul>
                     <li>
-                        <a href="#">報名文件</a>
+                        <a href="#" @click.prevent="util_LinkTo('/login')">報名文件</a>
                     </li>
                     <li>
                         <a href="login" @click.prevent="util_LinkTo('/login')">線上報名</a>
                     </li>
                     <li>
-                        <a href="#">線上評選</a>
+                        <a href="#" @click.prevent="util_LinkTo('/login')">線上評選</a>
                     </li>
                 </ul>
             </div>
