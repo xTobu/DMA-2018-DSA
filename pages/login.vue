@@ -13,11 +13,11 @@
                             <h3>忘記密碼</h3>
                             <p>送出後請特別留意電子郵件信箱</p>
                             <div class="input-container">
-                                <input id="account-forget" class="input" type="text" pattern=".+" required />
+                                <input id="account-forget" class="input" type="text" pattern=".+" required v-model="Form.pw.uniformno" />
                                 <label class="label" for="account-forget">帳號(您當初填寫的公司統編)</label>
                             </div>
                             <div class="input-container">
-                                <input id="password-forget" class="input" type="email" pattern=".+" required />
+                                <input id="password-forget" class="input" type="email" pattern=".+" required v-model="Form.pw.email" />
                                 <label class="label" for="password-forget">您註冊時填寫的Email</label>
                             </div>
                             <div class="google-robot2">
@@ -46,11 +46,11 @@
                             <h3>重發註冊驗證信</h3>
                             <p>送出後請特別留意電子郵件信箱</p>
                             <div class="input-container">
-                                <input id="account-resend" class="input" type="text" pattern=".+" required />
+                                <input id="account-resend" class="input" type="text" pattern=".+" required v-model="Form.em.email" />
                                 <label class="label" for="account-resend">帳號(您當初填寫的公司統編)</label>
                             </div>
                             <div class="input-container">
-                                <input id="password-resend" class="input" type="email" pattern=".+" required />
+                                <input id="password-resend" class="input" type="email" pattern=".+" required v-model="Form.em.email" />
                                 <label class="label" for="password-resend">您註冊時填寫的Email</label>
                             </div>
                             <div class="google-robot2">
