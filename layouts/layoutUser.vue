@@ -59,7 +59,6 @@
                 <nuxt/>
             </transition>
         </main>
-
         <indexFooter />
     </div>
 </template>
