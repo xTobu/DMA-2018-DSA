@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue';
 
 export const state = () => ({
 	list: undefined,
@@ -8,10 +8,8 @@ export const state = () => ({
 export const mutations = {
 	updateList(state, list) {
 		Vue.set(state, 'list', list);
-		
 	},
 	updateDetail(state, detail) {
-		
 		// // vue 資料監控規則
 		// //https://stackoverflow.com/questions/40860592/vuex-getter-not-updating
 		// //https://vuejs.org/v2/guide/list.html#Caveats
@@ -21,16 +19,17 @@ export const mutations = {
 		// 	dateDay,
 		// 	shortenTitle
 		// }));
+		//state.detail = detail
 		Vue.set(state, 'detail', detail);
 	},
 };
 export const getters = {
 	getterList: state => {
-		return state.list.map(function (item, index, array) {
+		return state.list.map(function(item, index, array) {
 			item.imgURL =
-				(process.env.NODE_ENV !== 'production' ?
-					'https://dsaaward.iprefer.com.tw/upload/News/' :
-					'https://www.dsaawards.com/upload/News/') + item.img_name;
+				(process.env.NODE_ENV !== 'production'
+					? 'https://dsaaward.iprefer.com.tw/upload/News/'
+					: 'https://www.dsaawards.com/upload/News/') + item.img_name;
 
 			var months = [
 				'JAN',
@@ -56,13 +55,12 @@ export const getters = {
 		});
 	},
 	getterDetail: state => {
-		
-		let detail = Object.assign({},state.detail)
-		console.log(detail)
+		let detail = Object.assign({}, state.detail);
+		console.log(detail);
 		let imgURL =
-			(process.env.NODE_ENV !== 'production' ?
-				'https://dsaaward.iprefer.com.tw/upload/News/' :
-				'https://www.dsaawards.com/upload/News/') + detail.img_name;
+			(process.env.NODE_ENV !== 'production'
+				? 'https://dsaaward.iprefer.com.tw/upload/News/'
+				: 'https://www.dsaawards.com/upload/News/') + detail.img_name;
 		var months = [
 			'JAN',
 			'FEB',
@@ -78,8 +76,7 @@ export const getters = {
 			'DEC',
 		];
 
-		let dateMonth =
-			months[parseInt(detail.created_at.split('/')[1], 10)];
+		let dateMonth = months[parseInt(detail.created_at.split('/')[1], 10)];
 		let dateDay = detail.created_at.split('/')[2];
 		let shortenTitle =
 			detail.title.substring(0, 25) +
@@ -90,7 +87,7 @@ export const getters = {
 			imgURL,
 			dateMonth,
 			dateDay,
-			shortenTitle
+			shortenTitle,
 		});
 	},
 };
@@ -98,7 +95,8 @@ export const getters = {
 // dispatch
 export const actions = {
 	fetchList(context) {
-		context.commit('updateList', [{
+		context.commit('updateList', [
+			{
 				n_key: 'SYkWWfNItx',
 				img_name: 'aaa.jpg',
 				title: '我是標題',

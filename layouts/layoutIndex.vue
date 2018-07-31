@@ -1,5 +1,12 @@
 <template>
   <div>
+    <div class="trans_bg">
+      <div class="trans_iphone">
+        <div class="trans_center"><img src="~assets/img/iphone_ok.png">                
+          <p>請將裝置轉至直式<br>體驗最佳瀏覽方式</p>
+        </div>
+      </div>
+    </div>
     <indexHeader />
 
     <transition name='layout' mode=''>
@@ -29,6 +36,9 @@ export default {
 .layout-enter,
 .layout-leave-to {
 	opacity: 0;
+}
+.trans_bg {
+    z-index: 1000;
 }
 </style>
 

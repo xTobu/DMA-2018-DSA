@@ -35,8 +35,8 @@ export default {
 	data() {
 		return {
 			shareURL: {
-				Facebook: 'http://webgene.com.tw/',
-				Line: 'http://webgene.com.tw/',
+				Facebook: 'https://www.dsaawards.com/2018/',
+				Line: 'https://www.dsaawards.com/2018/',
 			},
 		};
 	},

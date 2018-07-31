@@ -1,7 +1,10 @@
 <template>
-    <div class="wrapper">
-        <div class="head head_news">
-      <div class="tittle"><span>最新消息</span><span class="sub">NEWS</span></div>
+  <div class="wrapper">
+    <div class="head head_news">
+      <div class="tittle">
+        <span>最新消息</span>
+        <span class="sub">NEWS</span>
+      </div>
     </div>
     <main class="news">
       <!-- <div class="popup-news" style="display:none;">
@@ -23,7 +26,7 @@
         </div>
       </div> -->
       <transition name='nuxtchild' mode=''>
-        <nuxt-child :key="$route.params.id"/>
+        <nuxt-child :key="$route.params.id" />
       </transition>
       <ul>
         <li v-for="(value, key, index) in vuexNewsList" :key="index">
@@ -42,14 +45,17 @@
             <div class="news-content">
               <div class="headline">{{ value.shortenTitle }}</div>
               <p>{{ value.summary }}</p>
-            </div><a class="btn-news" href="#" @click.prevent="handleDetail(value.n_key)"><span class="txt">more</span><span class="arrow"></span></a>
+            </div>
+            <a class="btn-news" href="#" @click.prevent="handleDetail(value.n_key)">
+              <span class="txt">more</span>
+              <span class="arrow"></span>
+            </a>
           </div>
         </li>
-        
-        
+
       </ul>
     </main>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -93,16 +99,15 @@ export default {
 	},
 	methods: {
 		handleDetail(id) {
-            // $nuxt._router.push({ name: 'news-detail', query: { id: id } });
-            $nuxt._router.push({ name: 'news-id', params: { id: id } });
+			// $nuxt._router.push({ name: 'news-detail', query: { id: id } });
+			$nuxt._router.push({ name: 'news-id', params: { id: id } });
 		},
 	},
 	created() {},
 
 	mounted() {
 		// console.log(this.$store.state.news);
-    },
-     
+	},
 };
 </script>
 

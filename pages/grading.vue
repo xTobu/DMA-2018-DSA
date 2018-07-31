@@ -1,11 +1,27 @@
 <template>
-    <div class="wrapper">
-        <div class="head head_granding">
-      <div class="tittle"><span>評審辦法</span><span class="sub">AWARDS REVIEW</span></div>
+  <div class="wrapper">
+    <div class="head head_granding">
+      <div class="tittle">
+        <span>評審辦法</span>
+        <span class="sub">AWARDS REVIEW</span>
+      </div>
     </div>
     <main class="granding">
       <div class="award-submenu">
-        <div class="award-submenu2"><a class="btn-award-sub" href="#"><span class="txt">評審流程</span><span class="arrow"></span></a><a class="btn-award-sub" href="#"><span class="txt">初賽評審群</span><span class="arrow"></span></a><a class="btn-award-sub" href="#"><span class="txt">複賽評審群</span><span class="arrow"></span></a></div>
+        <div class="award-submenu2">
+          <a class="btn-award-sub" href="#">
+            <span class="txt">評審流程</span>
+            <span class="arrow"></span>
+          </a>
+          <a class="btn-award-sub" href="#">
+            <span class="txt">初賽評審群</span>
+            <span class="arrow"></span>
+          </a>
+          <a class="btn-award-sub" href="#">
+            <span class="txt">複賽評審群</span>
+            <span class="arrow"></span>
+          </a>
+        </div>
       </div>
       <div class="granding-content-wrap">
         <div class="granding-content">
@@ -255,7 +271,7 @@
         </div>
       </div>
     </main>
-    </div>
+  </div>
 </template>
 
 <script>

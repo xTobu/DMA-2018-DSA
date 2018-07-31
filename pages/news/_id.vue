@@ -52,6 +52,7 @@ export default {
 	},
 	computed: {
 		vuexNewsDetail() {
+			// return this.$store.state.news.detail
 			return this.$store.getters['news/getterDetail'];
 		},
 	},
