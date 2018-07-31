@@ -39,15 +39,16 @@
             <div class="navibar">
                 <h3>我的參賽作品</h3>
                 <div class="btnBox">
-                    <a class="btn_navibar navibar_focus" href="#">
+                    <!--active: navibar_focus -->
+                    <a class="btn_navibar" href="#" @click.prevent="util_LinkTo('/u/list')">
                         <span class="txt">我的參賽作品</span>
                         <span class="arrow"></span>
                     </a>
-                    <a class="btn_navibar" href="#">
+                    <a class="btn_navibar" href="#" @click.prevent="util_LinkTo('/u/account')">
                         <span class="txt">編輯個人資料</span>
                         <span class="arrow"></span>
                     </a>
-                    <a class="btn_navibar" href="#">
+                    <a class="btn_navibar" href="#" @click.prevent="util_LinkTo('/u/changePassword')">
                         <span class="txt">修改密碼</span>
                         <span class="arrow"></span>
                     </a>

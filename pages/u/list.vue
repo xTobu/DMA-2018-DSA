@@ -4,7 +4,7 @@
 		<div class="total">
 			<p>目前合計報名 2 個獎項，尚未繳費作品共 2 筆</p>
 			<!--add btn-->
-			<a class="btn-add" href="#">
+			<a class="btn-add" href="#"  @click.prevent="util_LinkTo('/u/worksAdd')">
 				<span class="add por"></span>
 				<span class="txt">添加作品</span>
 			</a>
