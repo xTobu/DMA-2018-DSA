@@ -28,7 +28,6 @@
 import qs from 'qs';
 import { mapGetters } from 'vuex';
 export default {
-	
 	asyncData({ redirect }) {},
 	async fetch({ store, params, query, app }) {
 		await app
@@ -44,7 +43,7 @@ export default {
 	},
 	head() {
 		return {
-			title: 'news',
+			title: '最新消息',
 		};
 	},
 	layout: 'layoutIndex',
@@ -53,24 +52,21 @@ export default {
 	},
 	computed: {
 		vuexNewsDetail() {
-			return this.$store.getters['news/getterDetail'];			
+			return this.$store.getters['news/getterDetail'];
 		},
 	},
 
 	methods: {
 		handleClose() {
-            console.log(document.referrer.indexOf('/2018/news') !== -1);
 			document.referrer.indexOf('/2018/news') !== -1
 				? $nuxt._router.back()
 				: $nuxt._router.push('/news');
 		},
 	},
-	created() {
-	},
+	created() {},
 
-	mounted() {
-    },
-    scrollToTop: false
+	mounted() {},
+	scrollToTop: false,
 };
 </script>
 

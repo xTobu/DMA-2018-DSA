@@ -7,47 +7,21 @@ export const state = () => ({
 
 export const mutations = {
 	updateList(state, list) {
-		state.list = list;
+		Vue.set(state, 'list', list);
+		
 	},
 	updateDetail(state, detail) {
-		console.log('mutations updateDetail');
-		// console.log('detail',detail);
-		// state.detail = detail;
-		console.log(state);
-		let imgURL =
-			(process.env.NODE_ENV !== 'production' ?
-				'https://dsaaward.iprefer.com.tw/upload/News/' :
-				'https://www.dsaawards.com/upload/News/') + detail.img_name;
-		var months = [
-			'JAN',
-			'FEB',
-			'MAR',
-			'APR',
-			'MAY',
-			'JUN',
-			'JUL',
-			'AUG',
-			'SEP',
-			'OCT',
-			'NOV',
-			'DEC',
-		];
-
-		let dateMonth =
-			months[parseInt(detail.created_at.split('/')[1], 10)];
-		let dateDay = detail.created_at.split('/')[2];
-		let shortenTitle =
-			detail.title.substring(0, 25) +
-			(detail.title.length > 24 ? '…' : '');
-		// vue 資料監控規則
-		//https://stackoverflow.com/questions/40860592/vuex-getter-not-updating
-		//https://vuejs.org/v2/guide/list.html#Caveats
-		Vue.set(state, 'detail', Object.assign(detail, {
-			imgURL,
-			dateMonth,
-			dateDay,
-			shortenTitle
-		}));
+		
+		// // vue 資料監控規則
+		// //https://stackoverflow.com/questions/40860592/vuex-getter-not-updating
+		// //https://vuejs.org/v2/guide/list.html#Caveats
+		// Vue.set(state, 'detail', Object.assign(detail, {
+		// 	imgURL,
+		// 	dateMonth,
+		// 	dateDay,
+		// 	shortenTitle
+		// }));
+		Vue.set(state, 'detail', detail);
 	},
 };
 export const getters = {
@@ -82,18 +56,42 @@ export const getters = {
 		});
 	},
 	getterDetail: state => {
-		console.log('getters getterDetail');
+		
+		let detail = Object.assign({},state.detail)
+		console.log(detail)
+		let imgURL =
+			(process.env.NODE_ENV !== 'production' ?
+				'https://dsaaward.iprefer.com.tw/upload/News/' :
+				'https://www.dsaawards.com/upload/News/') + detail.img_name;
+		var months = [
+			'JAN',
+			'FEB',
+			'MAR',
+			'APR',
+			'MAY',
+			'JUN',
+			'JUL',
+			'AUG',
+			'SEP',
+			'OCT',
+			'NOV',
+			'DEC',
+		];
 
-		// Vue.set(state.detail, 'imgURL', imgURL)
-		// Vue.set(state, 'detail', {
-		// 	imgURL: imgURL,
-		// 	dateMonth: dateMonth,
-		// 	dateDay: dateDay,
-		// 	shortenTitle:shortenTitle,
-		// });
+		let dateMonth =
+			months[parseInt(detail.created_at.split('/')[1], 10)];
+		let dateDay = detail.created_at.split('/')[2];
+		let shortenTitle =
+			detail.title.substring(0, 25) +
+			(detail.title.length > 24 ? '…' : '');
 
 		// console.log(state.detail);
-		return state.detail;
+		return Object.assign(detail, {
+			imgURL,
+			dateMonth,
+			dateDay,
+			shortenTitle
+		});
 	},
 };
 
