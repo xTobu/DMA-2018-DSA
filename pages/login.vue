@@ -46,7 +46,7 @@
                             <h3>重發註冊驗證信</h3>
                             <p>送出後請特別留意電子郵件信箱</p>
                             <div class="input-container">
-                                <input id="account-resend" class="input" type="text" pattern=".+" required v-model="Form.em.email" />
+                                <input id="account-resend" class="input" type="text" pattern=".+" required v-model="Form.em.uniformno" />
                                 <label class="label" for="account-resend">帳號(您當初填寫的公司統編)</label>
                             </div>
                             <div class="input-container">
