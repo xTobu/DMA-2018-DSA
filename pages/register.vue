@@ -1,7 +1,10 @@
 <template>
-	<div class="wrapper">
-		<div class="head head_regist">
-      <div class="tittle"><span>線上報名</span><span class="sub">REGISTRATION</span></div>
+  <div class="wrapper">
+    <div class="head head_regist">
+      <div class="tittle">
+        <span>線上報名</span>
+        <span class="sub">REGISTRATION</span>
+      </div>
     </div>
     <main class="wrap_content">
       <!--welcome-->
@@ -39,7 +42,8 @@
       <div class="wrap-form">
         <h5>個人資料編輯</h5>
         <div class="wrap-data">
-          <div class="select select--white form-50" data-form-type="gender"><span class="placeholder">{{Form.gender}}</span>
+          <div class="select select--white form-50" data-form-type="gender">
+            <span class="placeholder">{{Form.gender}}</span>
             <ul>
               <li>先生</li>
               <li>女士</li>
@@ -88,15 +92,17 @@
           </div>
           <div class="add-wrap">
             <div class="wrap-data"></div>
-            <div class="select select--white form-add" data-form-type="county"><span class="placeholder">{{Form.county}}</span>
-              <ul>                
+            <div class="select select--white form-add" data-form-type="county">
+              <span class="placeholder">{{Form.county}}</span>
+              <ul>
                 <li v-for="(value, key, index) in vuexArea.list" :key="index" @click="updateAreaData(key)">
-                  {{ key }} 
+                  {{ key }}
                 </li>
               </ul>
             </div>
-            <div class="select select--white form-add" data-form-type="district"><span class="placeholder">{{Form.district}}</span>
-              <ul>                
+            <div class="select select--white form-add" data-form-type="district">
+              <span class="placeholder">{{Form.district}}</span>
+              <ul>
                 <li v-for="(value, key, index) in vuexArea.list[vuexArea.data.selectedCountry]" :key="index" @click="updateZip(value)">
                   {{ key }}
                 </li>
@@ -155,7 +161,8 @@
           <div class="wrap-from">
             <input class="radio-custom" id="from-r-PA" name="from-r-PA" type="radio">
             <label class="radio-custom-label radio-from" for="from-r-PA"></label>
-            <div class="select select--white form-from2" data-form-type="association"><span class="placeholder">{{Form.association}}</span>
+            <div class="select select--white form-from2" data-form-type="association">
+              <span class="placeholder">{{Form.association}}</span>
               <ul>
                 <li>MMA</li>
                 <li>4A</li>
@@ -180,9 +187,18 @@
         <!-- <img src="img/google.gif"> -->
         <div class="g-recaptcha" id="recaptcha-main"></div>
       </div>
-      <div class="btn_wrap btn_wrap2"><a class="btn-confirm" href="#" @click.prevent="handleSubmit"><span class="txt">確定提交</span><span class="arrow"></span></a><a class="btn-cancel" href="#" @click.prevent="resetForm"><span class="txt">取消編輯</span><span class="arrow"></span></a></div>
+      <div class="btn_wrap btn_wrap2">
+        <a class="btn-confirm" href="#" @click.prevent="handleSubmit">
+          <span class="txt">確定提交</span>
+          <span class="arrow"></span>
+        </a>
+        <a class="btn-cancel" href="#" @click.prevent="resetForm">
+          <span class="txt">取消編輯</span>
+          <span class="arrow"></span>
+        </a>
+      </div>
     </main>
-	</div>
+  </div>
 </template>
 
 <script>
@@ -267,6 +283,7 @@ export default {
 				FormData: $FormData,
 				reqURL: '/user.ashx',
 				resTitle: '註冊成功',
+				resText: '請依驗證信完成註冊程序',
 			};
 			this.util_request(payload)
 				.then(data => {

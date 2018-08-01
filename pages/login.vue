@@ -164,7 +164,7 @@ export default {
 			let payload = {
 				FormData: this.Form.login,
 				reqURL: '/user.ashx',
-				resTitle: '登入成功\n請依驗證信內容完成註冊程序',
+				resTitle: '登入成功',
 			};
 			this.util_request(payload)
 				.then(data => {
@@ -180,20 +180,31 @@ export default {
             let payload = {
 				FormData: this.Form.pw,
 				reqURL: '/user.ashx',
-                resTitle: '請至信箱收取密碼信件',
-                resText:'',
+                resTitle: '完成',
+                resText:'請至信箱收取密碼信件',
 			};
 			this.util_request(payload)
 				.then(data => {
-					// $nuxt._router.push('/');
-					// $nuxt._router.push('/u/list');
 				})
 				.catch(err => {
                     console.log(err);
 				});
-            console.log( this.Form.pw);
 		},
-		handleEmail() {},
+		handleEmail() {
+            this.Form.em.vcode = grecaptcha.getResponse(this.Form.em.recaptcha);
+            let payload = {
+				FormData: this.Form.em,
+				reqURL: '/user.ashx',
+                resTitle: '完成',
+                resText:'請至信箱收取驗證信',
+			};
+			this.util_request(payload)
+				.then(data => {
+				})
+				.catch(err => {
+                    console.log(err);
+				});
+        },
 		renderRecaptcha(type) {
 			// console.log(!this.Form[type].recaptcha);
 			this.Form[type].recaptcha === ''

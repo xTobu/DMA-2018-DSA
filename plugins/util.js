@@ -6,13 +6,12 @@ Vue.mixin({
 			$nuxt._router.push(path);
 		},
 		util_request(payload) {
-			console.log(payload.resText===undefined);
+			console.log(payload.resText === undefined);
 			return new Promise((resolve, reject) => {
 				let $FormData = Object.assign({}, payload.FormData);
 				this.$swal({
 					type: 'info',
 					title: '拼命為您處理中...',
-					
 					onOpen: () => {
 						this.$swal.enableLoading();
 						setTimeout(() => {
@@ -25,7 +24,10 @@ Vue.mixin({
 									this.$swal({
 										type: 'success',
 										title: payload.resTitle,
-										text: payload.resText || '(๑•̀ㅂ•́)و✧',
+										text:
+											payload.resText === undefined
+												? '(๑•̀ㅂ•́)و✧'
+												: payload.resText,
 									}).then(() => {
 										resolve(response);
 										// $nuxt._router.push('/login');
