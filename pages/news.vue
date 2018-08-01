@@ -107,7 +107,8 @@ export default {
 
 	mounted() {
 		// console.log(this.$store.state.news);
-	},
+  },
+  // scrollToTop: false,
 };
 </script>
 

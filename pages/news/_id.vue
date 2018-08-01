@@ -59,15 +59,15 @@ export default {
 
 	methods: {
 		handleClose() {
-			document.referrer.indexOf('/2018/news') !== -1
-				? $nuxt._router.back()
-				: $nuxt._router.push('/news');
+			$nuxt._router.back()
+			// document.referrer.indexOf('/2018/news') !== -1
+			// 	? $nuxt._router.back()
+			// 	: $nuxt._router.push('/news');
 		},
 	},
 	created() {},
 
 	mounted() {},
-	scrollToTop: false,
 };
 </script>
 

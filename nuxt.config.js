@@ -142,11 +142,10 @@ const config = {
 		},
 		// 所有頁面渲染後滾動至頂部
 		scrollBehavior: function (to, from, savedPosition) {
-			if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
-				// 頁面配置了 scrollToTop: false
-				// 不滾到頂部
-				return {}
-			}
+			// if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
+				
+			// 	return {}
+			// }
 			return {
 				x: 0,
 				y: 0
