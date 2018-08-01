@@ -79,7 +79,7 @@ export default {
 	},
 };
 </script>
-<style scoped>
+<style>
 @import '~/assets/css/regist.css';
 /* transition */
 .layoutuser-enter-active,
@@ -91,8 +91,6 @@ export default {
 .layoutuser-leave-to {
 	opacity: 0;
 }
-.trans_bg {
-	z-index: 1000;
-}
+
 </style>
 

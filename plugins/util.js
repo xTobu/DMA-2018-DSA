@@ -8,20 +8,21 @@ Vue.mixin({
 		util_request(payload) {
 			return new Promise((resolve, reject) => {
 				let $FormData = Object.assign({}, payload.FormData);
-				console.log($.param($FormData));
 				this.$swal({
 					type: 'info',
 					title: '努力為您處理中...',
 					// 外面點擊取消 防連續點擊
 					allowOutsideClick: false,
+					// 防止 ESC
+					allowEscapeKey: false,
 					onOpen: () => {
 						this.$swal.enableLoading();
 						setTimeout(() => {
 							this.$axios({
-									method: 'POST',
-									data: $.param($FormData),
-									url: payload.reqURL,
-								})
+								method: 'POST',
+								data: $.param($FormData),
+								url: payload.reqURL,
+							})
 								.then(response => {
 									this.$swal({
 										type: 'success',
@@ -33,26 +34,21 @@ Vue.mixin({
 									});
 								})
 								.catch(response => {
-									let text = response.data.message.replace(/\\n/g, '\n\n');
+									let text = response.data.message.replace(
+										/\\n/g,
+										'\n\n'
+									);
 									this.$swal({
 										type: 'error',
 										title: text,
-                                    }).then(() => {
-										reject()
-										
+									}).then(() => {
+										reject();
 									});
-                                    
-									
 								});
 						}, 1000);
 					},
 				});
-
-
-
-
 			});
-
-		}
+		},
 	},
 });

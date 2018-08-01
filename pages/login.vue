@@ -153,7 +153,8 @@ export default {
 			};
 			this.util_request(payload)
 				.then(data => {
-					// $nuxt._router.push('/');
+                    // $nuxt._router.push('/');
+                    $nuxt._router.push('/u/list');
 				})
 				.catch(err => {
 					// 失敗訊息 (立即)

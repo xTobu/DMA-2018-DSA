@@ -37,8 +37,6 @@ export default {
 .layout-leave-to {
 	opacity: 0;
 }
-.trans_bg {
-    z-index: 1000;
-}
+
 </style>
 
