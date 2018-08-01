@@ -82,9 +82,10 @@ export default {
 <style>
 @import '~/assets/css/regist.css';
 /* transition */
-.layoutuser-enter-active,
-.layoutuser-leave-active {
-	transition: opacity 0.8s;
+.layoutuser-enter-active
+/* ,.layoutuser-leave-active  */
+{
+	transition: opacity 0.4s;
 }
 
 .layoutuser-enter,

@@ -1,18 +1,13 @@
-import Vue from 'vue'
-import swal from 'sweetalert2'
-const swalPlugin = {}
+import Vue from 'vue';
+import swal from 'sweetalert2';
+const swalPlugin = {};
 
-swalPlugin.install = function (Vue) {
-
-	swal.mixin({
-		// confirmButtonClass: 'btn btn-primary',
-		// cancelButtonClass: 'btn btn-default',
+swalPlugin.install = function(Vue) {
+	Vue.prototype.$swal = swal.mixin({
 		// buttonsStyling: false,
-        // showCloseButton: true
-        showConfirmButton:false,
+		showCloseButton: false,
+		confirmButtonText: 'Ok',
 	});
+};
 
-	Vue.prototype.$swal = swal;
-}
-
-Vue.use(swalPlugin)
+Vue.use(swalPlugin);

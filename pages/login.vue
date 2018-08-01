@@ -149,7 +149,7 @@ export default {
 			let payload = {
 				FormData: this.Form,
 				reqURL: '/user.ashx',
-				resTitle: '登入成功',
+				resTitle: '登入成功\n請依驗證信內容完成註冊程序',
 			};
 			this.util_request(payload)
 				.then(data => {

@@ -28,9 +28,8 @@ export default {
 </script>
 <style>
 /* transition */
-.layout-enter-active,
-.layout-leave-active {
-	transition: opacity .8s;
+.layout-enter-active {
+	transition: opacity .4s;
 }
 
 .layout-enter,
