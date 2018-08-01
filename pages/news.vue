@@ -106,6 +106,8 @@ export default {
 	created() {},
 
 	mounted() {
+    
+    	this.$store.commit('news/updateVisited');
 		// console.log(this.$store.state.news);
   },
   // scrollToTop: false,

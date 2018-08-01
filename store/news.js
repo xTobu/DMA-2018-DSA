@@ -1,11 +1,15 @@
 import Vue from 'vue';
 
 export const state = () => ({
+	visited: false,
 	list: undefined,
 	detail: undefined,
 });
 
 export const mutations = {
+	updateVisited(state) {
+		state.visited = true;
+	},
 	updateList(state, list) {
 		Vue.set(state, 'list', list);
 	},
