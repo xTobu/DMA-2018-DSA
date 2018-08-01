@@ -189,12 +189,62 @@ export default {
 	data() {
 		return {};
 	},
-	methods: {},
+	methods: {
+		// 初始化 下拉選單
+		initSelect() {
+			$('.select')
+				.on(
+					'click',
+					'.placeholder',
+					function(e) {
+						var target = e.target;
+						var parent = $(target).closest('.select');
+						if (!parent.hasClass('is-open')) {
+							parent.addClass('is-open');
+							$('.select.is-open')
+								.not(parent)
+								.removeClass('is-open');
+						} else {
+							parent.removeClass('is-open');
+						}
+					}.bind(this)
+				)
+				.on(
+					'click',
+					'ul>li',
+					function(e) {
+						var target = e.target;
+						var parent = $(target).closest('.select');
+						var text = $(target)
+							.text()
+							.trim();
+						parent.removeClass('is-open');
+						// 關閉填字, 與v-model綁定
+						// .find('.placeholder')
+						// .text(text);
+
+						/**
+						 * 填入 data
+						 */
+						// 取得 data('form-type')
+						var FormType = parent.data('form-type');
+						this.Form[FormType] = text;
+					}.bind(this)
+				);
+		},
+	},
 	created() {
 		// console.log('created');
 	},
 
-	mounted() {},
+	mounted() {
+		this.$nextTick(() => {
+			// 初始化下拉選單
+			this.initSelect();
+
+			
+		});
+	},
 };
 </script>
 
