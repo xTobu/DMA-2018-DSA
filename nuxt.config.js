@@ -5,12 +5,13 @@ const config = {
 	 */
 	head: {
 		titleTemplate: '%s | 2018 DSA 數位奇點獎',
-		meta: [{
-				charset: 'utf-8'
+		meta: [
+			{
+				charset: 'utf-8',
 			},
 			{
 				'http-equiv': 'x-ua-compatible',
-				content: 'ie=edge'
+				content: 'ie=edge',
 			},
 			{
 				name: 'viewport',
@@ -22,34 +23,38 @@ const config = {
 			},
 			{
 				property: 'og:title',
-				content: 'Facebook og:title'
+				content: 'Facebook og:title',
 			},
 			{
 				property: 'og:description',
-				content: 'Facebook og:description'
+				content: 'Facebook og:description',
 			},
 			{
 				property: 'og:type',
-				content: 'website'
+				content: 'website',
 			},
 			{
 				property: 'og:url',
-				content: 'https://www.dsaawards.com/2018/'
+				content: 'https://www.dsaawards.com/2018/',
 			},
 			{
 				property: 'og:image',
-				content: 'https://www.dsaawards.com/2018/2017_dsa_award_share.jpg',
+				content:
+					'https://www.dsaawards.com/2018/2017_dsa_award_share.jpg',
 			},
 			// {
 			// 	property: 'og:image',
 			// 	content: 'https://www.dsaawards.com/2018/2018_dsa_award_share.jpg',
 			// },
 		],
-		script: [{
-				src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
+		script: [
+			{
+				src:
+					'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
 			},
 			{
-				src: 'https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js',
+				src:
+					'https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js',
 			},
 			/**
 			 * google recaptcha
@@ -59,7 +64,6 @@ const config = {
 
 			{
 				src: 'https://www.google.com/recaptcha/api.js?render=explicit',
-
 			},
 			{
 				src: 'https://code.createjs.com/createjs-2015.11.26.min.js',
@@ -77,14 +81,16 @@ const config = {
 			// 	defer: true
 			// },
 		],
-		link: [{
+		link: [
+			{
 				rel: 'icon',
 				type: 'image/x-icon',
-				href: './favicon.ico'
+				href: './favicon.ico',
 			},
 			{
 				rel: 'stylesheet',
-				href: 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i',
+				href:
+					'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i',
 			},
 			// {
 			// 	rel: 'stylesheet',
@@ -93,7 +99,9 @@ const config = {
 			// },
 		],
 	},
-	css: ['~assets/css/style.css', '~assets/css/tech/custom.css',
+	css: [
+		'~assets/css/style.css',
+		'~assets/css/tech/custom.css',
 		//  { src: 'sweetalert2/dist/sweetalert2.min.css', lang: 'css' }
 	],
 	/*
@@ -114,10 +122,7 @@ const config = {
 			presets: ['es2015', 'stage-0'],
 			plugins: ['transform-runtime'],
 		},
-		extend(config, {
-			isDev,
-			isClient
-		}) {
+		extend(config, { isDev, isClient }) {
 			if (isDev && isClient) {
 				config.module.rules.push({
 					enforce: 'pre',
@@ -145,26 +150,32 @@ const config = {
 			});
 		},
 		// 所有頁面渲染後滾動至頂部
-		scrollBehavior: function (to, from, savedPosition) {
+		scrollBehavior: function(to, from, savedPosition) {
 			// if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
-				
+
 			// 	return {}
 			// }
 			return {
 				x: 0,
-				y: 0
+				y: 0,
 			};
 		},
+
+		linkActiveClass: 'navibar_focus',
 	},
 	// 增加 utils.js
-	plugins: ['~/plugins/util.js', {
-		src: '~/plugins/axios',
-		// 因為 fetch 和 asyncData 要用 axios module
-		ssr: true
-	}, {
-		src: '~/plugins/sweetalert2',
-		ssr: false
-	}],
+	plugins: [
+		'~/plugins/util.js',
+		{
+			src: '~/plugins/axios',
+			// 因為 fetch 和 asyncData 要用 axios module
+			ssr: true,
+		},
+		{
+			src: '~/plugins/sweetalert2',
+			ssr: false,
+		},
+	],
 	// 增加環境變數
 	env: {
 		API_URL: 'http://localhost:3000/api',
@@ -178,20 +189,21 @@ const config = {
 	 */
 	axios: {
 		prefix: '/api',
-		proxy: true
+		proxy: true,
 	},
 	proxy: {
 		'/api': {
 			target:
 				// 'production','development'
-				process.env.NODE_ENV !== 'production' ?
-				'https://dsaaward.iprefer.com.tw' : 'https://www.dsaawards.com',
+				process.env.NODE_ENV !== 'production'
+					? 'https://dsaaward.iprefer.com.tw'
+					: 'https://www.dsaawards.com',
 			// 路徑複寫
 			// pathRewrite: { '^/api': '/api' },
 		},
 	},
 	generate: {
-		dir: '2018'
+		dir: '2018',
 	},
 };
 

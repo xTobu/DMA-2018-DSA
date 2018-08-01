@@ -40,18 +40,19 @@
                 <h3>我的參賽作品</h3>
                 <div class="btnBox">
                     <!--active: navibar_focus -->
-                    <a class="btn_navibar" href="#" @click.prevent="util_LinkTo('/u/list')">
+                    <nuxt-link class="btn_navibar" to="/u/list" @click.prevent="util_LinkTo('/u/list')">
                         <span class="txt">我的參賽作品</span>
                         <span class="arrow"></span>
-                    </a>
-                    <a class="btn_navibar" href="#" @click.prevent="util_LinkTo('/u/account')">
+                    </nuxt-link>
+                    <nuxt-link class="btn_navibar" to="/u/account" @click.prevent="util_LinkTo('/u/account')">
                         <span class="txt">編輯個人資料</span>
                         <span class="arrow"></span>
-                    </a>
-                    <a class="btn_navibar" href="#" @click.prevent="util_LinkTo('/u/changePassword')">
+                    </nuxt-link>
+                    <nuxt-link class="btn_navibar" to="/u/changePassword" @click.prevent="util_LinkTo('/u/changePassword')">
                         <span class="txt">修改密碼</span>
                         <span class="arrow"></span>
-                    </a>
+                    </nuxt-link>
+
                 </div>
             </div>
 
@@ -82,13 +83,13 @@ export default {
 			let payload = {
 				FormData: { act_mode: 'logout' },
 				reqURL: '/user.ashx',
-                resTitle: '登出',
-                resText:''
+				resTitle: '登出',
+				resText: '',
 			};
 			this.util_request(payload)
 				.then(data => {
 					console.log(data);
-					 $nuxt._router.push('/login');
+					$nuxt._router.push('/login');
 					//$nuxt._router.push('/u/list');
 				})
 				.catch(err => {
@@ -96,8 +97,11 @@ export default {
 					// 失敗訊息 (立即)
 				});
 		},
-    },
-    middleware: 'auth'
+	},
+	middleware: 'auth',
+	// router: {
+	// 	linkActiveClass: 'navibar_focus',
+	// },
 };
 </script>
 <style scoped>

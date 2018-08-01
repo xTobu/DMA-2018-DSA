@@ -63,36 +63,42 @@ export default {
 		};
 	},
 	layout: 'layoutIndex',
+
 	async fetch({ store, redirect, query, app }) {
 		await app
 			.$axios({
 				method: 'POST',
-				data: qs.stringify({ act_mode: 'v', temporary_token: query.ticket||'nan' }),
+				data: qs.stringify({
+					act_mode: 'v',
+					temporary_token: query.ticket || 'nan',
+				}),
 				url: '/verify.ashx',
 			})
 			.then(response => {
                 // console.log('Correct Token');
+                
 			})
 			.catch(err => {
-                redirect('/')
-                
-            });
+				redirect('/');
+			});
 	},
 	data() {
+		return {			
+		};
+	},
+	asyncData({ redirect, query, app }) {
 		return {
 			Form: {
 				act_mode: 'resetpassword',
 				password: '',
-                repassword: '',
-                token:'',
+				repassword: '',
+				token: query.ticket,
 			},
 		};
 	},
 
 	methods: {
 		handleResetPassword() {
-            // console.log(this.Form);
-            this.Form.token='';
 			let payload = {
 				FormData: this.Form,
 				reqURL: '/user.ashx',
@@ -100,8 +106,8 @@ export default {
 			};
 			this.util_request(payload)
 				.then(data => {
-                    console.log(data);
-                })
+                    $nuxt._router.push('/login');
+				})
 				.catch(err => {
 					console.log(err);
 				});

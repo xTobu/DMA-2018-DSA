@@ -12,7 +12,7 @@
                         <a href="#" @click.prevent="util_LinkTo('/login')">報名文件</a>
                     </li>
                     <li>
-                        <a href="login" @click.prevent="util_LinkTo('/login')">線上報名</a>
+                        <a href="login" @click.prevent="util_LinkTo('/u/list')">線上報名</a>
                     </li>
                     <li>
                         <a href="#" @click.prevent="util_LinkTo('/login')">線上評選</a>
