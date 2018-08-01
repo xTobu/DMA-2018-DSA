@@ -3,7 +3,13 @@ import Vue from 'vue';
 export const state = () => ({
 	visited: false,
 	list: undefined,
-	detail: undefined,
+	detail: {
+		content: '',
+		created_at: '2017/10/19',
+		img_name: '13_17.jpg',
+		n_key: '0xktUAAMp0',
+		title: '《冰雪奇緣2》再等2年　雪寶聖誕節先暖場',
+	},
 });
 
 export const mutations = {

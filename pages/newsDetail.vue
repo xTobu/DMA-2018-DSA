@@ -7,14 +7,14 @@
 					<a class="btn-close" href="#" @click.prevent="handleClose"></a>
 					<div class="news-date-expand">
 						<div class="wrap-date">
-							<div class="month">{{vuexNewsDetail.dateMonth}}</div>
-							<div class="day">{{vuexNewsDetail.dateDay}}</div>
+							<div class="month">{{detail.dateMonth}}</div>
+							<div class="day">{{detail.dateDay}}</div>
 						</div>
-					</div><img :src="vuexNewsDetail.imgURL">
+					</div><img :src="detail.imgURL">
 					<div class="wrap-news-content">
-						<h4>{{vuexNewsDetail.title}}</h4>
+						<h4>{{detail.title}}</h4>
 
-						<div class="newscontent" v-html="vuexNewsDetail.content" />
+						<div class="newscontent" v-html="detail.content" />
 
 						<!-- <h6>讓技術引領內容</h6> 
             <p>比如老字號《華盛頓郵報》或是中國新品牌《今日頭條》，一個轉型成功，一個新創有成，關鍵因素不在於內容製作，而是導入新的科技，透過跨平台串接、數據整合到社群互動，幫助媒體不論在內容遞送，或是廣告推播上，都做到了以前媒體不太能做到的事，因此對於轉型或發展中的數位媒體，需要更多的整合工具，加入技術的思考與資源，協助品牌客戶在符合屬性的傳播媒體管道上，搭配不同的素材組合推出合適的廣告類型。事實上，台灣本地已有網路原生媒體平台積極操作此種路線。</p> 
@@ -38,7 +38,9 @@ export default {
 	 * fetch用於填充Vuex Store。如果你返回一個promise，Nuxt將等待，直到它在渲染前解決。
 	 */
 
-	async asyncData({ redirect, app, store, params, query }) {
+	asyncData({ redirect, app, store, params, query }) {},
+
+	async fetch({ store, params, query, app }) {
 		// await app
 		// 	.$axios({
 		// 		method: 'POST',
@@ -46,30 +48,9 @@ export default {
 		// 		url: '/getNews.ashx',
 		// 	})
 		// 	.then(response => {
-		// 		// store.commit('news/updateDetail', response.data.detail);
-
+		// 		store.commit('news/updateDetail', response.data.detail);
 		// 	})
 		// 	.catch(err => {});
-		let { data } = await app.$axios({
-			method: 'POST',
-			data: qs.stringify({ act_mode: 'detail', key: query.id }),
-			url: '/getNews.ashx',
-		});
-		return { detail: data.detail };
-	},
-
-	async fetch({ store, params, app }) {
-		// 	await app
-		// 		.$axios({
-		// 			method: 'POST',
-		// 			data: qs.stringify({ act_mode: 'list' }),
-		// 			url: '/getNews.ashx',
-		// 		})
-		// 		.then(response => {
-		// 			// console.log(response.data.list);
-		// 			store.commit('news/updateList', response.data.list);
-		// 		})
-		// 		.catch(err => {});
 	},
 	head() {
 		return {
@@ -78,52 +59,28 @@ export default {
 	},
 	// layout: 'layoutIndex',
 	data() {
-		return {};
+		return {
+			detail: {
+				content: '',
+				created_at: '',
+				dateDay: '',
+				dateMonth: '',
+				imgURL: '',
+				img_name: '',
+				n_key: '',
+				shortenTitle: '',
+				title: '',
+			},
+		};
 	},
 	computed: {
 		// 表單資料
-		vuexNewsDetail() {
-			let detail = Object.assign({}, this.detail);
-			// let imgURL =
-			// 	(process.env.NODE_ENV !== 'production'
-			// 		? 'https://dsaaward.iprefer.com.tw/upload/News/'
-			// 		: 'https://www.dsaawards.com/upload/News/') + detail.img_name;
-			// var months = [
-			// 	'JAN',
-			// 	'FEB',
-			// 	'MAR',
-			// 	'APR',
-			// 	'MAY',
-			// 	'JUN',
-			// 	'JUL',
-			// 	'AUG',
-			// 	'SEP',
-			// 	'OCT',
-			// 	'NOV',
-			// 	'DEC',
-			// ];
-
-			// let dateMonth = months[parseInt(detail.created_at.split('/')[1], 10)];
-			// let dateDay = detail.created_at.split('/')[2];
-			// let shortenTitle =
-			// 	detail.title.substring(0, 25) + (detail.title.length > 24 ? '…' : '');
-
-			// // console.log(state.detail);
-			// return Object.assign(detail, {
-			// 	imgURL,
-			// 	dateMonth,
-			// 	dateDay,
-			// 	shortenTitle,
-			// });
-			// return this.$store.getters['news/getterDetail'];
-			return ''
-		},
+		// vuexNewsDetail() {
+		// 	//console.log(this.$store.getters['news/getterDetail']);
+		// 	return this.$store.getters['news/getterDetail'];
+		// },
 	},
 	methods: {
-		handleDetail(id) {
-			$nuxt._router.push({ name: 'news-detail', query: { id: id } });
-			// $nuxt._router.push({ name: 'news-id', params: { id: id } });
-		},
 		handleClose() {
 			this.$store.state.news.visited
 				? $nuxt._router.back()
@@ -133,10 +90,53 @@ export default {
 	created() {},
 
 	mounted() {
+		let queryID = this.util_getParameterByName('id');
+		this.$axios({
+			method: 'POST',
+			data: qs.stringify({ act_mode: 'detail', key: queryID }),
+			url: '/getNews.ashx',
+		})
+			.then(response => {
+				// store.commit('news/updateDetail', response.data.detail);
+
+				let detail = Object.assign({}, response.data.detail);
+				let imgURL =
+					(process.env.NODE_ENV !== 'production'
+						? 'https://dsaaward.iprefer.com.tw/upload/News/'
+						: 'https://www.dsaawards.com/upload/News/') + detail.img_name;
+				var months = [
+					'JAN',
+					'FEB',
+					'MAR',
+					'APR',
+					'MAY',
+					'JUN',
+					'JUL',
+					'AUG',
+					'SEP',
+					'OCT',
+					'NOV',
+					'DEC',
+				];
+
+				let dateMonth = months[parseInt(detail.created_at.split('/')[1], 10)];
+				let dateDay = detail.created_at.split('/')[2];
+				let shortenTitle =
+					detail.title.substring(0, 25) + (detail.title.length > 24 ? '…' : '');
+
+				// console.log(state.detail);
+				this.detail = Object.assign(detail, {
+					imgURL,
+					dateMonth,
+					dateDay,
+					shortenTitle,
+				});
+			})
+			.catch(err => {});
+		console.log('newsDetail mounted');
+		//  console.log(this.$store.state.news.detail);
 		// this.$store.commit('news/updateVisited');
-		// console.log(this.$store.state.news);
 	},
-	// scrollToTop: false,
 };
 </script>
 

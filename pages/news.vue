@@ -29,7 +29,7 @@
         <nuxt-child :key="$route.params.id" />
       </transition>
       <ul>
-        <li v-for="(value, key, index) in vuexNewsList" :key="index">
+        <li v-for="(value, key, index) in list" :key="index">
           <div class="news-date">
             <div class="wrap-date">
               <div class="month">{{value.dateMonth}}</div>
@@ -67,32 +67,20 @@ export default {
 	 * fetch用於填充Vuex Store。如果你返回一個promise，Nuxt將等待，直到它在渲染前解決。
 	 */
 
-	async asyncData({ redirect, app, store, params }) {
-		await app
-			.$axios({
-				method: 'POST',
-				data: qs.stringify({ act_mode: 'list' }),
-				url: '/getNews.ashx',
-			})
-			.then(response => {
-				// console.log(response.data.list);
-				store.commit('news/updateList', response.data.list);
-			})
-			.catch(err => {});
-	},
+	async asyncData({ redirect, app, store, params }) {},
 
 	async fetch({ store, params, app }) {
-		// 	await app
-		// 		.$axios({
-		// 			method: 'POST',
-		// 			data: qs.stringify({ act_mode: 'list' }),
-		// 			url: '/getNews.ashx',
-		// 		})
-		// 		.then(response => {
-		// 			// console.log(response.data.list);
-		// 			store.commit('news/updateList', response.data.list);
-		// 		})
-		// 		.catch(err => {});
+		// await app
+		// 	.$axios({
+		// 		method: 'POST',
+		// 		data: qs.stringify({ act_mode: 'list' }),
+		// 		url: '/getNews.ashx',
+		// 	})
+		// 	.then(response => {
+		// 		// console.log(response.data.list);
+		// 		store.commit('news/updateList', response.data.list);
+		// 	})
+		// 	.catch(err => {});
 	},
 	head() {
 		return {
@@ -101,13 +89,15 @@ export default {
 	},
 	layout: 'layoutIndex',
 	data() {
-		return {};
+		return {
+			list: [],
+		};
 	},
 	computed: {
-		// 表單資料
-		vuexNewsList() {
-			return this.$store.getters['news/getterList'];
-		},
+	//	表單資料
+		// vuexNewsList() {
+		// 	return this.$store.getters['news/getterList'];
+		// },
 	},
 	methods: {
 		handleDetail(id) {
@@ -115,10 +105,49 @@ export default {
 			// $nuxt._router.push({ name: 'news-id', params: { id: id } });
 		},
 	},
-	created() {},
+	created() {
+		this.$store.commit('news/updateVisited');
+	},
 
 	mounted() {
-		this.$store.commit('news/updateVisited');
+		this.$axios({
+			method: 'POST',
+			data: qs.stringify({ act_mode: 'list' }),
+			url: '/getNews.ashx',
+		})
+			.then(response => {
+        // this.$store.commit('news/updateList', response.data.list);
+				this.list = response.data.list.map(function(item, index, array) {
+					item.imgURL =
+						(process.env.NODE_ENV !== 'production'
+							? 'https://dsaaward.iprefer.com.tw/upload/News/'
+							: 'https://www.dsaawards.com/upload/News/') + item.img_name;
+
+					var months = [
+						'JAN',
+						'FEB',
+						'MAR',
+						'APR',
+						'MAY',
+						'JUN',
+						'JUL',
+						'AUG',
+						'SEP',
+						'OCT',
+						'NOV',
+						'DEC',
+					];
+					item.dateMonth = months[parseInt(item.created_at.split('/')[1], 10)];
+					item.dateDay = item.created_at.split('/')[2];
+					item.shortenTitle =
+						item.title.substring(0, 25) + (item.title.length > 24 ? '…' : '');
+					return item;
+				});
+
+				//store.commit('news/updateList', response.data.list);
+			})
+			.catch(err => {});
+
 		// console.log(this.$store.state.news);
 	},
 	// scrollToTop: false,
