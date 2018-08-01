@@ -24,7 +24,7 @@
                                 <!-- <img src="img/google.gif" alt=""> -->
                                 <div class="g-recaptcha" id="recaptcha-pw"></div>
                             </div>
-                            <a href="#" class="btn_login btn-center">
+                            <a href="#" class="btn_login btn-center" @click.prevent="handlePassword">
                                 <span class="txt">確認送出</span>
                                 <span class="arrow"></span>
                             </a>
@@ -57,7 +57,7 @@
                                 <!-- <img src="img/google.gif" alt=""> -->
                                 <div class="g-recaptcha" id="recaptcha-em"></div>
                             </div>
-                            <a href="#" class="btn_login btn-center">
+                            <a href="#" class="btn_login btn-center" @click.prevent="handleEmail">
                                 <span class="txt">確認送出</span>
                                 <span class="arrow"></span>
                             </a>
@@ -91,11 +91,11 @@
                     <h3>使用者登入</h3>
                     <p>若還未有帳號密碼請點選註冊取得</p>
                     <div class="input-container">
-                        <input id="account" class="input" type="text" pattern=".+" required v-model="Form.uniformno" />
+                        <input id="account" class="input" type="text" pattern=".+" required v-model="Form.login.uniformno" />
                         <label class="label" for="account">帳號(您當初填寫的公司統編)</label>
                     </div>
                     <div class="input-container">
-                        <input id="password" class="input" type="password" pattern=".+" required v-model="Form.password" v-on:keyup.13="handleLogin" />
+                        <input id="password" class="input" type="password" pattern=".+" required v-model="Form.login.password" v-on:keyup.13="handleLogin" />
                         <label class="label" for="password">密碼</label>
                     </div>
                     <div class="btn_wrap">
@@ -132,11 +132,26 @@ export default {
 			showPassword: false,
 			showEmail: false,
 			Form: {
-				act_mode: 'login',
-				uniformno: '42656367',
-				password: 'wg0123',
-				pw: { uniformno: '42656367', email: 'jun_huang@webgene.com.tw', recaptcha: '' },
-				em: { uniformno: '42656367', email: 'jun_huang@webgene.com.tw', recaptcha: '' },
+				login: {
+					act_mode: 'login',
+					uniformno: '42656367',
+					password: 'wg0123',
+				},
+
+				pw: {
+                    act_mode: 'forget',
+					uniformno: '42656367',
+					email: 'jun_huang@webgene.com.tw',
+					recaptcha: '',
+					vcode: '',
+				},
+				em: {
+                    act_mode: 'resendverify',
+					uniformno: '42656367',
+					email: 'jun_huang@webgene.com.tw',
+					recaptcha: '',
+					vcode: '',
+				},
 			},
 		};
 	},
@@ -147,19 +162,38 @@ export default {
 		handleLogin() {
 			// console.log(this.Form);
 			let payload = {
-				FormData: this.Form,
+				FormData: this.Form.login,
 				reqURL: '/user.ashx',
 				resTitle: '登入成功\n請依驗證信內容完成註冊程序',
 			};
 			this.util_request(payload)
 				.then(data => {
-                    // $nuxt._router.push('/');
-                    $nuxt._router.push('/u/list');
+					// $nuxt._router.push('/');
+					$nuxt._router.push('/u/list');
 				})
 				.catch(err => {
 					// 失敗訊息 (立即)
 				});
 		},
+		handlePassword() {
+            this.Form.pw.vcode = grecaptcha.getResponse(this.Form.pw.recaptcha);
+            let payload = {
+				FormData: this.Form.pw,
+				reqURL: '/user.ashx',
+                resTitle: '請至信箱收取密碼信件',
+                resText:'',
+			};
+			this.util_request(payload)
+				.then(data => {
+					// $nuxt._router.push('/');
+					// $nuxt._router.push('/u/list');
+				})
+				.catch(err => {
+                    console.log(err);
+				});
+            console.log( this.Form.pw);
+		},
+		handleEmail() {},
 		renderRecaptcha(type) {
 			// console.log(!this.Form[type].recaptcha);
 			this.Form[type].recaptcha === ''
@@ -192,7 +226,8 @@ export default {
 <style scoped>
 @import '~/assets/css/regist.css';
 .popup-forget {
-	position: fixed;
+    position: fixed;
+    z-index: 1000;
 }
 
 .v-leave-to,

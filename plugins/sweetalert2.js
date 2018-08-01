@@ -7,6 +7,10 @@ swalPlugin.install = function(Vue) {
 		// buttonsStyling: false,
 		showCloseButton: false,
 		confirmButtonText: 'Ok',
+		// 外面點擊取消 防連續點擊
+		allowOutsideClick: false,
+		// 防止 ESC
+		allowEscapeKey: false,
 	});
 };
 

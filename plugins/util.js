@@ -6,15 +6,13 @@ Vue.mixin({
 			$nuxt._router.push(path);
 		},
 		util_request(payload) {
+			console.log(payload.resText===undefined);
 			return new Promise((resolve, reject) => {
 				let $FormData = Object.assign({}, payload.FormData);
 				this.$swal({
 					type: 'info',
-					title: '努力為您處理中...',
-					// 外面點擊取消 防連續點擊
-					allowOutsideClick: false,
-					// 防止 ESC
-					allowEscapeKey: false,
+					title: '拼命為您處理中...',
+					
 					onOpen: () => {
 						this.$swal.enableLoading();
 						setTimeout(() => {
@@ -27,13 +25,14 @@ Vue.mixin({
 									this.$swal({
 										type: 'success',
 										title: payload.resTitle,
-										text: '(๑•̀ㅂ•́)و✧',
+										text: payload.resText || '(๑•̀ㅂ•́)و✧',
 									}).then(() => {
-										resolve();
+										resolve(response);
 										// $nuxt._router.push('/login');
 									});
 								})
 								.catch(response => {
+									console.log(123);
 									let text = response.data.message.replace(
 										/\\n/g,
 										'\n\n'
@@ -42,7 +41,7 @@ Vue.mixin({
 										type: 'error',
 										title: text,
 									}).then(() => {
-										reject();
+										reject(response);
 									});
 								});
 						}, 1000);
