@@ -67,9 +67,7 @@ export default {
 	 * fetch用於填充Vuex Store。如果你返回一個promise，Nuxt將等待，直到它在渲染前解決。
 	 */
 
-	asyncData({ redirect, app }) {},
-
-	async fetch({ store, params, app }) {
+	async asyncData({ redirect, app, store, params }) {
 		await app
 			.$axios({
 				method: 'POST',
@@ -81,6 +79,20 @@ export default {
 				store.commit('news/updateList', response.data.list);
 			})
 			.catch(err => {});
+	},
+
+	async fetch({ store, params, app }) {
+		// 	await app
+		// 		.$axios({
+		// 			method: 'POST',
+		// 			data: qs.stringify({ act_mode: 'list' }),
+		// 			url: '/getNews.ashx',
+		// 		})
+		// 		.then(response => {
+		// 			// console.log(response.data.list);
+		// 			store.commit('news/updateList', response.data.list);
+		// 		})
+		// 		.catch(err => {});
 	},
 	head() {
 		return {
@@ -99,18 +111,17 @@ export default {
 	},
 	methods: {
 		handleDetail(id) {
-			// $nuxt._router.push({ name: 'news-detail', query: { id: id } });
-			$nuxt._router.push({ name: 'news-id', params: { id: id } });
+			$nuxt._router.push({ name: 'newsDetail', query: { id: id } });
+			// $nuxt._router.push({ name: 'news-id', params: { id: id } });
 		},
 	},
 	created() {},
 
 	mounted() {
-    
-    	this.$store.commit('news/updateVisited');
+		this.$store.commit('news/updateVisited');
 		// console.log(this.$store.state.news);
-  },
-  // scrollToTop: false,
+	},
+	// scrollToTop: false,
 };
 </script>
 
