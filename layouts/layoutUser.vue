@@ -100,7 +100,7 @@ export default {
     middleware: 'auth'
 };
 </script>
-<style>
+<style scoped>
 @import '~/assets/css/regist.css';
 /* transition */
 .layoutuser-enter-active

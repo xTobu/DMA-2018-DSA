@@ -287,7 +287,7 @@ export default {
 			};
 			this.util_request(payload)
 				.then(data => {
-					// $nuxt._router.push('/login');
+					$nuxt._router.push('/login');
 				})
 				.catch(err => {
 					// 失敗訊息 (立即)
