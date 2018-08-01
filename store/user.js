@@ -2,7 +2,7 @@ import Vue from 'vue';
 
 export const state = () => ({
 	navibar: { title: '' },
-	data: undefined,
+	data: {},
 });
 
 // commit
@@ -10,8 +10,8 @@ export const mutations = {
 	commitNavibarTitle(state, title) {
 		state.navibar.title = title;
 	},
-	commitData(state, data) {
-		Vue.set(state, 'data', data);
+	commitDataUser(state, user) {
+		Vue.set(state.data, 'user', user);
 	},
 };
 

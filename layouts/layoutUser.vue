@@ -24,7 +24,7 @@
                         <span class="icon-avatar"></span>
                     </li>
                     <li class="welcome">歡迎，
-                        <span class="name">{{user.name}}</span>
+                        <span class="name">{{vuexUser.data.user.name}}</span>
                     </li>
                     <li>
                         <a class="btn-logout" href="#" @click.prevent="handleLogout">
@@ -70,11 +70,7 @@ import indexFooter from '~/components/indexFooter.vue';
 import qs from 'qs';
 export default {
 	data() {
-		return {
-			user: {
-				name: '俊翔',
-			},
-		};
+		return {};
 	},
 	async fetch({ store, params, app }) {
 		// layout not fire fetch
