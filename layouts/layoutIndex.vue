@@ -23,7 +23,8 @@ export default {
 	components: {
 		indexHeader,
 		indexFooter,
-	},
+  },
+  
 };
 </script>
 <style>

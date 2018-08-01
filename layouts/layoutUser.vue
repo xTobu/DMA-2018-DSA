@@ -96,7 +96,8 @@ export default {
 					// 失敗訊息 (立即)
 				});
 		},
-	},
+    },
+    middleware: 'auth'
 };
 </script>
 <style>

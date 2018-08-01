@@ -56,7 +56,6 @@ export const getters = {
 	},
 	getterDetail: state => {
 		let detail = Object.assign({}, state.detail);
-		console.log(detail);
 		let imgURL =
 			(process.env.NODE_ENV !== 'production'
 				? 'https://dsaaward.iprefer.com.tw/upload/News/'
