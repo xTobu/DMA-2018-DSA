@@ -40,6 +40,10 @@ const config = {
 				property: 'og:image',
 				content: 'https://www.dsaawards.com/2018/2017_dsa_award_share.jpg',
 			},
+			// {
+			// 	property: 'og:image',
+			// 	content: 'https://www.dsaawards.com/2018/2018_dsa_award_share.jpg',
+			// },
 		],
 		script: [{
 				src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',

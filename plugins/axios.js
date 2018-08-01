@@ -12,7 +12,7 @@ export default function({ $axios, redirect }) {
 
 	$axios.onResponse(response => {
 		// 判斷奇禾的 response.data.result ,如果是false 則進入 Promise.reject
-
+		
 		if (response.data.result === false) {
 			if (process.client) console.error('💥 $axios catch : ', response);
 			return Promise.reject(response);
