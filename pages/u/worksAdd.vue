@@ -310,6 +310,9 @@
 <script>
 export default {
 	asyncData({ redirect }) {},
+	fetch({ store, params, query, app }) {
+		store.commit('user/commitNavibarTitle', '添加作品');
+	},
 	head() {
 		return {
 			title: '線上報名',

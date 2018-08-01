@@ -37,7 +37,7 @@
 
             <!-- my works-->
             <div class="navibar">
-                <h3>我的參賽作品</h3>
+                <h3>{{vuexUser.navibar.title}}</h3>
                 <div class="btnBox">
                     <!--active: navibar_focus -->
                     <nuxt-link class="btn_navibar" to="/u/list" @click.prevent="util_LinkTo('/u/list')">
@@ -59,6 +59,7 @@
             <transition name='layoutuser' mode=''>
                 <nuxt/>
             </transition>
+
         </main>
         <indexFooter />
     </div>
@@ -66,6 +67,7 @@
 <script>
 import indexHeader from '~/components/indexHeader.vue';
 import indexFooter from '~/components/indexFooter.vue';
+import qs from 'qs';
 export default {
 	data() {
 		return {
@@ -73,6 +75,14 @@ export default {
 				name: '俊翔',
 			},
 		};
+	},
+	async fetch({ store, params, app }) {
+		// layout not fire fetch
+	},
+	computed: {
+		vuexUser() {
+			return this.$store.state.user;
+		},
 	},
 	components: {
 		indexHeader,
@@ -98,10 +108,8 @@ export default {
 				});
 		},
 	},
+	mounted() {},
 	middleware: 'auth',
-	// router: {
-	// 	linkActiveClass: 'navibar_focus',
-	// },
 };
 </script>
 <style scoped>

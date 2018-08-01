@@ -129,6 +129,9 @@
 <script>
 export default {
 	asyncData({ redirect }) {},
+	fetch({ store, params, query, app }) {
+		store.commit('user/commitNavibarTitle', '我的參賽作品');
+	},
 	head() {
 		return {
 			title: '線上報名',
@@ -143,7 +146,9 @@ export default {
 		// console.log('created');
 	},
 
-	mounted() {},
+	mounted() {
+		
+	},
 };
 </script>
 
