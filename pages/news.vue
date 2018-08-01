@@ -1,13 +1,13 @@
 <template>
-  <div class="wrapper">
-    <div class="head head_news">
-      <div class="tittle">
-        <span>最新消息</span>
-        <span class="sub">NEWS</span>
-      </div>
-    </div>
-    <main class="news">
-      <!-- <div class="popup-news" style="display:none;">
+    <div class="wrapper">
+        <div class="head head_news">
+            <div class="tittle">
+                <span>最新消息</span>
+                <span class="sub">NEWS</span>
+            </div>
+        </div>
+        <main class="news">
+            <!-- <div class="popup-news" style="display:none;">
         <div class="news-expand"><a class="btn-close" href="#"></a>
           <div class="news-date-expand">
             <div class="wrap-date">
@@ -25,37 +25,40 @@
           </div>
         </div>
       </div> -->
-      <transition name='nuxtchild' mode=''>
-        <nuxt-child :key="$route.params.id" />
-      </transition>
-      <ul>
-        <li v-for="(value, key, index) in list" :key="index">
-          <div class="news-date">
-            <div class="wrap-date">
-              <div class="month">{{value.dateMonth}}</div>
-              <div class="day">{{value.dateDay}}</div>
-            </div>
-          </div>
-          <a class="wrap-news-pic" href="#" @click.prevent="handleDetail(value.n_key)">
-            <div class="news-pic">
-              <img :src="value.imgURL">
-            </div>
-          </a>
-          <div class="wrap-news-content">
-            <div class="news-content">
-              <div class="headline">{{ value.shortenTitle }}</div>
-              <p>{{ value.summary }}</p>
-            </div>
-            <a class="btn-news" href="#" @click.prevent="handleDetail(value.n_key)">
-              <span class="txt">more</span>
-              <span class="arrow"></span>
-            </a>
-          </div>
-        </li>
+            <transition name='nuxtchild' mode=''>
+                <nuxt-child :key="$route.params.id" />
+            </transition>
+            <ul>
 
-      </ul>
-    </main>
-  </div>
+                <li v-for="(value, key, index) in list" :key="index">
+
+                    <div class="news-date">
+                        <div class="wrap-date">
+                            <div class="month">{{value.dateMonth}}</div>
+                            <div class="day">{{value.dateDay}}</div>
+                        </div>
+                    </div>
+                    <a class="wrap-news-pic" href="#" @click.prevent="handleDetail(value.n_key)">
+                        <div class="news-pic">
+                            <img :src="value.imgURL">
+                        </div>
+                    </a>
+                    <div class="wrap-news-content">
+                        <div class="news-content">
+                            <div class="headline">{{ value.shortenTitle }}</div>
+                            <p>{{ value.summary }}</p>
+                        </div>
+                        <a class="btn-news" href="#" @click.prevent="handleDetail(value.n_key)">
+                            <span class="txt">more</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </div>
+
+                </li>
+
+            </ul>
+        </main>
+    </div>
 </template>
 
 <script>
@@ -90,14 +93,14 @@ export default {
 	layout: 'layoutIndex',
 	data() {
 		return {
-			list: [],
+			list: this.$store.state.news.list,
 		};
 	},
 	computed: {
-	//	表單資料
-		// vuexNewsList() {
-		// 	return this.$store.getters['news/getterList'];
-		// },
+		//	表單資料
+		vuexNewsList() {
+			return this.$store.getters['news/getterList'];
+		},
 	},
 	methods: {
 		handleDetail(id) {
@@ -106,6 +109,7 @@ export default {
 		},
 	},
 	created() {
+		console.log(this.$store.state.news.list);
 		this.$store.commit('news/updateVisited');
 	},
 
@@ -116,7 +120,7 @@ export default {
 			url: '/getNews.ashx',
 		})
 			.then(response => {
-        // this.$store.commit('news/updateList', response.data.list);
+				//this.$store.commit('news/updateList', response.data.list);
 				this.list = response.data.list.map(function(item, index, array) {
 					item.imgURL =
 						(process.env.NODE_ENV !== 'production'
@@ -143,12 +147,9 @@ export default {
 						item.title.substring(0, 25) + (item.title.length > 24 ? '…' : '');
 					return item;
 				});
-
-				//store.commit('news/updateList', response.data.list);
+				this.$store.commit('news/updateList', Object.assign({}, this.list));
 			})
 			.catch(err => {});
-
-		// console.log(this.$store.state.news);
 	},
 	// scrollToTop: false,
 };

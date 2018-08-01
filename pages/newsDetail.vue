@@ -133,7 +133,6 @@ export default {
 				});
 			})
 			.catch(err => {});
-		console.log('newsDetail mounted');
 		//  console.log(this.$store.state.news.detail);
 		// this.$store.commit('news/updateVisited');
 	},
