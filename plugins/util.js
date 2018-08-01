@@ -6,7 +6,6 @@ Vue.mixin({
 			$nuxt._router.push(path);
 		},
 		util_request(payload) {
-			console.log(payload.resText === undefined);
 			return new Promise((resolve, reject) => {
 				let $FormData = Object.assign({}, payload.FormData);
 				this.$swal({
@@ -46,7 +45,7 @@ Vue.mixin({
 										reject(response);
 									});
 								});
-						}, 1000);
+						}, 500);
 					},
 				});
 			});

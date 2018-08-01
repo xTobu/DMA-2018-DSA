@@ -27,7 +27,7 @@
                         <span class="name">{{user.name}}</span>
                     </li>
                     <li>
-                        <a class="btn-logout" href="#">
+                        <a class="btn-logout" href="#" @click.prevent="handleLogout">
                             <span class="txt">登出</span>
                             <span class="arrow"></span>
                         </a>
@@ -77,6 +77,26 @@ export default {
 		indexHeader,
 		indexFooter,
 	},
+	methods: {
+		handleLogout() {
+			let payload = {
+				FormData: { act_mode: 'logout' },
+				reqURL: '/user.ashx',
+                resTitle: '登出',
+                resText:''
+			};
+			this.util_request(payload)
+				.then(data => {
+					console.log(data);
+					 $nuxt._router.push('/login');
+					//$nuxt._router.push('/u/list');
+				})
+				.catch(err => {
+					console.log(err);
+					// 失敗訊息 (立即)
+				});
+		},
+	},
 };
 </script>
 <style>
@@ -84,7 +104,7 @@ export default {
 /* transition */
 .layoutuser-enter-active
 /* ,.layoutuser-leave-active  */
-{
+ {
 	transition: opacity 0.4s;
 }
 
@@ -92,6 +112,5 @@ export default {
 .layoutuser-leave-to {
 	opacity: 0;
 }
-
 </style>
 
