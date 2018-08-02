@@ -23,7 +23,7 @@ export default function() {
 		media_name: '',
 		expert_name: '',
 		dma_member_name: '',
-		association: '公協會*',
+		association: '',
 		other: '',
 		vcode: '',
 	};

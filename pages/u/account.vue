@@ -4,43 +4,53 @@
 			<h5>登入資訊</h5>
 			<div class="wrap-data">
 				<div class="input-container form-50">
-					<input class="input" id="taxid" type="text" pattern=".+" required>
+					<input class="input" id="taxid" type="text" pattern=".+" maxlength="8" required v-model="Form.uniformno">
 					<label class="label" for="taxid">公司統編*</label>
+				</div>
+				<div class="password">
+					<div class="input-container form-50">
+						<input class="input" id="password" type="password" pattern=".+" maxlength="12" required v-model="Form.password">
+						<label class="label" for="password">輸入密碼* (6~12個英數混合字元)</label>
+					</div>
+					<div class="input-container form-50">
+						<input class="input" id="passwordAgain" type="password" pattern=".+" maxlength="12" required v-model="Form.repassword">
+						<label class="label" for="passwordAgain">再次輸入密碼*</label>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="wrap-form">
 			<h5>個人資料編輯</h5>
 			<div class="wrap-data">
-				<div class="select select--white form-50">
-					<span class="placeholder">稱謂*</span>
+				<div class="select select--white form-50" data-form-type="gender">
+					<span class="placeholder">{{Form.gender}}</span>
 					<ul>
 						<li>先生</li>
 						<li>女士</li>
 					</ul>
 				</div>
 				<div class="input-container form-50">
-					<input class="input" id="acc-name" type="text" pattern=".+" required>
+					<input class="input" id="acc-name" type="text" pattern=".+" required maxlength="50" v-model="Form.name">
 					<label class="label" for="acc-name">姓名*</label>
 				</div>
 				<div class="input-container form-50">
-					<input class="input" id="acc-tittle" type="text" pattern=".+" required>
+					<input class="input" id="acc-tittle" type="text" pattern=".+" required maxlength="50" v-model="Form.job_title">
 					<label class="label" for="acc-tittle">職稱*</label>
 				</div>
 				<div class="input-container form-50">
-					<input class="input" id="acc-phone" type="text" pattern=".+" required>
+					<input class="input" id="acc-phone" type="text" pattern=".+" required maxlength="30" v-model="Form.phone">
 					<label class="label" for="acc-phone">市話</label>
 				</div>
 				<div class="input-container form-50">
-					<input class="input" id="acc-mobile" type="text" pattern=".+" required>
+					<input class="input" id="acc-mobile" type="text" pattern=".+" required maxlength="10" v-model="Form.mobile">
 					<label class="label" for="acc-mobile">手機*</label>
 				</div>
 				<div class="input-container form-50">
-					<input class="input" id="acc-email" type="text" pattern=".+" required>
+					<input class="input" id="acc-email" type="text" pattern=".+" required maxlength="100" v-model="Form.email">
 					<label class="label" for="acc-email">電子信箱*</label>
 				</div>
 				<div class="input-container form-50">
-					<input class="input" id="acc-backupMail" type="text" pattern=".+" required>
+					<input class="input" id="acc-backupMail" type="text" pattern=".+" required maxlength="100" v-model="Form.secondemail">
 					<label class="label" for="acc-backupMail">備用信箱</label>
 				</div>
 			</div>
@@ -49,15 +59,15 @@
 			<h5>公司資料編輯</h5>
 			<div class="wrap-data">
 				<div class="input-container form-50">
-					<input class="input" id="acc-company" type="text" pattern=".+" required>
+					<input class="input" id="acc-company" type="text" pattern=".+" required maxlength="100" v-model="Form.company_name">
 					<label class="label" for="acc-company">公司中文名稱*</label>
 				</div>
 				<div class="input-container form-50">
-					<input class="input" id="acc-companyEng" type="text" pattern=".+" required>
+					<input class="input" id="acc-companyEng" type="text" pattern=".+" required maxlength="100" v-model="Form.company_engname">
 					<label class="label" for="acc-companyEng">公司英文名稱*</label>
 				</div>
 				<div class="input-container form-50">
-					<input class="input" id="acc-companyPhone" type="text" pattern=".+" required>
+					<input class="input" id="acc-companyPhone" type="text" pattern=".+" required maxlength="30" v-model="Form.company_phone">
 					<label class="label" for="acc-companyPhone">公司電話*</label>
 				</div>
 				<div class="add-wrap">
@@ -79,7 +89,7 @@
 						</ul>
 					</div>
 					<div class="input-container form-50">
-						<input class="input" id="acc-completeAdd" type="text" pattern=".+" required>
+						<input class="input" id="acc-completeAdd" type="text" pattern=".+" required maxlength="100" v-model="Form.addr">
 						<label class="label" for="acc-completeAdd">詳細地址*</label>
 					</div>
 				</div>
@@ -88,71 +98,76 @@
 		<div class="wrap-form">
 			<h5>你從哪裡得知的參賽信息</h5>
 			<div class="wrap-data">
-				<input class="radio-custom" id="from-dsa" name="from-dsa" type="radio">
+				<input class="radio-custom" id="from-dsa" name="from-wrap-data" type="radio" value="官網" v-model="Form.offical_channel">
 				<label class="radio-custom-label radio-country" for="from-dsa">數位奇點獎官網</label>
-				<input class="radio-custom" id="from-dsaFB" name="from-dsaFB" type="radio">
+				<input class="radio-custom" id="from-dsaFB" name="from-wrap-data" type="radio" value="臉書" v-model="Form.offical_channel">
 				<label class="radio-custom-label radio-country" for="from-dsaFB">數位奇點獎FB</label>
-				<input class="radio-custom" id="from-dsaEDM" name="from-dsaEDM" type="radio">
+				<input class="radio-custom" id="from-dsaEDM" name="from-wrap-data" type="radio" value="EDM" v-model="Form.offical_channel">
 				<label class="radio-custom-label radio-country" for="from-dsaEDM">數位奇點獎EDM</label>
 			</div>
 			<div class="from">
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-partner" name="from-r-partner" type="radio">
+					<input class="radio-custom" id="from-r-partner" name="from-r-partner" type="checkbox" v-model="Form.partner_name" disabled>
 					<label class="radio-custom-label radio-from" for="from-r-partner"></label>
 					<div class="input-container form-from">
-						<input class="input" id="from-partner" type="text" pattern=".+" required>
+						<input class="input" id="from-partner" type="text" pattern=".+" required v-model="Form.partner_name">
 						<label class="label" for="from-partner">DSA數位奇點獎聯合推廣夥伴</label>
 					</div>
 				</div>
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-third" name="from-r-third" type="radio">
+					<input class="radio-custom" id="from-r-third" name="from-r-third" type="checkbox" v-model="Form.media_name" disabled>
 					<label class="radio-custom-label radio-from" for="from-r-third"></label>
 					<div class="input-container form-from">
-						<input class="input" id="from-third" type="text" pattern=".+" required>
+						<input class="input" id="from-third" type="text" pattern=".+" required v-model="Form.media_name">
 						<label class="label" for="from-third">第三方媒體</label>
 					</div>
 				</div>
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-expert" name="from-r-expert" type="radio">
+					<input class="radio-custom" id="from-r-expert" name="from-r-expert" type="checkbox" v-model="Form.expert_name" disabled>
 					<label class="radio-custom-label radio-from" for="from-r-expert"></label>
 					<div class="input-container form-from">
-						<input class="input" id="from-expert" type="text" pattern=".+" required>
+						<input class="input" id="from-expert" type="text" pattern=".+" required v-model="Form.expert_name">
 						<label class="label" for="from-expert">專家評委推薦</label>
 					</div>
 				</div>
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-dma" name="from-r-dma" type="radio">
+					<input class="radio-custom" id="from-r-dma" name="from-r-dma" type="checkbox" v-model="Form.dma_member_name" disabled>
 					<label class="radio-custom-label radio-from" for="from-r-dma"></label>
 					<div class="input-container form-from">
-						<input class="input" id="from-dma" type="text" pattern=".+" required>
+						<input class="input" id="from-dma" type="text" pattern=".+" required v-model="Form.dma_member_name">
 						<label class="label" for="from-dma">DMA 會員推薦</label>
 					</div>
 				</div>
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-PA" name="from-r-PA" type="radio">
+					<input class="radio-custom" id="from-r-PA" name="from-r-PA" type="checkbox" v-model="Form.association" disabled>
 					<label class="radio-custom-label radio-from" for="from-r-PA"></label>
-					<div class="select select--white form-from2">
-						<span class="placeholder">公協會*</span>
+					<div class="select select--white form-from2" data-form-type="association">
+						<span class="placeholder">{{Form.association}}公協會*</span>
 						<ul>
+							<li>MMA</li>
+							<li>4A</li>
 							<li>TAAA</li>
-							<li>TAAA</li>
-							<li>TAAA</li>
-							<li>TAAA</li>
+							<li>TIPRA</li>
+							<li>TIEA</li>
+							<li>TAVRA</li>
 						</ul>
 					</div>
 				</div>
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-other" name="from-r-other" type="radio">
+					<input class="radio-custom" id="from-r-other" name="from-r-other" type="checkbox" v-model="Form.other" disabled>
 					<label class="radio-custom-label radio-from" for="from-r-other"></label>
 					<div class="input-container form-from">
-						<input class="input" id="from-other" type="text" pattern=".+" required>
+						<input class="input" id="from-other" type="text" pattern=".+" required v-model="Form.other">
 						<label class="label" for="from-other">其他</label>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="google-robot"><img src="img/google.gif"></div>
+		<div class="google-robot">
+			<!-- <img src="img/google.gif"> -->
+			<div class="g-recaptcha" id="recaptcha-main"></div>
+		</div>
 		<div class="btn_wrap btn_wrap2">
 			<a class="btn-confirm" href="#">
 				<span class="txt">確定提交</span>
@@ -253,6 +268,12 @@ export default {
 			// 初始化下拉選單
 			this.initSelect();
 			console.log(this.vuexArea);
+			this.recaptchaForm = grecaptcha.render('recaptcha-main', {
+				sitekey:
+					process.env.NODE_ENV !== 'production'
+						? '6LdcigETAAAAAEou1LlaY6NWZF3wIDnfLnMURdvy'
+						: '6Lf27y8UAAAAAIu-CAB7R-dGq19c6rHKBZKIR8nT',
+			});
 		});
 	},
 };
