@@ -127,7 +127,7 @@
         </div>
         <div class="from">
           <div class="wrap-from">
-            <input class="radio-custom" id="from-r-partner" name="from-r-partner" type="radio">
+            <input class="radio-custom" id="from-r-partner" name="from-r-partner" type="checkbox" v-model="Form.partner_name" disabled>
             <label class="radio-custom-label radio-from" for="from-r-partner"></label>
             <div class="input-container form-from">
               <input class="input" id="from-partner" type="text" pattern=".+" required v-model="Form.partner_name">
@@ -135,7 +135,7 @@
             </div>
           </div>
           <div class="wrap-from">
-            <input class="radio-custom" id="from-r-third" name="from-r-third" type="radio">
+            <input class="radio-custom" id="from-r-third" name="from-r-third" type="checkbox" v-model="Form.media_name" disabled>
             <label class="radio-custom-label radio-from" for="from-r-third"></label>
             <div class="input-container form-from">
               <input class="input" id="from-third" type="text" pattern=".+" required v-model="Form.media_name">
@@ -143,7 +143,7 @@
             </div>
           </div>
           <div class="wrap-from">
-            <input class="radio-custom" id="from-r-expert" name="from-r-expert" type="radio">
+            <input class="radio-custom" id="from-r-expert" name="from-r-expert" type="checkbox" v-model="Form.expert_name" disabled>
             <label class="radio-custom-label radio-from" for="from-r-expert"></label>
             <div class="input-container form-from">
               <input class="input" id="from-expert" type="text" pattern=".+" required v-model="Form.expert_name">
@@ -151,7 +151,7 @@
             </div>
           </div>
           <div class="wrap-from">
-            <input class="radio-custom" id="from-r-dma" name="from-r-dma" type="radio">
+            <input class="radio-custom" id="from-r-dma" name="from-r-dma" type="checkbox" v-model="Form.dma_member_name" disabled>
             <label class="radio-custom-label radio-from" for="from-r-dma"></label>
             <div class="input-container form-from">
               <input class="input" id="from-dma" type="text" pattern=".+" required v-model="Form.dma_member_name">
@@ -159,10 +159,10 @@
             </div>
           </div>
           <div class="wrap-from">
-            <input class="radio-custom" id="from-r-PA" name="from-r-PA" type="radio">
+            <input class="radio-custom" id="from-r-PA" name="from-r-PA" type="checkbox" v-model="Form.association" disabled>
             <label class="radio-custom-label radio-from" for="from-r-PA"></label>
             <div class="select select--white form-from2" data-form-type="association">
-              <span class="placeholder">{{Form.association}}</span>
+              <span class="placeholder">{{Form.association}}公協會*</span>
               <ul>
                 <li>MMA</li>
                 <li>4A</li>
@@ -174,7 +174,7 @@
             </div>
           </div>
           <div class="wrap-from">
-            <input class="radio-custom" id="from-r-other" name="from-r-other" type="radio">
+            <input class="radio-custom" id="from-r-other" name="from-r-other" type="checkbox" v-model="Form.other" disabled>
             <label class="radio-custom-label radio-from" for="from-r-other"></label>
             <div class="input-container form-from">
               <input class="input" id="from-other" type="text" pattern=".+" required v-model="Form.other">

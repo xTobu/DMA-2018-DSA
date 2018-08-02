@@ -1,6 +1,6 @@
 export default function() {
 	return {
-		act_mode: 'register',
+		act_mode: 'register_edit',
 		uniformno: '',
 		password: '',
 		repassword: '',
@@ -23,7 +23,7 @@ export default function() {
 		media_name: '',
 		expert_name: '',
 		dma_member_name: '',
-		association: '',
+		association: '公協會*',
 		other: '',
 		vcode: '',
 	};

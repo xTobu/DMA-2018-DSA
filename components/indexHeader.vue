@@ -53,34 +53,34 @@
         </div>
         <div class="menu-section">
             <div class="menu-m">
-                <div class="tittle">
-                    <img src="~assets/svg/logo_white.svg" width="100%" alt="">
+                <div class="tittle" @click="handleLi">
+                    <img src="~assets/svg/logo_white.svg" width="100%" alt="" @click.prevent="util_LinkTo('/')">
                 </div>
                 <div class="line"></div>
-                <ul class="hidden">
-                    <li>
-                        <a href="news.html">最新消息</a>
+                <ul class="hidden" @click="handleLi">
+                    <li >
+                        <a href="news"  @click.prevent="util_LinkTo('/news')">最新消息</a>
                     </li>
                     <li>
-                        <a href="award.html">獎項介紹</a>
+                        <a href="award" @click.prevent="util_LinkTo('/award')">獎項介紹</a>
                     </li>
                     <li>
-                        <a href="rule.html">活動辦法</a>
+                        <a href="rule" @click.prevent="util_LinkTo('/rule')">活動辦法</a>
                     </li>
                     <li>
-                        <a href="grading.html">評審辦法</a>
+                        <a href="grading" @click.prevent="util_LinkTo('/grading')">評審辦法</a>
                     </li>
                     <li>
-                        <a href="seminar.html">論壇活動</a>
+                        <a href="seminar" @click.prevent="util_LinkTo('/seminar')">論壇活動</a>
                     </li>
                     <li>
-                        <a href="sponsors.html">贊助單位</a>
+                        <a href="sponsors" @click.prevent="util_LinkTo('/sponsors')">贊助單位</a>
                     </li>
                     <li class="m2">
                         <a href="grading.html">報名文件</a>
                     </li>
                     <li class="m2">
-                        <a href="/login" @click.prevent="util_LinkTo('/login')">線上報名</a>
+                        <a href="login" @click.prevent="util_LinkTo('/login')">線上報名</a>
                     </li>
                     <li class="m2">
                         <a href="#">線上評選</a>
@@ -105,7 +105,10 @@ export default {
 		handleBur(e) {
 			$(e.currentTarget).toggleClass('on');
 			$('.menu-section').toggleClass('on');
-		},
+        },
+        handleLi(){
+            $('.menu-toggle').click()
+        }
 	},
 	created() {},
 

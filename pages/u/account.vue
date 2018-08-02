@@ -62,28 +62,20 @@
 				</div>
 				<div class="add-wrap">
 					<div class="wrap-data"></div>
-					<div class="select select--white form-add">
-						<span class="placeholder">地址縣市*</span>
+					<div class="select select--white form-add" data-form-type="county">
+						<span class="placeholder">{{Form.county}}</span>
 						<ul>
-							<li>台北市</li>
-							<li>新北市</li>
-							<li>新竹市</li>
-							<li>桃園縣</li>
-							<li>台中市</li>
-							<li>高雄市</li>
+							<li v-for="(value, key, index) in vuexArea.list" :key="index" @click="updateAreaData(key)">
+								{{ key }}
+							</li>
 						</ul>
 					</div>
-					<div class="select select--white form-add">
-						<span class="placeholder">行政區域*</span>
+					<div class="select select--white form-add" data-form-type="district">
+						<span class="placeholder">{{Form.district}}</span>
 						<ul>
-							<li>大安區</li>
-							<li>信義區</li>
-							<li>中山區</li>
-							<li>五股區</li>
-							<li>松山區</li>
-							<li>萬華區</li>
-							<li>內湖區</li>
-							<li>天母區</li>
+							<li v-for="(value, key, index) in vuexArea.list[vuexArea.data.selectedCountry]" :key="index" @click="updateZip(value)">
+								{{ key }}
+							</li>
 						</ul>
 					</div>
 					<div class="input-container form-50">
@@ -175,6 +167,7 @@
 </template>
 
 <script>
+import templateAccountForm from '~/plugins/templateAccountForm';
 export default {
 	asyncData({ redirect }) {},
 	fetch({ store, params, query, app }) {
@@ -187,7 +180,15 @@ export default {
 	},
 	layout: 'layoutUser',
 	data() {
-		return {};
+		return {
+			Form: templateAccountForm(),
+			recaptchaForm: undefined,
+		};
+	},
+	computed: {
+		vuexArea() {
+			return this.$store.state.registerArea;
+		},
 	},
 	methods: {
 		// 初始化 下拉選單
@@ -232,6 +233,16 @@ export default {
 					}.bind(this)
 				);
 		},
+
+		// 綁定地址資料
+		updateAreaData(country) {
+			console.log(country);
+			this.$store.commit('registerArea/updateData', country);
+		},
+		// 綁定郵遞區號
+		updateZip(zip) {
+			this.Form.zip = zip;
+		},
 	},
 	created() {
 		// console.log('created');
@@ -241,8 +252,7 @@ export default {
 		this.$nextTick(() => {
 			// 初始化下拉選單
 			this.initSelect();
-
-			
+			console.log(this.vuexArea);
 		});
 	},
 };
