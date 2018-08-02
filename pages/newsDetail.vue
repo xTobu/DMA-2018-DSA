@@ -142,9 +142,20 @@ export default {
 
 <style scoped>
 @import '~/assets/css/news.css';
+/* html {
+	overflow: hidden;
+} */
 main {
 	height: 100vh;
 }
+
+.news {
+    margin:0;
+}
+
+/* .news-expand{
+	margin-top: 40px;
+} */
 
 .newscontent {
 	font-size: 16px;

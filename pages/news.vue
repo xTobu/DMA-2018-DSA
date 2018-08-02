@@ -1,13 +1,13 @@
 <template>
-    <div class="wrapper">
-        <div class="head head_news">
-            <div class="tittle">
-                <span>最新消息</span>
-                <span class="sub">NEWS</span>
-            </div>
-        </div>
-        <main class="news">
-            <!-- <div class="popup-news" style="display:none;">
+	<div class="wrapper">
+		<div class="head head_news">
+			<div class="tittle">
+				<span>最新消息</span>
+				<span class="sub">NEWS</span>
+			</div>
+		</div>
+		<main class="news">
+			<!-- <div class="popup-news" style="display:none;">
         <div class="news-expand"><a class="btn-close" href="#"></a>
           <div class="news-date-expand">
             <div class="wrap-date">
@@ -25,40 +25,40 @@
           </div>
         </div>
       </div> -->
-            <transition name='nuxtchild' mode=''>
-                <nuxt-child :key="$route.params.id" />
-            </transition>
-            <ul>
+			<transition name='nuxtchild' mode=''>
+				<nuxt-child :key="$route.params.id" />
+			</transition>
+			<ul>
 
-                <li v-for="(value, key, index) in list" :key="index">
+				<li v-for="(value, key, index) in list" :key="index">
 
-                    <div class="news-date">
-                        <div class="wrap-date">
-                            <div class="month">{{value.dateMonth}}</div>
-                            <div class="day">{{value.dateDay}}</div>
-                        </div>
-                    </div>
-                    <a class="wrap-news-pic" href="#" @click.prevent="handleDetail(value.n_key)">
-                        <div class="news-pic">
-                            <img :src="value.imgURL">
-                        </div>
-                    </a>
-                    <div class="wrap-news-content">
-                        <div class="news-content">
-                            <div class="headline">{{ value.shortenTitle }}</div>
-                            <p>{{ value.summary }}</p>
-                        </div>
-                        <a class="btn-news" href="#" @click.prevent="handleDetail(value.n_key)">
-                            <span class="txt">more</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </div>
+					<div class="news-date">
+						<div class="wrap-date">
+							<div class="month">{{value.dateMonth}}</div>
+							<div class="day">{{value.dateDay}}</div>
+						</div>
+					</div>
+					<a class="wrap-news-pic" href="#" @click.prevent="handleDetail(value.n_key)">
+						<div class="news-pic">
+							<img :src="value.imgURL">
+						</div>
+					</a>
+					<div class="wrap-news-content">
+						<div class="news-content">
+							<div class="headline">{{ value.shortenTitle }}</div>
+							<p>{{ value.summary }}</p>
+						</div>
+						<a class="btn-news" href="#" @click.prevent="handleDetail(value.n_key)">
+							<span class="txt">more</span>
+							<span class="arrow"></span>
+						</a>
+					</div>
 
-                </li>
+				</li>
 
-            </ul>
-        </main>
-    </div>
+			</ul>
+		</main>
+	</div>
 </template>
 
 <script>
@@ -181,6 +181,13 @@ export default {
 .page-enter,
 .page-leave-to {
 	opacity: 0;
+}
+
+@media screen and (min-width: 600px) {
+	.news ul li {
+		height: 330px;
+		vertical-align: top;
+	}
 }
 </style>
 
