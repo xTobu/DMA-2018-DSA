@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import qs from 'qs';
+
 Vue.mixin({
 	methods: {
 		// $nuxt_router.push
@@ -8,6 +10,12 @@ Vue.mixin({
 		util_request(payload) {
 			return new Promise((resolve, reject) => {
 				let $FormData = Object.assign({}, payload.FormData);
+				let form_data = new FormData();
+
+				for (var key in payload.FormData) {
+					form_data.append(key, payload.FormData[key]);
+				}
+				// console.log(form_data)
 				this.$swal({
 					type: 'info',
 					title: '拼命為您處理中...',
@@ -16,7 +24,7 @@ Vue.mixin({
 						setTimeout(() => {
 							this.$axios({
 								method: 'POST',
-								data: $.param($FormData),
+								data: form_data,
 								url: payload.reqURL,
 							})
 								.then(response => {
