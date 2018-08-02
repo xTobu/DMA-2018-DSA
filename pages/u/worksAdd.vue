@@ -330,9 +330,82 @@ export default {
 			$FormData.s_date = $FormData.s_date.replace('-', '/');
 			$FormData.e_date = $FormData.e_date.replace('-', '/');
 			$FormData.apply_country = JSON.stringify($FormData.apply_country);
-			console.log($FormData);
-			$$FormData.main_type = () => {};
 
+			let main_type = '';
+			switch ($FormData.main_type) {
+				case '數位創意類':
+					main_type = 'A';
+					break;
+				case '創新應用技術類':
+					main_type = 'B';
+					break;
+				case '整合行銷類':
+					main_type = 'C';
+					break;
+				case '媒體應用類':
+					main_type = 'D';
+					break;
+				default:
+					main_type = 'A';
+					break;
+			}
+			$FormData.main_type = main_type;
+
+			let sub_type = '';
+			switch ($FormData.sub_type) {
+				case '最佳廣告文案創意獎':
+					sub_type = 1;
+					break;
+				case '最佳社群文案創意獎':
+					sub_type = 2;
+					break;
+				case '最佳展示廣告創意獎':
+					sub_type = 3;
+					break;
+				case '最佳影片創意獎':
+					sub_type = 4;
+					break;
+				case '最佳短影片創意獎':
+					sub_type = 5;
+					break;
+				case '最佳互動影片創意獎':
+					sub_type = 6;
+					break;
+				case '最佳使用者體驗(UX)創意獎':
+					sub_type = 7;
+					break;
+				case '最佳活動網站及APP 創意獎':
+					sub_type = 8;
+					break;
+				case '最佳企業網站及APP 創意獎':
+					sub_type = 9;
+					break;
+
+				default:
+					main_type = 1;
+					break;
+			}
+			$FormData.sub_type = sub_type;
+
+			$FormData.online = $FormData.online ? 1 : 0;
+
+			let scope = '';
+			switch ($FormData.scope) {
+				case '地區':
+					scope = 1;
+					break;
+				case '全國':
+					scope = 2;
+					break;
+				case '國際':
+					scope = 3;
+					break;
+				default:
+					scope = 1;
+					break;
+			}
+			$FormData.scope = scope;
+	console.log($FormData);
 			// let payload = {
 			// 	FormData: $FormData,
 			// 	reqURL: '/portfolios.ashx',

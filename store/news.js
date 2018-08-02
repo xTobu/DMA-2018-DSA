@@ -85,7 +85,7 @@ export const getters = {
 			'DEC',
 		];
 
-		let dateMonth = months[parseInt(detail.created_at.split('/')[1], 10)];
+		let dateMonth = months[parseInt(detail.created_at.split('/')[1]-1, 10)];
 		let dateDay = detail.created_at.split('/')[2];
 		let shortenTitle =
 			detail.title.substring(0, 25) +

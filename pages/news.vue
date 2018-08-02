@@ -141,7 +141,7 @@ export default {
 						'NOV',
 						'DEC',
 					];
-					item.dateMonth = months[parseInt(item.created_at.split('/')[1], 10)];
+					item.dateMonth = months[parseInt(item.created_at.split('/')[1]-1, 10)];
 					item.dateDay = item.created_at.split('/')[2];
 					item.shortenTitle =
 						item.title.substring(0, 25) + (item.title.length > 24 ? '…' : '');
