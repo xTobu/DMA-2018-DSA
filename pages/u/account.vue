@@ -302,11 +302,6 @@ export default {
 				url: '/user.ashx',
 			})
 				.then(response => {
-					//this.$store.commit('news/updateList', response.data.list);
-					// console.log(response.data.user);
-					// console.log(Object.assign(response.data.user, {
-					// 	gender: $FormData.gender ? '先生' : '小姐',
-					// }))
 					this.Form = Object.assign(response.data.user, {
 						act_mode: 'register_edit',
 						gender: response.data.user.gender === 'True' ? '先生' : '小姐',
