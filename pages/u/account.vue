@@ -173,7 +173,7 @@
 				<span class="txt">確定提交</span>
 				<span class="arrow"></span>
 			</a>
-			<a class="btn-cancel" href="#">
+			<a class="btn-cancel" href="#" @click.prevent="resetForm">
 				<span class="txt">取消編輯</span>
 				<span class="arrow"></span>
 			</a>
@@ -307,12 +307,10 @@ export default {
 					// console.log(Object.assign(response.data.user, {
 					// 	gender: $FormData.gender ? '先生' : '小姐',
 					// }))
-					console.log(response.data.user.gender)
 					this.Form = Object.assign(response.data.user, {
-						act_mode:'register_edit',
-						gender: response.data.user.gender===true ? '先生' : '小姐',
+						act_mode: 'register_edit',
+						gender: response.data.user.gender === 'True' ? '先生' : '小姐',
 					});
-					console.log(this.Form.gender)
 					// console.log(response.data.user.gender)
 				})
 				.catch(err => {});
@@ -338,6 +336,12 @@ export default {
 				.catch(err => {
 					// 失敗訊息 (立即)
 				});
+		},
+		resetForm() {
+			$('input:radio').prop('checked', false);
+			this.getAccountData();
+			$('html, body').animate({ scrollTop: 0 }, '400');
+			grecaptcha.reset(this.recaptchaForm);
 		},
 	},
 	created() {
