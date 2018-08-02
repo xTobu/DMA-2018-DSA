@@ -33,7 +33,6 @@ Vue.mixin({
 									});
 								})
 								.catch(response => {
-									console.log(123);
 									let text = response.data.message.replace(
 										/\\n/g,
 										'\n\n'

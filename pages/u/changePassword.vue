@@ -44,9 +44,9 @@ export default {
 		return {
 			Form: {
 				act_mode: 'changepassword',
-				oldpassword: 'wg0123',
-				password: 'wg1234',
-				repassword: 'wg1234',
+				oldpassword: '',
+				password: '',
+				repassword: '',
 			},
 		};
 	},

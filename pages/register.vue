@@ -116,73 +116,73 @@
         </div>
       </div>
       <div class="wrap-form">
-        <h5>你從哪裡得知的參賽信息</h5>
-        <div class="wrap-data">
-          <input class="radio-custom" id="from-dsa" name="from-wrap-data" type="radio" value="官網" v-model="Form.offical_channel">
-          <label class="radio-custom-label radio-country" for="from-dsa">數位奇點獎官網</label>
-          <input class="radio-custom" id="from-dsaFB" name="from-wrap-data" type="radio" value="臉書" v-model="Form.offical_channel">
-          <label class="radio-custom-label radio-country" for="from-dsaFB">數位奇點獎FB</label>
-          <input class="radio-custom" id="from-dsaEDM" name="from-wrap-data" type="radio" value="EDM" v-model="Form.offical_channel">
-          <label class="radio-custom-label radio-country" for="from-dsaEDM">數位奇點獎EDM</label>
-        </div>
-        <div class="from">
-          <div class="wrap-from">
-            <input class="radio-custom" id="from-r-partner" name="from-r-partner" type="checkbox" v-model="Form.partner_name" disabled>
-            <label class="radio-custom-label radio-from" for="from-r-partner"></label>
-            <div class="input-container form-from">
-              <input class="input" id="from-partner" type="text" pattern=".+" required v-model="Form.partner_name">
-              <label class="label" for="from-partner">DSA數位奇點獎聯合推廣夥伴</label>
-            </div>
-          </div>
-          <div class="wrap-from">
-            <input class="radio-custom" id="from-r-third" name="from-r-third" type="checkbox" v-model="Form.media_name" disabled>
-            <label class="radio-custom-label radio-from" for="from-r-third"></label>
-            <div class="input-container form-from">
-              <input class="input" id="from-third" type="text" pattern=".+" required v-model="Form.media_name">
-              <label class="label" for="from-third">第三方媒體</label>
-            </div>
-          </div>
-          <div class="wrap-from">
-            <input class="radio-custom" id="from-r-expert" name="from-r-expert" type="checkbox" v-model="Form.expert_name" disabled>
-            <label class="radio-custom-label radio-from" for="from-r-expert"></label>
-            <div class="input-container form-from">
-              <input class="input" id="from-expert" type="text" pattern=".+" required v-model="Form.expert_name">
-              <label class="label" for="from-expert">專家評委推薦</label>
-            </div>
-          </div>
-          <div class="wrap-from">
-            <input class="radio-custom" id="from-r-dma" name="from-r-dma" type="checkbox" v-model="Form.dma_member_name" disabled>
-            <label class="radio-custom-label radio-from" for="from-r-dma"></label>
-            <div class="input-container form-from">
-              <input class="input" id="from-dma" type="text" pattern=".+" required v-model="Form.dma_member_name">
-              <label class="label" for="from-dma">DMA 會員推薦</label>
-            </div>
-          </div>
-          <div class="wrap-from">
-            <input class="radio-custom" id="from-r-PA" name="from-r-PA" type="checkbox" v-model="Form.association" disabled>
-            <label class="radio-custom-label radio-from" for="from-r-PA"></label>
-            <div class="select select--white form-from2" data-form-type="association">
-              <span class="placeholder">{{Form.association}}公協會*</span>
-              <ul>
-                <li>MMA</li>
-                <li>4A</li>
-                <li>TAAA</li>
-                <li>TIPRA</li>
-                <li>TIEA</li>
-                <li>TAVRA</li>
-              </ul>
-            </div>
-          </div>
-          <div class="wrap-from">
-            <input class="radio-custom" id="from-r-other" name="from-r-other" type="checkbox" v-model="Form.other" disabled>
-            <label class="radio-custom-label radio-from" for="from-r-other"></label>
-            <div class="input-container form-from">
-              <input class="input" id="from-other" type="text" pattern=".+" required v-model="Form.other">
-              <label class="label" for="from-other">其他</label>
-            </div>
-          </div>
-        </div>
-      </div>
+			<h5>你從哪裡得知的參賽信息</h5>
+			<div class="wrap-data">
+				<input class="radio-custom" id="from-dsa" name="from-wrap-data" type="radio" value="官網" v-model="Form.offical_channel">
+				<label class="radio-custom-label radio-country" for="from-dsa">數位奇點獎官網</label>
+				<input class="radio-custom" id="from-dsaFB" name="from-wrap-data" type="radio" value="臉書" v-model="Form.offical_channel">
+				<label class="radio-custom-label radio-country" for="from-dsaFB">數位奇點獎FB</label>
+				<input class="radio-custom" id="from-dsaEDM" name="from-wrap-data" type="radio" value="EDM" v-model="Form.offical_channel">
+				<label class="radio-custom-label radio-country" for="from-dsaEDM">數位奇點獎EDM</label>
+			</div>
+			<div class="from">
+				<div class="wrap-from">
+					<input class="radio-custom" id="from-r-partner" name="from-r-partner" type="checkbox" v-model="checkboxPartner_name">
+					<label class="radio-custom-label radio-from" for="from-r-partner"></label>
+					<div class="input-container form-from">
+						<input class="input" id="from-partner" type="text" pattern=".+" required v-model="Form.partner_name">
+						<label class="label" for="from-partner">DSA數位奇點獎聯合推廣夥伴</label>
+					</div>
+				</div>
+				<div class="wrap-from">
+					<input class="radio-custom" id="from-r-third" name="from-r-third" type="checkbox" v-model="checkboxMedia_name">
+					<label class="radio-custom-label radio-from" for="from-r-third"></label>
+					<div class="input-container form-from">
+						<input class="input" id="from-third" type="text" pattern=".+" required v-model="Form.media_name">
+						<label class="label" for="from-third">第三方媒體</label>
+					</div>
+				</div>
+				<div class="wrap-from">
+					<input class="radio-custom" id="from-r-expert" name="from-r-expert" type="checkbox" v-model="checkboxExpert_name">
+					<label class="radio-custom-label radio-from" for="from-r-expert"></label>
+					<div class="input-container form-from">
+						<input class="input" id="from-expert" type="text" pattern=".+" required v-model="Form.expert_name">
+						<label class="label" for="from-expert">專家評委推薦</label>
+					</div>
+				</div>
+				<div class="wrap-from">
+					<input class="radio-custom" id="from-r-dma" name="from-r-dma" type="checkbox" v-model="checkboxDma_member_name">
+					<label class="radio-custom-label radio-from" for="from-r-dma"></label>
+					<div class="input-container form-from">
+						<input class="input" id="from-dma" type="text" pattern=".+" required v-model="Form.dma_member_name">
+						<label class="label" for="from-dma">DMA 會員推薦</label>
+					</div>
+				</div>
+				<div class="wrap-from">
+					<input class="radio-custom" id="from-r-PA" name="from-r-PA" type="checkbox" v-model="checkboxAssociation">
+					<label class="radio-custom-label radio-from" for="from-r-PA"></label>
+					<div class="select select--white form-from2" data-form-type="association">
+						<span class="placeholder">{{Form.association}}</span>
+						<ul>
+							<li>MMA</li>
+							<li>4A</li>
+							<li>TAAA</li>
+							<li>TIPRA</li>
+							<li>TIEA</li>
+							<li>TAVRA</li>
+						</ul>
+					</div>
+				</div>
+				<div class="wrap-from">
+					<input class="radio-custom" id="from-r-other" name="from-r-other" type="checkbox" v-model="checkboxOther">
+					<label class="radio-custom-label radio-from" for="from-r-other"></label>
+					<div class="input-container form-from">
+						<input class="input" id="from-other" type="text" pattern=".+" required v-model="Form.other">
+						<label class="label" for="from-other">其他</label>
+					</div>
+				</div>
+			</div>
+		</div>
       <div class="google-robot">
         <!-- <img src="img/google.gif"> -->
         <div class="g-recaptcha" id="recaptcha-main"></div>
@@ -219,6 +219,42 @@ export default {
 	computed: {
 		vuexArea() {
 			return this.$store.state.registerArea;
+    },
+    checkboxPartner_name: {
+			get() {
+				return this.Form.partner_name === '' ? false : true;
+			},
+			set(value) {},
+		},
+		checkboxMedia_name: {
+			get() {
+				return this.Form.media_name === '' ? false : true;
+			},
+			set(value) {},
+		},
+		checkboxExpert_name: {
+			get() {
+				return this.Form.expert_name === '' ? false : true;
+			},
+			set(value) {},
+		},
+		checkboxDma_member_name: {
+			get() {
+				return this.Form.dma_member_name === '' ? false : true;
+			},
+			set(value) {},
+		},
+		checkboxOther: {
+			get() {
+				return this.Form.other === '' ? false : true;
+			},
+			set(value) {},
+		},
+		checkboxAssociation: {
+			get() {
+				return this.Form.association === '公協會*' ? false : true;
+			},
+			set(value) {},
 		},
 	},
 	methods: {
@@ -312,7 +348,8 @@ export default {
 	created() {},
 
 	mounted() {
-		this.$nextTick(() => {
+		this.$nextTick(() => {    
+
 			// 初始化下拉選單
 			this.initSelect();
 

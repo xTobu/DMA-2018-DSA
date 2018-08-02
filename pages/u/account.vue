@@ -7,7 +7,7 @@
 					<input class="input" id="taxid" type="text" pattern=".+" maxlength="8" required v-model="Form.uniformno">
 					<label class="label" for="taxid">公司統編*</label>
 				</div>
-				<div class="password">
+				<div class="password" style="display:none">
 					<div class="input-container form-50">
 						<input class="input" id="password" type="password" pattern=".+" maxlength="12" required v-model="Form.password">
 						<label class="label" for="password">輸入密碼* (6~12個英數混合字元)</label>
@@ -107,7 +107,7 @@
 			</div>
 			<div class="from">
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-partner" name="from-r-partner" type="checkbox" v-model="Form.partner_name" disabled>
+					<input class="radio-custom" id="from-r-partner" name="from-r-partner" type="checkbox" v-model="checkboxPartner_name">
 					<label class="radio-custom-label radio-from" for="from-r-partner"></label>
 					<div class="input-container form-from">
 						<input class="input" id="from-partner" type="text" pattern=".+" required v-model="Form.partner_name">
@@ -115,7 +115,7 @@
 					</div>
 				</div>
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-third" name="from-r-third" type="checkbox" v-model="Form.media_name" disabled>
+					<input class="radio-custom" id="from-r-third" name="from-r-third" type="checkbox" v-model="checkboxMedia_name">
 					<label class="radio-custom-label radio-from" for="from-r-third"></label>
 					<div class="input-container form-from">
 						<input class="input" id="from-third" type="text" pattern=".+" required v-model="Form.media_name">
@@ -123,7 +123,7 @@
 					</div>
 				</div>
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-expert" name="from-r-expert" type="checkbox" v-model="Form.expert_name" disabled>
+					<input class="radio-custom" id="from-r-expert" name="from-r-expert" type="checkbox" v-model="checkboxExpert_name">
 					<label class="radio-custom-label radio-from" for="from-r-expert"></label>
 					<div class="input-container form-from">
 						<input class="input" id="from-expert" type="text" pattern=".+" required v-model="Form.expert_name">
@@ -131,7 +131,7 @@
 					</div>
 				</div>
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-dma" name="from-r-dma" type="checkbox" v-model="Form.dma_member_name" disabled>
+					<input class="radio-custom" id="from-r-dma" name="from-r-dma" type="checkbox" v-model="checkboxDma_member_name">
 					<label class="radio-custom-label radio-from" for="from-r-dma"></label>
 					<div class="input-container form-from">
 						<input class="input" id="from-dma" type="text" pattern=".+" required v-model="Form.dma_member_name">
@@ -139,10 +139,10 @@
 					</div>
 				</div>
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-PA" name="from-r-PA" type="checkbox" v-model="Form.association" disabled>
+					<input class="radio-custom" id="from-r-PA" name="from-r-PA" type="checkbox" v-model="checkboxAssociation">
 					<label class="radio-custom-label radio-from" for="from-r-PA"></label>
 					<div class="select select--white form-from2" data-form-type="association">
-						<span class="placeholder">{{Form.association}}公協會*</span>
+						<span class="placeholder">{{Form.association}}</span>
 						<ul>
 							<li>MMA</li>
 							<li>4A</li>
@@ -154,7 +154,7 @@
 					</div>
 				</div>
 				<div class="wrap-from">
-					<input class="radio-custom" id="from-r-other" name="from-r-other" type="checkbox" v-model="Form.other" disabled>
+					<input class="radio-custom" id="from-r-other" name="from-r-other" type="checkbox" v-model="checkboxOther">
 					<label class="radio-custom-label radio-from" for="from-r-other"></label>
 					<div class="input-container form-from">
 						<input class="input" id="from-other" type="text" pattern=".+" required v-model="Form.other">
@@ -169,7 +169,7 @@
 			<div class="g-recaptcha" id="recaptcha-main"></div>
 		</div>
 		<div class="btn_wrap btn_wrap2">
-			<a class="btn-confirm" href="#">
+			<a class="btn-confirm" href="#" @click.prevent="handleSubmit">
 				<span class="txt">確定提交</span>
 				<span class="arrow"></span>
 			</a>
@@ -183,6 +183,7 @@
 
 <script>
 import templateAccountForm from '~/plugins/templateAccountForm';
+import qs from 'qs';
 export default {
 	asyncData({ redirect }) {},
 	fetch({ store, params, query, app }) {
@@ -203,6 +204,43 @@ export default {
 	computed: {
 		vuexArea() {
 			return this.$store.state.registerArea;
+		},
+
+		checkboxPartner_name: {
+			get() {
+				return this.Form.partner_name === '' ? false : true;
+			},
+			set(value) {},
+		},
+		checkboxMedia_name: {
+			get() {
+				return this.Form.media_name === '' ? false : true;
+			},
+			set(value) {},
+		},
+		checkboxExpert_name: {
+			get() {
+				return this.Form.expert_name === '' ? false : true;
+			},
+			set(value) {},
+		},
+		checkboxDma_member_name: {
+			get() {
+				return this.Form.dma_member_name === '' ? false : true;
+			},
+			set(value) {},
+		},
+		checkboxOther: {
+			get() {
+				return this.Form.other === '' ? false : true;
+			},
+			set(value) {},
+		},
+		checkboxAssociation: {
+			get() {
+				return this.Form.association === '公協會*' ? false : true;
+			},
+			set(value) {},
 		},
 	},
 	methods: {
@@ -251,23 +289,67 @@ export default {
 
 		// 綁定地址資料
 		updateAreaData(country) {
-			console.log(country);
 			this.$store.commit('registerArea/updateData', country);
 		},
 		// 綁定郵遞區號
 		updateZip(zip) {
 			this.Form.zip = zip;
 		},
+		getAccountData() {
+			this.$axios({
+				method: 'POST',
+				data: qs.stringify({ act_mode: 'myinfo' }),
+				url: '/user.ashx',
+			})
+				.then(response => {
+					//this.$store.commit('news/updateList', response.data.list);
+					// console.log(response.data.user);
+					// console.log(Object.assign(response.data.user, {
+					// 	gender: $FormData.gender ? '先生' : '小姐',
+					// }))
+					console.log(response.data.user.gender)
+					this.Form = Object.assign(response.data.user, {
+						act_mode:'register_edit',
+						gender: response.data.user.gender===true ? '先生' : '小姐',
+					});
+					console.log(this.Form.gender)
+					// console.log(response.data.user.gender)
+				})
+				.catch(err => {});
+		},
+		handleSubmit() {
+			this.Form.vcode = grecaptcha.getResponse(this.recaptchaForm);
+
+			let $FormData = Object.assign({}, this.Form);
+			console.log($FormData);
+			// 女士 = 0, 先生 = 1
+			$FormData.gender = $FormData.gender === '先生' ? 1 : 0;
+
+			let payload = {
+				FormData: $FormData,
+				reqURL: '/user.ashx',
+				resTitle: '修改成功',
+				resText: '',
+			};
+			this.util_request(payload)
+				.then(data => {
+					$nuxt._router.push('/u/list');
+				})
+				.catch(err => {
+					// 失敗訊息 (立即)
+				});
+		},
 	},
 	created() {
 		// console.log('created');
+		this.getAccountData();
 	},
 
 	mounted() {
 		this.$nextTick(() => {
 			// 初始化下拉選單
 			this.initSelect();
-			console.log(this.vuexArea);
+
 			this.recaptchaForm = grecaptcha.render('recaptcha-main', {
 				sitekey:
 					process.env.NODE_ENV !== 'production'
