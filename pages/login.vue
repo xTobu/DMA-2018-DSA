@@ -76,8 +76,8 @@
             <div class="content">
                 <div class="tittle">線上報名請使用桌機作業</div>
                 <p>請輸入email以便獲取資訊</p>
-                <input id="email" type="email">
-                <a class="btn_device" href="#">
+                <input id="email" type="email" v-model="inputEmail">
+                <a class="btn_device" :href="`mailto:${this.inputEmail}?subject=2018 DSA 數位奇點獎，活動報名&body=${encodeURIComponent('報名網址: ')}${encodeURIComponent('https://www.dsaawards.com/2018/login')}`">
                     <span class="txt">送出</span>
                     <span class="arrow"></span>
                 </a>
@@ -131,6 +131,7 @@ export default {
 		return {
 			showPassword: false,
 			showEmail: false,
+			inputEmail: '',
 			Form: {
 				login: {
 					act_mode: 'login',
@@ -139,14 +140,14 @@ export default {
 				},
 
 				pw: {
-                    act_mode: 'forget',
+					act_mode: 'forget',
 					uniformno: '42656367',
 					email: 'jun_huang@webgene.com.tw',
 					recaptcha: '',
 					vcode: '',
 				},
 				em: {
-                    act_mode: 'resendverify',
+					act_mode: 'resendverify',
 					uniformno: '42656367',
 					email: 'jun_huang@webgene.com.tw',
 					recaptcha: '',
@@ -154,6 +155,13 @@ export default {
 				},
 			},
 		};
+	},
+	computed: {
+		loginURL() {
+			return process.env.NODE_ENV !== 'production'
+				? 'https://www.dsaawards.com/2018/login'
+				: 'https://www.dsaawards.com/2018/login';
+		},
 	},
 	methods: {
 		handleRegister() {
@@ -176,35 +184,33 @@ export default {
 				});
 		},
 		handlePassword() {
-            this.Form.pw.vcode = grecaptcha.getResponse(this.Form.pw.recaptcha);
-            let payload = {
+			this.Form.pw.vcode = grecaptcha.getResponse(this.Form.pw.recaptcha);
+			let payload = {
 				FormData: this.Form.pw,
 				reqURL: '/user.ashx',
-                resTitle: '完成',
-                resText:'請至信箱收取密碼信件',
+				resTitle: '完成',
+				resText: '請至信箱收取密碼信件',
 			};
 			this.util_request(payload)
-				.then(data => {
-				})
+				.then(data => {})
 				.catch(err => {
-                    console.log(err);
+					console.log(err);
 				});
 		},
 		handleEmail() {
-            this.Form.em.vcode = grecaptcha.getResponse(this.Form.em.recaptcha);
-            let payload = {
+			this.Form.em.vcode = grecaptcha.getResponse(this.Form.em.recaptcha);
+			let payload = {
 				FormData: this.Form.em,
 				reqURL: '/user.ashx',
-                resTitle: '完成',
-                resText:'請至信箱收取驗證信',
+				resTitle: '完成',
+				resText: '請至信箱收取驗證信',
 			};
 			this.util_request(payload)
-				.then(data => {
-				})
+				.then(data => {})
 				.catch(err => {
-                    console.log(err);
+					console.log(err);
 				});
-        },
+		},
 		renderRecaptcha(type) {
 			// console.log(!this.Form[type].recaptcha);
 			this.Form[type].recaptcha === ''
@@ -230,15 +236,17 @@ export default {
 		},
 	},
 	created() {},
-	mounted() {},
+	mounted() {
+		console.log(this.loginURL);
+	},
 };
 </script>
 
 <style scoped>
 @import '~/assets/css/regist.css';
 .popup-forget {
-    position: fixed;
-    z-index: 1000;
+	position: fixed;
+	z-index: 1000;
 }
 
 .v-leave-to,

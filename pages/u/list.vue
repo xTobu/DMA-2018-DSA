@@ -57,7 +57,7 @@
 					</li>
 
 				</ul>
-				<a class="btn-check-list" href="#">
+				<a class="btn-check-list" href="#" @click.prevent="handleGoDetail(item.p_key)">
 					<span class="txt">作品詳情</span>
 					<span class="arrow"></span>
 				</a>
@@ -218,7 +218,7 @@ export default {
 			return arrayType[parseInt(data, 10) - 1];
 		},
 		handleGoDetail(id) {
-			$nuxt._router.push({ name: 'worksDetail', query: { id: id } });
+			$nuxt._router.push({ name: 'u-worksDetail', query: { id: id } });
 			// $nuxt._router.push({ name: 'news-id', params: { id: id } });
 		},
 	},

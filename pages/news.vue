@@ -93,7 +93,7 @@ export default {
 	layout: 'layoutIndex',
 	data() {
 		return {
-			list: this.$store.state.news.list,
+			list: [],
 		};
 	},
 	computed: {
@@ -147,7 +147,7 @@ export default {
 						item.title.substring(0, 25) + (item.title.length > 24 ? '…' : '');
 					return item;
 				});
-				this.$store.commit('news/updateList', Object.assign({}, this.list));
+				// this.$store.commit('news/updateList', Object.assign({}, this.list));
 			})
 			.catch(err => {});
 	},

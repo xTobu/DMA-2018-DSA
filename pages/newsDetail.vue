@@ -82,6 +82,7 @@ export default {
 	},
 	methods: {
 		handleClose() {
+			// console.log(this.$store.state.news.visited);
 			this.$store.state.news.visited
 				? $nuxt._router.back()
 				: $nuxt._router.push('/news');
