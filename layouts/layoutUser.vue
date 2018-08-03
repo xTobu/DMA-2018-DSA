@@ -108,7 +108,7 @@ export default {
 				})
 				.catch(err => {
 					console.log(err);
-					// 失敗訊息 (立即)
+					
 				});
 		},
 	},

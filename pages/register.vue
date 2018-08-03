@@ -326,7 +326,7 @@ export default {
 					$nuxt._router.push('/login');
 				})
 				.catch(err => {
-					// 失敗訊息 (立即)
+					
 				});
 		},
 		// 綁定地址資料

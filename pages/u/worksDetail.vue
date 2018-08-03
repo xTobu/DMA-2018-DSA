@@ -482,7 +482,7 @@ export default {
 					$nuxt._router.push('/u/list');
 				})
 				.catch(err => {
-					// 失敗訊息 (立即)
+					
 				});
 		},
 		onclickRegistrationFile(e) {
