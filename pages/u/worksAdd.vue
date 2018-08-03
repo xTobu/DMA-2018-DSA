@@ -181,12 +181,12 @@
 			<h5>聲明*</h5>
 			<div class="wrap-data">
 				<div class="input-container form-rec">
-					<input class="input" id="date-begin" type="date" pattern=".+" required v-model="Form.s_date">
+					<input class="input" id="date-begin" type="date" pattern=".+" required v-model="Form.s_date" @input='Form.s_date = $event.target.value'>
 					<label class="label labelFocused" for="date-begin">參賽作品開始時間*</label>
 				</div>
 				<div class="rec-center">
 					<div class="input-container form-rec2">
-						<input class="input" id="date-end" type="date" pattern=".+" required v-model="Form.e_date">
+						<input class="input" id="date-end" type="date" pattern=".+" required v-model="Form.e_date" @input='Form.e_date = $event.target.value'>
 						<label class="label labelFocused" for="date-end">參賽作品結束時間*</label>
 					</div>
 					<span>或</span>
@@ -321,14 +321,14 @@ export default {
 				name: '',
 				job_title: '',
 				email: '',
+				id: '',
 			});
-			console.log(this.Form.coremember);
 		},
 		handleSubmit() {
 			let $FormData = Object.assign({}, this.Form);
 
-			$FormData.s_date = $FormData.s_date.replace('-', '/');
-			$FormData.e_date = $FormData.e_date.replace('-', '/');
+			// $FormData.s_date = $FormData.s_date.replace('-', '/');
+			// $FormData.e_date = $FormData.e_date.replace('-', '/');
 			$FormData.apply_country = JSON.stringify($FormData.apply_country);
 
 			let main_type = '';
@@ -405,20 +405,46 @@ export default {
 					break;
 			}
 			$FormData.scope = scope;
-	console.log($FormData);
-			// let payload = {
-			// 	FormData: $FormData,
-			// 	reqURL: '/portfolios.ashx',
-			// 	resTitle: '修改成功',
-			// 	resText: '',
-			// };
-			// this.util_request(payload)
-			// 	.then(data => {
-			// 		$nuxt._router.push('/u/list');
-			// 	})
-			// 	.catch(err => {
-			// 		// 失敗訊息 (立即)
-			// 	});
+
+			let coremember = $FormData.coremember
+				.reduce(function(accumulator, currentValue, currentIndex, array) {
+					if (!currentValue.company_name) {
+						return accumulator;
+					}
+					let strTemp =
+						`${currentValue.company_name}*^${currentValue.name}*^${
+							currentValue.job_title
+						}*^${currentValue.email}*^` +
+						(currentValue.id !== '' ? '*^' + currentValue.id : '');
+
+					accumulator.push(strTemp);
+					// console.log(strTemp);
+
+					return accumulator;
+				}, [])
+				.join('*$');
+
+			$FormData.coremember = coremember;
+			console.log($FormData);
+			// let form_data = new FormData();
+
+			// for (var key in $FormData) {
+			// 	form_data.append(key, $FormData[key]);
+			// }
+
+			let payload = {
+				FormData: $FormData,
+				reqURL: '/portfolios.ashx',
+				resTitle: '新增成功',
+				resText: '',
+			};
+			this.util_request(payload)
+				.then(data => {
+					$nuxt._router.push('/u/list');
+				})
+				.catch(err => {
+					// 失敗訊息 (立即)
+				});
 		},
 		onclickRegistrationFile(e) {
 			if ($(e.target).is('input')) {
@@ -427,7 +453,7 @@ export default {
 			$('#RegistrationFile').click();
 		},
 		onchangeRegistrationFile() {
-			this.Form.registration_file = this.$refs.RegistrationFile.files;
+			this.Form.registration_file = this.$refs.RegistrationFile.files[0];
 		},
 		onclickExpositionFile(e) {
 			if ($(e.target).is('input')) {
@@ -436,7 +462,7 @@ export default {
 			$('#ExpositionFile').click();
 		},
 		onchangeExpositionFile() {
-			this.Form.exposition_file = this.$refs.ExpositionFile.files;
+			this.Form.exposition_file = this.$refs.ExpositionFile.files[0];
 		},
 	},
 	created() {

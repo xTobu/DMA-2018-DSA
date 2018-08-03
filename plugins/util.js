@@ -16,6 +16,7 @@ Vue.mixin({
 					form_data.append(key, payload.FormData[key]);
 				}
 				// console.log(form_data)
+
 				this.$swal({
 					type: 'info',
 					title: '拼命為您處理中...',
@@ -65,6 +66,19 @@ Vue.mixin({
 			if (!results) return null;
 			if (!results[2]) return '';
 			return decodeURIComponent(results[2].replace(/\+/g, ' '));
+		},
+
+		// 數字補上千分位
+		util_thousandComma(number) {
+			{
+				let num = number.toString();
+				let pattern = /(-?\d+)(\d{3})/;
+
+				while (pattern.test(num)) {
+					num = num.replace(pattern, '$1,$2');
+				}
+				return num;
+			}
 		},
 	},
 });

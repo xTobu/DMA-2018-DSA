@@ -11,7 +11,60 @@
 		</div>
 
 		<!--works content list-->
-		<div class="list-form">
+
+		<template v-for="(item, index) in data.list">
+			<div class="list-form" :key="'list-form-'+index"  v-show="item.status!=='9'">
+				<table>
+					<tbody>
+						<tr>
+							<th>日期</th>
+							<th>作品編號</th>
+							<th>作品名稱</th>
+							<th>客戶名稱</th>
+							<th>參賽類別</th>
+							<th>參賽項目</th>
+						</tr>
+						<tr>
+							<td>{{item.created_at}}</td>
+							<td>{{item.p_key}}</td>
+							<td>{{item.title}}</td>
+							<td>{{item.customer_name}}</td>
+							<td>{{convertMainType(item.main_type)}}</td>
+							<td>{{convertSubType(item.sub_type)}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="check-list" :key="'check-list-'+index"  v-show="item.status!=='9'">
+				<ul>
+					<li>參賽表
+						<span>
+							<img v-if="item.registration_file" src="~assets/svg/circle.svg">
+							<img v-else src="~assets/svg/cross.svg">
+						</span>
+					</li>
+					<li>作品說明
+						<span>
+							<img v-if="item.exposition_file" src="~assets/svg/circle.svg">
+							<img v-else src="~assets/svg/cross.svg">
+						</span>
+					</li>
+					<li>影片連結
+						<span>
+							<img v-if="item.case_film_url" src="~assets/svg/circle.svg">
+							<img v-else src="~assets/svg/cross.svg">
+						</span>
+					</li>
+
+				</ul>
+				<a class="btn-check-list" href="#">
+					<span class="txt">作品詳情</span>
+					<span class="arrow"></span>
+				</a>
+			</div>
+
+		</template>
+		<!-- <div class="list-form">
 			<table>
 				<tbody>
 					<tr>
@@ -32,7 +85,6 @@
 					</tr>
 				</tbody>
 			</table>
-
 		</div>
 
 		<div class="check-list">
@@ -54,55 +106,11 @@
 				<span class="txt">作品詳情</span>
 				<span class="arrow"></span>
 			</a>
-		</div>
-
-		<div class="list-form">
-			<table>
-				<tbody>
-					<tr>
-						<th>日期</th>
-						<th>作品編號</th>
-						<th>作品名稱</th>
-						<th>客戶名稱</th>
-						<th>參賽類別</th>
-						<th>參賽項目</th>
-					</tr>
-					<tr>
-						<td>2018/07/09</td>
-						<td>2018/07/09</td>
-						<td>豐富的人生</td>
-						<td>白蘭氏</td>
-						<td>數位創意類</td>
-						<td>最佳互動影片創意獎</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-
-		<div class="check-list">
-			<ul>
-				<li>參賽表
-					<span><img src="~assets/svg/circle.svg"></span>
-				</li>
-				<li>參賽表
-					<span><img src="~assets/svg/circle.svg"></span>
-				</li>
-				<li>參賽表
-					<span><img src="~assets/svg/cross.svg"></span>
-				</li>
-				<li>參賽表
-					<span><img src="~assets/svg/circle.svg"></span>
-				</li>
-			</ul>
-			<a class="btn-check-list" href="#">
-				<span class="txt">作品詳情</span>
-				<span class="arrow"></span>
-			</a>
-		</div>
+		</div> -->
 
 		<div class="sum">
 			<span>目前合計須繳交費用為新台幣</span>
-			<span class="num">8000</span>
+			<span class="num">{{computedTotal}}</span>
 			<span>元</span>
 		</div>
 		<div class="works-info">
@@ -127,6 +135,7 @@
 </template>
 
 <script>
+import qs from 'qs';
 export default {
 	asyncData({ redirect }) {},
 	fetch({ store, params, query, app }) {
@@ -139,15 +148,77 @@ export default {
 	},
 	layout: 'layoutUser',
 	data() {
-		return {};
+		return {
+			data: {
+				result: '',
+				member: '',
+				list: [],
+			},
+		};
 	},
-	methods: {},
+	computed: {
+		computedTotal() {
+			// 報名費用：會員NTD$3,500元/件/項，非會員NTD$4,000元/件/項。報名10件（含）以上，享八折優惠。
+			let count = this.data.list.length;
+			let price =
+				count * (count >= 10 ? 0.8 : 1) * (this.data.member ? 3500 : 4000);
+
+			return this.util_thousandComma(price);
+		},
+	},
+	methods: {
+		convertMainType(data) {
+			let main_type = '';
+			switch (data) {
+				case 'A':
+					main_type = '數位創意類';
+					break;
+				case 'B':
+					main_type = '創新應用技術類';
+					break;
+				case 'C':
+					main_type = '整合行銷類';
+					break;
+				case 'D':
+					main_type = '媒體應用類';
+					break;
+			}
+			return main_type;
+		},
+		convertSubType(data) {
+			let sub_type = '';
+			let arrayType = [
+				'最佳廣告文案創意獎',
+				'最佳社群文案創意獎',
+				'最佳展示廣告創意獎',
+				'最佳影片創意獎',
+				'最佳短影片創意獎',
+				'最佳互動影片創意獎',
+				'最佳使用者體驗(UX)創意獎',
+				'最佳活動網站及APP 創意獎',
+				'最佳企業網站及APP 創意獎',
+			];
+
+			return arrayType[parseInt(data, 10) - 1];
+		},
+	},
 	created() {
 		// console.log('created');
 	},
 
 	mounted() {
 		// console.log(this.$store.state.user);
+
+		this.$axios({
+			method: 'POST',
+			data: qs.stringify({ act_mode: 'getportfolio_list' }),
+			url: '/portfolios.ashx',
+		})
+			.then(response => {
+				console.log('mounted', response.data);
+				this.data = response.data;
+			})
+			.catch(err => {});
 	},
 };
 </script>

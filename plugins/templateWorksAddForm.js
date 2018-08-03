@@ -23,10 +23,25 @@ export default function() {
 		list_thirdparty_name: '',
 		coremember: [
 			{
+				company_name: '網路基因',
+				name: '俊翔',
+				job_title: '薪水小偷',
+				email: 'jun_huang@webgene.com.tw',
+				id:''
+			},
+			{
+				company_name: '網路基因',
+				name: 'Peter',
+				job_title: '農夫',
+				email: 'jun_huang@webgene.com.tw',
+				id:''
+			},
+			{
 				company_name: '',
 				name: '',
 				job_title: '',
-				email:'',
+				email: '',
+				id:''
 			},
 		],
 		s_date: '',
