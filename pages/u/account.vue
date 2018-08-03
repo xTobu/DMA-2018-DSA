@@ -333,10 +333,11 @@ export default {
 				});
 		},
 		resetForm() {
-			$('input:radio').prop('checked', false);
-			this.getAccountData();
-			$('html, body').animate({ scrollTop: 0 }, '400');
-			grecaptcha.reset(this.recaptchaForm);
+			// $('input:radio').prop('checked', false);
+			// this.getAccountData();
+			// $('html, body').animate({ scrollTop: 0 }, '400');
+			// grecaptcha.reset(this.recaptchaForm);
+			$nuxt._router.push('/u/list');
 		},
 	},
 	created() {

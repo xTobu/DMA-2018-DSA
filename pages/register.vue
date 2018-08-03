@@ -193,7 +193,7 @@
 					<span class="arrow"></span>
 				</a>
 				<a class="btn-cancel" href="#" @click.prevent="resetForm">
-					<span class="txt">取消編輯</span>
+					<span class="txt">重新取得驗整碼</span>
 					<span class="arrow"></span>
 				</a>
 			</div>
@@ -338,9 +338,9 @@ export default {
 			this.Form.zip = zip;
 		},
 		resetForm() {
-			$('input:radio').prop('checked', false);
-			// 將template建成 function
-			Object.assign(this.Form, templateRegisterForm());
+			// $('input:radio').prop('checked', false);
+			// // 將template建成 function
+			// Object.assign(this.Form, templateRegisterForm());
 
 			grecaptcha.reset(this.recaptchaForm);
 		},

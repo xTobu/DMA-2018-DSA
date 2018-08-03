@@ -108,9 +108,10 @@
             <div class="upload">
                 <div class="upload-item">
                     <span>上傳參賽表*</span>
+                    <!-- {{Form.registration_file_name}} -->
                     <a class="btn-upload" @click.stop="onclickRegistrationFile">
                         <input type="file" id="RegistrationFile" ref="RegistrationFile" accept=".pdf" @change="onchangeRegistrationFile" style="display:none">
-                        <span class="icon-folder"></span>瀏覽檔案
+                        <span class="icon-folder"></span>瀏覽檔案 <br>
                     </a>
                 </div>
                 <div class="upload-item">
@@ -265,34 +266,36 @@ export default {
 			recaptchaForm: undefined,
 			Form: {
 				act_mode: 'edit',
-				Portfolio_Memeber:
-					'網路基因*^俊翔*^薪水小偷*^jun_huang@webgene.com.tw*^2803*$網路基因*^Peter*^農夫*^jun_huang@webgene.com.tw*^2804*$',
+				Portfolio_Memeber: '',
 				apply_country: [],
+				coremember: [],
 				case_film_url: '',
-				company_engname: '4',
-				company_name: '3',
-				contact_email: 'bb@bb.bb',
-				contact_name: '9',
-				contact_phone: 'a',
-				customer_brandname: '7',
-				customer_engbrandname: '8',
-				customer_engname: '6',
-				customer_name: '5',
-				e_date: '2018/08/01',
-				exposition_file: '作品說明C040000098.pdf',
-				list_customer_name: 'f',
-				list_partner_name: 'g',
-				list_thirdparty_name: 'h',
-				main_type: 'C',
-				online: 'True',
-				p_key: 'C040000098',
-				registration_file: '參賽表C040000098.pdf',
-				s_date: '2016/09/29',
-				scope: '3',
-				sub_type: '4',
-				summary: 'e',
-				tile_eng: '2',
-				title: '1',
+				company_engname: '',
+				company_name: '',
+				contact_email: '',
+				contact_name: '',
+				contact_phone: '',
+				customer_brandname: '',
+				customer_engbrandname: '',
+				customer_engname: '',
+				customer_name: '',
+				e_date: '',
+				exposition_file: '',
+				exposition_file_name: '',
+				list_customer_name: '',
+				list_partner_name: '',
+				list_thirdparty_name: '',
+				main_type: '',
+				online: '',
+				p_key: '',
+				registration_file: '',
+				registration_file_name: '',
+				s_date: '',
+				scope: '',
+				sub_type: '',
+				summary: '',
+				tile_eng: '',
+				title: '',
 			},
 		};
 	},
@@ -379,7 +382,7 @@ export default {
 					main_type = 'D';
 					break;
 				default:
-					main_type = 'A';
+					main_type = '';
 					break;
 			}
 			$FormData.main_type = main_type;
@@ -415,7 +418,7 @@ export default {
 					break;
 
 				default:
-					main_type = 1;
+					main_type = '';
 					break;
 			}
 			$FormData.sub_type = sub_type;
@@ -434,7 +437,7 @@ export default {
 					scope = 3;
 					break;
 				default:
-					scope = 1;
+					scope = '';
 					break;
 			}
 			$FormData.scope = scope;
@@ -448,7 +451,10 @@ export default {
 						`${currentValue.company_name}*^${currentValue.name}*^${
 							currentValue.job_title
 						}*^${currentValue.email}*^` +
-						(currentValue.id !== '' ? '*^' + currentValue.id : '');
+					    (currentValue.id !== '' ? currentValue.id : '');
+					// let strTemp =
+					// 	`*^*^*^*^` +
+					// 	(currentValue.id !== '' ? + currentValue.id : '');
 
 					accumulator.push(strTemp);
 					// console.log(strTemp);
@@ -457,18 +463,19 @@ export default {
 				}, [])
 				.join('*$');
 
-			$FormData.coremember = coremember;
-			console.log($FormData);
+			$FormData.coremember = coremember+'*$';
+
 			// let form_data = new FormData();
 
 			// for (var key in $FormData) {
 			// 	form_data.append(key, $FormData[key]);
 			// }
-
+			console.log($FormData);
+			// delete $FormData[regex];
 			let payload = {
 				FormData: $FormData,
 				reqURL: '/portfolios.ashx',
-				resTitle: '新增成功',
+				resTitle: '修改成功',
 				resText: '',
 			};
 			this.util_request(payload)
@@ -497,6 +504,12 @@ export default {
 		onchangeExpositionFile() {
 			this.Form.exposition_file = this.$refs.ExpositionFile.files[0];
 		},
+		onclickSelect() {
+			this.$swal({
+				type: 'error',
+				title: '類別及項目一經選定，日後無法修改',
+			});
+		},
 	},
 	created() {
 		// console.log('created');
@@ -510,9 +523,58 @@ export default {
 		})
 			.then(response => {
 				let detail = Object.assign({}, response.data.portfolio);
-                let coremember =[];
-                
-				console.log(response.data.portfolio);
+
+				detail.s_date = detail.s_date.replace(/\//g, '-');
+				detail.e_date = detail.e_date.replace(/\//g, '-');
+
+				let coremember = detail.Portfolio_Memeber.split('*$')
+					.slice(0, -1)
+					.reduce(function(accumulator, currentValue, currentIndex, array) {
+						let arrValue = currentValue.split('*^');
+						let objTemp = {
+							company_name: arrValue[0],
+							name: arrValue[1],
+							job_title: arrValue[2],
+							email: arrValue[3],
+							id: arrValue[4],
+						};
+
+						accumulator.push(objTemp);
+
+						return accumulator;
+					}, []);
+
+				detail.coremember = coremember;
+
+				detail.main_type = {
+					A: '數位創意類',
+					B: '創新應用技術類',
+					C: '整合行銷類',
+					D: '媒體應用類',
+				}[detail.main_type];
+
+				detail.sub_type = {
+					'1': '最佳廣告文案創意獎',
+					'2': '最佳社群文案創意獎',
+					'3': '最佳展示廣告創意獎',
+					'4': '最佳影片創意獎',
+					'5': '最佳短影片創意獎',
+					'6': '最佳互動影片創意獎',
+					'7': '最佳使用者體驗(UX)創意獎',
+					'8': '最佳活動網站及APP 創意獎',
+					'9': '最佳企業網站及APP 創意獎',
+				}[detail.sub_type];
+
+				detail.scope = {
+					'1': '地區',
+					'2': '全國',
+					'3': '國際',
+				}[detail.scope];
+
+				detail.registration_file_name = detail.registration_file;
+				detail.exposition_file_name = detail.exposition_file;
+
+				this.Form = Object.assign(this.Form, detail);
 			})
 			.catch(err => {});
 	},

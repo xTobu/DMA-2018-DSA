@@ -109,7 +109,7 @@
 		</div> -->
 
 		<div class="sum">
-			<span>目前合計須繳交費用為新台幣</span>
+			<span>合計須繳交費用為新台幣</span>
 			<span class="num">{{computedTotal}}</span>
 			<span>元</span>
 		</div>

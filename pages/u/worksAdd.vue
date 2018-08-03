@@ -346,7 +346,7 @@ export default {
 					main_type = 'D';
 					break;
 				default:
-					main_type = 'A';
+					main_type = '';
 					break;
 			}
 			$FormData.main_type = main_type;
@@ -382,7 +382,7 @@ export default {
 					break;
 
 				default:
-					main_type = 1;
+					main_type = '';
 					break;
 			}
 			$FormData.sub_type = sub_type;
@@ -401,7 +401,7 @@ export default {
 					scope = 3;
 					break;
 				default:
-					scope = 1;
+					scope = '';
 					break;
 			}
 			$FormData.scope = scope;
