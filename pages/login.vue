@@ -135,8 +135,10 @@ export default {
 			Form: {
 				login: {
 					act_mode: 'login',
-					uniformno: '42656367',
-					password: 'wg0123',
+					uniformno: '',
+					password: '',
+					// uniformno: '42656367',
+					// password: 'wg0123',
 				},
 
 				pw: {
