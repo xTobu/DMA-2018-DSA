@@ -229,7 +229,7 @@ export default {
 			url: '/portfolios.ashx',
 		})
 			.then(response => {
-				console.log('mounted', response.data);
+				// console.log('mounted', response.data);
 				this.data = response.data;
 			})
 			.catch(err => {});
