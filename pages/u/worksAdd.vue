@@ -327,8 +327,6 @@ export default {
 		handleSubmit() {
 			let $FormData = Object.assign({}, this.Form);
 
-			// $FormData.s_date = $FormData.s_date.replace('-', '/');
-			// $FormData.e_date = $FormData.e_date.replace('-', '/');
 			$FormData.apply_country = JSON.stringify($FormData.apply_country);
 
 			let main_type = '';
