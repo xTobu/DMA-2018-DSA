@@ -451,7 +451,7 @@ export default {
 						`${currentValue.company_name}*^${currentValue.name}*^${
 							currentValue.job_title
 						}*^${currentValue.email}*^` +
-					    (currentValue.id !== '' ? currentValue.id : '');
+						(currentValue.id !== '' ? currentValue.id : '');
 					// let strTemp =
 					// 	`*^*^*^*^` +
 					// 	(currentValue.id !== '' ? + currentValue.id : '');
@@ -463,7 +463,7 @@ export default {
 				}, [])
 				.join('*$');
 
-			$FormData.coremember = coremember+'*$';
+			$FormData.coremember = coremember + '*$';
 
 			// let form_data = new FormData();
 
@@ -471,7 +471,6 @@ export default {
 			// 	form_data.append(key, $FormData[key]);
 			// }
 			console.log($FormData);
-			// delete $FormData[regex];
 			let payload = {
 				FormData: $FormData,
 				reqURL: '/portfolios.ashx',
