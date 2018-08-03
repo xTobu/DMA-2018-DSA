@@ -75,7 +75,6 @@ export default {
 				url: '/verify.ashx',
 			})
 			.then(response => {
-                // console.log('Correct Token');
                 
 			})
 			.catch(err => {
