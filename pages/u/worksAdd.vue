@@ -425,7 +425,6 @@ export default {
 				.join('*$');
 
 			$FormData.coremember = coremember;
-			// console.log($FormData);
 			
 			let payload = {
 				FormData: $FormData,
