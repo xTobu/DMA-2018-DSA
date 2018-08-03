@@ -44,6 +44,14 @@
                         <span class="txt">我的參賽作品</span>
                         <span class="arrow"></span>
                     </nuxt-link>
+                    <nuxt-link class="btn_navibar" to="/u/worksAdd" @click.prevent="util_LinkTo('/u/worksAdd')" v-if="['u-worksAdd'].indexOf($route.name) > -1">
+                        <span class="txt">添加作品</span>
+                        <span class="arrow"></span>
+                    </nuxt-link>
+                    <nuxt-link class="btn_navibar" to="/u/worksDetail" @click.prevent="util_LinkTo('/u/worksDetail')" v-if="['u-worksDetail'].indexOf($route.name) > -1">
+                        <span class="txt">作品詳情</span>
+                        <span class="arrow"></span>
+                    </nuxt-link>
                     <nuxt-link class="btn_navibar" to="/u/account" @click.prevent="util_LinkTo('/u/account')">
                         <span class="txt">編輯個人資料</span>
                         <span class="arrow"></span>

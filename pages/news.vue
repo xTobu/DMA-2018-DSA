@@ -109,7 +109,7 @@ export default {
 		},
 	},
 	created() {
-		console.log(this.$store.state.news.list);
+		// console.log(this.$store.state.news.list);
 		this.$store.commit('news/updateVisited');
 	},
 

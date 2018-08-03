@@ -2,7 +2,7 @@
 	<div class="userWrapper">
 		<!--add works-->
 		<div class="total">
-			<p>目前合計報名 2 個獎項，尚未繳費作品共 2 筆</p>
+			<p>目前合計報名 {{computedListCount}} 個獎項，尚未繳費作品共 {{computedUnpaidCount}} 筆</p>
 			<!--add btn-->
 			<a class="btn-add" href="#" @click.prevent="util_LinkTo('/u/worksAdd')">
 				<span class="add por"></span>
@@ -13,7 +13,7 @@
 		<!--works content list-->
 
 		<template v-for="(item, index) in data.list">
-			<div class="list-form" :key="'list-form-'+index"  v-show="item.status!=='9'">
+			<div class="list-form" :key="'list-form-'+index" v-show="item.status!=='9'">
 				<table>
 					<tbody>
 						<tr>
@@ -35,7 +35,7 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="check-list" :key="'check-list-'+index"  v-show="item.status!=='9'">
+			<div class="check-list" :key="'check-list-'+index" v-show="item.status!=='9'">
 				<ul>
 					<li>參賽表
 						<span>
@@ -165,6 +165,22 @@ export default {
 
 			return this.util_thousandComma(price);
 		},
+
+		computedListCount() {
+			return this.data.list.length;
+		},
+		computedUnpaidCount() {
+			return this.data.list.reduce(function(
+				accumulator,
+				currentValue,
+				currentIndex,
+				array
+			) {
+				if (currentValue.status === '1') accumulator++;
+				return accumulator;
+			},
+			0);
+		},
 	},
 	methods: {
 		convertMainType(data) {
@@ -200,6 +216,10 @@ export default {
 			];
 
 			return arrayType[parseInt(data, 10) - 1];
+		},
+		handleGoDetail(id) {
+			$nuxt._router.push({ name: 'worksDetail', query: { id: id } });
+			// $nuxt._router.push({ name: 'news-id', params: { id: id } });
 		},
 	},
 	created() {

@@ -87,10 +87,10 @@ export default {
 				: $nuxt._router.push('/news');
 		},
 	},
-	created() {},
+	created() {
+		// console.log(this.$route.query.id);
+		let queryID = this.$route.query.id;
 
-	mounted() {
-		let queryID = this.util_getParameterByName('id');
 		this.$axios({
 			method: 'POST',
 			data: qs.stringify({ act_mode: 'detail', key: queryID }),
@@ -118,7 +118,7 @@ export default {
 					'NOV',
 					'DEC',
 				];
-					console.log(parseInt(detail.created_at.split('/')[1]-1, 10));
+					
 				let dateMonth = months[parseInt(detail.created_at.split('/')[1]-1, 10)];
 				let dateDay = detail.created_at.split('/')[2];
 				let shortenTitle =
@@ -133,6 +133,11 @@ export default {
 				});
 			})
 			.catch(err => {});
+	},
+
+	mounted() {
+		// let queryID = this.util_getParameterByName('id');
+		
 		//  console.log(this.$store.state.news.detail);
 		// this.$store.commit('news/updateVisited');
 	},
