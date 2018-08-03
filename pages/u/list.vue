@@ -170,16 +170,10 @@ export default {
 			return this.data.list.length;
 		},
 		computedUnpaidCount() {
-			return this.data.list.reduce(function(
-				accumulator,
-				currentValue,
-				currentIndex,
-				array
-			) {
+			return this.data.list.reduce(function(accumulator, currentValue) {
 				if (currentValue.status === '1') accumulator++;
 				return accumulator;
-			},
-			0);
+			}, 0);
 		},
 	},
 	methods: {
