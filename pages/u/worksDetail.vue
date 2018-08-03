@@ -444,7 +444,8 @@ export default {
 
 			let coremember = $FormData.coremember
 				.reduce(function(accumulator, currentValue, currentIndex, array) {
-					if (!currentValue.company_name) {
+                    
+					if (!currentValue.company_name ) {
 						return accumulator;
 					}
 					let strTemp =
@@ -452,7 +453,7 @@ export default {
 							currentValue.job_title
 						}*^${currentValue.email}*^` +
 						(currentValue.id !== '' ? currentValue.id : '');
-					// let strTemp =
+					//  let strTemp =
 					// 	`*^*^*^*^` +
 					// 	(currentValue.id !== '' ? + currentValue.id : '');
 

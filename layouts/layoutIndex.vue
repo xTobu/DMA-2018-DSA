@@ -10,9 +10,9 @@
         <indexHeader />
 
         <transition name='layout' mode=''>
-            <keep-alive>
+            <!-- <keep-alive> -->
                 <nuxt/>
-            </keep-alive>
+            <!-- </keep-alive> -->
         </transition>
 
         <indexFooter />
