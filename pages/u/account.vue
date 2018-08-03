@@ -349,12 +349,18 @@ export default {
 			// 初始化下拉選單
 			this.initSelect();
 
-			this.recaptchaForm = grecaptcha.render('recaptcha-main', {
-				sitekey:
-					process.env.NODE_ENV !== 'production'
-						? '6LdcigETAAAAAEou1LlaY6NWZF3wIDnfLnMURdvy'
-						: '6Lf27y8UAAAAAIu-CAB7R-dGq19c6rHKBZKIR8nT',
-			});
+			let detectLibrary = window.setInterval(() => {
+				if (typeof grecaptcha !== undefined) {
+					// 搭配：https://www.google.com/recaptcha/api.js?render=explicit
+					this.recaptchaForm = grecaptcha.render('recaptcha-main', {
+						sitekey:
+							process.env.NODE_ENV !== 'production'
+								? '6LdcigETAAAAAEou1LlaY6NWZF3wIDnfLnMURdvy'
+								: '6Lf27y8UAAAAAIu-CAB7R-dGq19c6rHKBZKIR8nT',
+					});
+					window.clearInterval(detectLibrary);
+				}
+			}, 20);
 		});
 	},
 };

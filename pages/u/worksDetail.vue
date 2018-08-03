@@ -509,15 +509,9 @@ export default {
 			url: '/portfolios.ashx',
 		})
 			.then(response => {
-				// store.commit('news/updateDetail', response.data.detail);
-
-				// console.log(state.detail);
-				// this.detail = Object.assign(detail, {
-				// 	imgURL,
-				// 	dateMonth,
-				// 	dateDay,
-				// 	shortenTitle,
-				// });
+				let detail = Object.assign({}, response.data.portfolio);
+                let coremember =[];
+                
 				console.log(response.data.portfolio);
 			})
 			.catch(err => {});
