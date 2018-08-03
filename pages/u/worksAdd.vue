@@ -425,13 +425,8 @@ export default {
 				.join('*$');
 
 			$FormData.coremember = coremember;
-			console.log($FormData);
-			// let form_data = new FormData();
-
-			// for (var key in $FormData) {
-			// 	form_data.append(key, $FormData[key]);
-			// }
-
+			// console.log($FormData);
+			
 			let payload = {
 				FormData: $FormData,
 				reqURL: '/portfolios.ashx',
