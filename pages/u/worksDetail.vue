@@ -155,7 +155,7 @@
         <div class="wrap-form">
             <h5>團隊核心成員</h5>
             <div class="wrap-data">
-                <div class="wrap-coremember" v-for="(item, index) in Form.coremember" :key="index">
+                <div class="wrap-coremember" v-for="(item, index) in Form.coremember" :key="index" v-if="item.isExist">
                     <input type="button" value="delete" @click.prevent="deleteCoremember(index)">
                     <div class="input-container form-25">
                         <input class="input" :id="'mem-company'+index" type="text" pattern=".+" required v-model="item.company_name">
@@ -173,6 +173,7 @@
                         <input class="input" :id="'mem-email'+index" type="text" pattern=".+" required v-model="item.email">
                         <label class="label" :for="'mem-email'+index">電子信箱</label>
                     </div>
+
                 </div>
 
             </div>
@@ -345,27 +346,30 @@ export default {
 
 		insertCoreMember() {
 			let index = this.Form.coremember.length;
-
-			// this.Form.coremember.$set(index, {
-			// 	company_name: '',
-			// 	name: '',
-			// 	job_title: '',
-			// 	email: '',
-			// });
 			
+			let countExist = this.Form.coremember.filter(function(item) {
+				return item.isExist === true;
+			}).length;
+
+			if (countExist >= 10) {
+				return this.$swal({
+					type: 'error',
+					title: '對不起\n團隊核心成員最多十位',
+				});
+			}
+
 			Vue.set(this.Form.coremember, index, {
 				company_name: '',
 				name: '',
 				job_title: '',
 				email: '',
 				id: '',
+				isExist: true,
 			});
 		},
 		handleSubmit() {
 			let $FormData = Object.assign({}, this.Form);
 
-			// $FormData.s_date = $FormData.s_date.replace('-', '/');
-			// $FormData.e_date = $FormData.e_date.replace('-', '/');
 			$FormData.apply_country = JSON.stringify($FormData.apply_country);
 
 			let main_type = '';
@@ -445,33 +449,22 @@ export default {
 
 			let coremember = $FormData.coremember
 				.reduce(function(accumulator, currentValue, currentIndex, array) {
-					if (!currentValue.company_name) {
-						return accumulator;
-					}
+				
 					let strTemp =
 						`${currentValue.company_name}*^${currentValue.name}*^${
 							currentValue.job_title
 						}*^${currentValue.email}*^` +
 						(currentValue.id !== '' ? currentValue.id : '');
-					//  let strTemp =
-					// 	`*^*^*^*^` +
-					// 	(currentValue.id !== '' ? + currentValue.id : '');
 
 					accumulator.push(strTemp);
-					// console.log(strTemp);
 
 					return accumulator;
 				}, [])
 				.join('*$');
 
 			$FormData.coremember = coremember + '*$';
-
-			// let form_data = new FormData();
-
-			// for (var key in $FormData) {
-			// 	form_data.append(key, $FormData[key]);
-			// }
-			console.log($FormData);
+		
+			
 			let payload = {
 				FormData: $FormData,
 				reqURL: '/portfolios.ashx',
@@ -509,7 +502,16 @@ export default {
 			});
 		},
 		deleteCoremember(index) {
-			// this.Form.coremember.splice(index, 1);
+			if (this.Form.coremember[index].id === '') {
+				return this.Form.coremember.splice(index, 1);
+			}
+			Object.assign(this.Form.coremember[index], {
+				company_name: '',
+				name: '',
+				job_title: '',
+				email: '',
+				isExist: false,
+			});
 		},
 	},
 	created() {
@@ -538,6 +540,7 @@ export default {
 							job_title: arrValue[2],
 							email: arrValue[3],
 							id: arrValue[4],
+							isExist: true,
 						};
 
 						accumulator.push(objTemp);
