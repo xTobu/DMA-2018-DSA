@@ -151,6 +151,7 @@ const config = {
 		},
 		// 所有頁面渲染後滾動至頂部
 		scrollBehavior: function(to, from, savedPosition) {
+            console.log(savedPosition);
 			// if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
 
 			// 	return {}
