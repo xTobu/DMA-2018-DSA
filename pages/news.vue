@@ -1,13 +1,13 @@
 <template>
-	<div class="wrapper">
-		<div class="head head_news">
-			<div class="tittle">
-				<span>最新消息</span>
-				<span class="sub">NEWS</span>
-			</div>
-		</div>
-		<main class="news">
-			<!-- <div class="popup-news" style="display:none;">
+    <div class="wrapper">
+        <div class="head head_news">
+            <div class="tittle">
+                <span>最新消息</span>
+                <span class="sub">NEWS</span>
+            </div>
+        </div>
+        <main class="news">
+            <!-- <div class="popup-news" style="display:none;">
         <div class="news-expand"><a class="btn-close" href="#"></a>
           <div class="news-date-expand">
             <div class="wrap-date">
@@ -25,40 +25,40 @@
           </div>
         </div>
       </div> -->
-			<transition name='nuxtchild' mode=''>
-				<nuxt-child :key="$route.params.id" />
-			</transition>
-			<ul>
+            <transition name='nuxtchild' mode=''>
+                <nuxt-child :key="$route.params.id" />
+            </transition>
+            <ul class="new-list">
 
-				<li v-for="(value, key, index) in list" :key="index">
+                <li v-for="(value, key, index) in list" :key="index">
 
-					<div class="news-date">
-						<div class="wrap-date">
-							<div class="month">{{value.dateMonth}}</div>
-							<div class="day">{{value.dateDay}}</div>
-						</div>
-					</div>
-					<a class="wrap-news-pic" href="#" @click.prevent="handleDetail(value.n_key)">
-						<div class="news-pic">
-							<img :src="value.imgURL">
-						</div>
-					</a>
-					<div class="wrap-news-content">
-						<div class="news-content">
-							<div class="headline">{{ value.shortenTitle }}</div>
-							<p>{{ value.summary }}</p>
-						</div>
-						<a class="btn-news" href="#" @click.prevent="handleDetail(value.n_key)">
-							<span class="txt">more</span>
-							<span class="arrow"></span>
-						</a>
-					</div>
+                    <div class="news-date">
+                        <div class="wrap-date">
+                            <div class="month">{{value.dateMonth}}</div>
+                            <div class="day">{{value.dateDay}}</div>
+                        </div>
+                    </div>
+                    <a class="wrap-news-pic" href="#" @click.prevent="handleDetail(value.n_key)">
+                        <div class="news-pic">
+                            <img :src="value.imgURL">
+                        </div>
+                    </a>
+                    <div class="wrap-news-content">
+                        <div class="news-content">
+                            <div class="headline">{{ value.shortenTitle }}</div>
+                            <p>{{ value.summary }}</p>
+                        </div>
+                        <a class="btn-news" href="#" @click.prevent="handleDetail(value.n_key)">
+                            <span class="txt">more</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </div>
 
-				</li>
+                </li>
 
-			</ul>
-		</main>
-	</div>
+            </ul>
+        </main>
+    </div>
 </template>
 
 <script>
@@ -104,16 +104,13 @@ export default {
 	},
 	methods: {
 		handleDetail(id) {
-			$nuxt._router.push({ name: 'newsDetail', query: { id: id } });
+			$nuxt._router.push({ name: 'news-detail', query: { id: id } });
 			// $nuxt._router.push({ name: 'news-id', params: { id: id } });
 		},
 	},
 	created() {
 		// console.log(this.$store.state.news.list);
 		this.$store.commit('news/updateVisited');
-	},
-
-	mounted() {
 		this.$axios({
 			method: 'POST',
 			data: qs.stringify({ act_mode: 'list' }),
@@ -141,15 +138,26 @@ export default {
 						'NOV',
 						'DEC',
 					];
-					item.dateMonth = months[parseInt(item.created_at.split('/')[1]-1, 10)];
+					item.dateMonth =
+						months[parseInt(item.created_at.split('/')[1] - 1, 10)];
 					item.dateDay = item.created_at.split('/')[2];
 					item.shortenTitle =
 						item.title.substring(0, 25) + (item.title.length > 24 ? '…' : '');
 					return item;
 				});
-				// this.$store.commit('news/updateList', Object.assign({}, this.list));
+				this.$store.commit('news/updateList', Object.assign({}, this.list));
 			})
 			.catch(err => {});
+	},
+
+	mounted() {
+		
+	},
+	watch: {
+		$route(to, from) {
+            // document.querySelector('html').style.height = '100%';
+            document.querySelector('body').style.height = '100%';
+		},
 	},
 	// scrollToTop: false,
 };

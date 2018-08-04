@@ -5,8 +5,7 @@ const config = {
 	 */
 	head: {
 		titleTemplate: '%s | 2018 DSA 數位奇點獎',
-		meta: [
-			{
+		meta: [{
 				charset: 'utf-8',
 			},
 			{
@@ -39,22 +38,18 @@ const config = {
 			},
 			{
 				property: 'og:image',
-				content:
-					'https://www.dsaawards.com/2018/2017_dsa_award_share.jpg',
+				content: 'https://www.dsaawards.com/2018/2017_dsa_award_share.jpg',
 			},
 			// {
 			// 	property: 'og:image',
 			// 	content: 'https://www.dsaawards.com/2018/2018_dsa_award_share.jpg',
 			// },
 		],
-		script: [
-			{
-				src:
-					'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
+		script: [{
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js',
 			},
 			{
-				src:
-					'https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js',
+				src: 'https://cdnjs.cloudflare.com/ajax/libs/is_js/0.9.0/is.min.js',
 			},
 			/**
 			 * google recaptcha
@@ -81,16 +76,14 @@ const config = {
 			// 	defer: true
 			// },
 		],
-		link: [
-			{
+		link: [{
 				rel: 'icon',
 				type: 'image/x-icon',
 				href: './favicon.ico',
 			},
 			{
 				rel: 'stylesheet',
-				href:
-					'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i',
+				href: 'https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i',
 			},
 			// {
 			// 	rel: 'stylesheet',
@@ -122,7 +115,10 @@ const config = {
 			presets: ['es2015', 'stage-0'],
 			plugins: ['transform-runtime'],
 		},
-		extend(config, { isDev, isClient }) {
+		extend(config, {
+			isDev,
+			isClient
+		}) {
 			if (isDev && isClient) {
 				config.module.rules.push({
 					enforce: 'pre',
@@ -150,8 +146,12 @@ const config = {
 			});
 		},
 		// 所有頁面渲染後滾動至頂部
-		scrollBehavior: function(to, from, savedPosition) {
-            console.log(savedPosition);
+		scrollBehavior: function (to, from, savedPosition) {
+			console.log(savedPosition);
+			// savedPosition is only available for popstate navigations (back button)
+			if (savedPosition) {
+				return savedPosition
+			}
 			// if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
 
 			// 	return {}
@@ -196,9 +196,8 @@ const config = {
 		'/api': {
 			target:
 				// 'production','development'
-				process.env.NODE_ENV !== 'production'
-					? 'https://dsaaward.iprefer.com.tw'
-					: 'https://www.dsaawards.com',
+				process.env.NODE_ENV !== 'production' ?
+				'https://dsaaward.iprefer.com.tw' : 'https://www.dsaawards.com',
 			// 路徑複寫
 			// pathRewrite: { '^/api': '/api' },
 		},

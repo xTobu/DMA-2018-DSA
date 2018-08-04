@@ -1,31 +1,26 @@
 <template>
-    <div class="wrapper">
-
-        <main class="news">
-            <div class="popup-news" style="">
-                <div class="news-expand">
-                    <a class="btn-close" href="#" @click.prevent="handleClose"></a>
-                    <div class="news-date-expand">
-                        <div class="wrap-date">
-                            <div class="month">{{detail.dateMonth}}</div>
-                            <div class="day">{{detail.dateDay}}</div>
-                        </div>
-                    </div><img :src="detail.imgURL">
-                    <div class="wrap-news-content">
-                        <h4>{{detail.title}}</h4>
-
-                        <div class="newscontent" v-html="detail.content" />
-
-                    </div>
+    <div class="popup-news" style="">
+        <div class="news-expand">
+            <a class="btn-close" href="#" @click.prevent="handleClose"></a>
+            <div class="news-date-expand">
+                <div class="wrap-date">
+                    <div class="month">{{detail.dateMonth}}</div>
+                    <div class="day">{{detail.dateDay}}</div>
                 </div>
+            </div><img :src="detail.imgURL">
+            <div class="wrap-news-content">
+                <h4>{{detail.title}}</h4>
+
+                <div class="newscontent" v-html="detail.content" />
+
             </div>
-
-        </main>
+        </div>
     </div>
-</template>
-
+</template> 
+ 
 <script>
 import qs from 'qs';
+import { mapGetters } from 'vuex';
 
 export default {
 	/**
@@ -134,13 +129,17 @@ export default {
 
 	mounted() {
 		// let queryID = this.util_getParameterByName('id');
+		if (this.$route.name === 'news-detail') {
+			document.querySelector('body').style.height = '100vh';
+            // document.querySelector('html').style.height = '100vh';
+            // $('html, body').animate({ scrollTop: 0 }, '400');
+		}
 		//  console.log(this.$store.state.news.detail);
 		// this.$store.commit('news/updateVisited');
 	},
 };
-</script>
-
-
+</script> 
+ 
 <style scoped>
 @import '~/assets/css/news.css';
 /* html {
@@ -188,5 +187,4 @@ main {
 .page-leave-to {
 	opacity: 0;
 }
-</style>
-
+</style> 
