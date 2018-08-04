@@ -156,7 +156,7 @@
             <h5>團隊核心成員</h5>
             <div class="wrap-data">
                 <div class="wrap-coremember" v-for="(item, index) in Form.coremember" :key="index">
-                     <input type="button" value="delete" @click.prevent="deleteCoremember(index)">
+                    <input type="button" value="delete" @click.prevent="deleteCoremember(index)">
                     <div class="input-container form-25">
                         <input class="input" :id="'mem-company'+index" type="text" pattern=".+" required v-model="item.company_name">
                         <label class="label" :for="'mem-company'+index">公司名稱</label>
@@ -352,6 +352,7 @@ export default {
 			// 	job_title: '',
 			// 	email: '',
 			// });
+			
 			Vue.set(this.Form.coremember, index, {
 				company_name: '',
 				name: '',
@@ -444,8 +445,7 @@ export default {
 
 			let coremember = $FormData.coremember
 				.reduce(function(accumulator, currentValue, currentIndex, array) {
-                    
-					if (!currentValue.company_name ) {
+					if (!currentValue.company_name) {
 						return accumulator;
 					}
 					let strTemp =
@@ -482,9 +482,7 @@ export default {
 				.then(data => {
 					$nuxt._router.push('/u/list');
 				})
-				.catch(err => {
-					
-				});
+				.catch(err => {});
 		},
 		onclickRegistrationFile(e) {
 			if ($(e.target).is('input')) {
@@ -509,9 +507,9 @@ export default {
 				type: 'error',
 				title: '類別及項目一經選定，日後無法修改',
 			});
-        },
-        deleteCoremember(index) {
-            // this.Form.coremember.splice(index, 1);
+		},
+		deleteCoremember(index) {
+			// this.Form.coremember.splice(index, 1);
 		},
 	},
 	created() {

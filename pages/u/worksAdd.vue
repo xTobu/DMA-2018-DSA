@@ -316,7 +316,13 @@ export default {
 			// 	name: '',
 			// 	job_title: '',
 			// 	email: '',
-			// });
+            // });
+            if (index >= 10) {
+				return this.$swal({
+					type: 'error',
+					title: '對不起\n團隊核心成員最多十位',
+				});
+			}
 			Vue.set(this.Form.coremember, index, {
 				company_name: '',
 				name: '',
@@ -407,9 +413,9 @@ export default {
 
 			let coremember = $FormData.coremember
 				.reduce(function(accumulator, currentValue, currentIndex, array) {
-					if (!currentValue.company_name) {
-						return accumulator;
-					}
+					// if (!currentValue.company_name) {
+					// 	return accumulator;
+					// }
 					let strTemp =
 						`${currentValue.company_name}*^${currentValue.name}*^${
 							currentValue.job_title
