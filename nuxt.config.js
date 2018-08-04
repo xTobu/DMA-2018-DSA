@@ -147,7 +147,7 @@ const config = {
 		},
 		// 所有頁面渲染後滾動至頂部
 		scrollBehavior: function (to, from, savedPosition) {
-			console.log(savedPosition);
+			
 			// savedPosition is only available for popstate navigations (back button)
 			if (savedPosition) {
 				return savedPosition

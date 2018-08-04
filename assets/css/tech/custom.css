@@ -44,6 +44,12 @@ div.swal2-popup button.swal2-styled.swal2-confirm {
 	z-index: 1000;
 }
 
-
+/* 兩條滾軸 scrollbar */
+/* https://stackoverflow.com/questions/9866220/why-are-two-vertical-scrollbars-showing */
+/* https://stackoverflow.com/questions/18041501/double-browser-scroll-bar-w-overflow-hidden */
+/* 回復成預設 */
+html{
+    overflow-x: initial !important;
+}
 
 

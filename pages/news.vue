@@ -156,7 +156,7 @@ export default {
 	watch: {
 		$route(to, from) {
             // document.querySelector('html').style.height = '100%';
-            document.querySelector('body').style.height = '100%';
+            // document.querySelector('body').style.height = '100%';
 		},
 	},
 	// scrollToTop: false,
@@ -165,6 +165,7 @@ export default {
 
 
 <style scoped>
+
 @import '~/assets/css/news.css';
 /* transition */
 /* .nuxtchild-enter-active,

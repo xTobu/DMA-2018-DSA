@@ -72,7 +72,7 @@ export default {
 	},
 	methods: {
 		handleClose() {
-			console.log(this.$store.state.news.visited);
+			// console.log(this.$store.state.news.visited);
 			this.$store.state.news.visited
 				? $nuxt._router.back()
 				: $nuxt._router.push('/news');
@@ -130,7 +130,7 @@ export default {
 	mounted() {
 		// let queryID = this.util_getParameterByName('id');
 		if (this.$route.name === 'news-detail') {
-			document.querySelector('body').style.height = '100vh';
+			// document.querySelector('body').style.height = '100vh';
             // document.querySelector('html').style.height = '100vh';
             // $('html, body').animate({ scrollTop: 0 }, '400');
 		}
