@@ -515,7 +515,7 @@ export default {
 		},
 	},
 	created() {
-		// console.log('created');
+		
 
 		let queryID = this.$route.query.id;
 
