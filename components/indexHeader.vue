@@ -1,5 +1,5 @@
 <template>
-  <header>
+    <header>
         <nav>
             <div class="logo">
                 <a href="" @click.prevent="util_LinkTo('/')">
@@ -9,13 +9,13 @@
             <div class="menu2">
                 <ul>
                     <li>
-                        <a href="#" @click.prevent="util_LinkTo('/login')">報名文件</a>
+                        <a href="#" @click.prevent="$swal({type: 'info',title: '敬請期待',text:'(๑•̀ω•́)ノ'})">報名文件</a>
                     </li>
                     <li>
                         <a href="login" @click.prevent="util_LinkTo('/u/list')">線上報名</a>
                     </li>
                     <li>
-                        <a href="#" @click.prevent="util_LinkTo('/login')">線上評選</a>
+                        <a href="#" @click.prevent="$swal({type: 'info',title: '敬請期待',text:'(๑•̀ω•́)ノ'})">線上評選</a>
                     </li>
                 </ul>
             </div>
@@ -45,7 +45,7 @@
         <div class="clear"></div>
         <!-- 手機 -->
         <div class="menu-toggle" @click.prevent="handleBur">
-            <a href="javascript:;"  >
+            <a href="javascript:;">
                 <div class="one"></div>
                 <div class="two"></div>
                 <div class="three"></div>
@@ -58,8 +58,8 @@
                 </div>
                 <div class="line"></div>
                 <ul class="hidden" @click="handleLi">
-                    <li >
-                        <a href="news"  @click.prevent="util_LinkTo('/news')">最新消息</a>
+                    <li>
+                        <a href="news" @click.prevent="util_LinkTo('/news')">最新消息</a>
                     </li>
                     <li>
                         <a href="award" @click.prevent="util_LinkTo('/award')">獎項介紹</a>
@@ -105,10 +105,10 @@ export default {
 		handleBur(e) {
 			$(e.currentTarget).toggleClass('on');
 			$('.menu-section').toggleClass('on');
-        },
-        handleLi(){
-            $('.menu-toggle').click()
-        }
+		},
+		handleLi() {
+			$('.menu-toggle').click();
+		},
 	},
 	created() {},
 
