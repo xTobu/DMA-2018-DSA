@@ -65,24 +65,17 @@
                 <div class="select select--white form-50" data-form-type="main_type">
                     <span class="placeholder">{{Form.main_type}}</span>
                     <ul>
-                        <li>數位創意類</li>
-                        <li>創新應用技術類</li>
-                        <li>整合行銷類</li>
-                        <li>媒體應用類</li>
+                        <li v-for="(value, key, index) in vuexCategory.list" :key="index" @click="updateSelectedCategory(key)">
+                            {{ key }}
+                        </li>
                     </ul>
                 </div>
                 <div class="select select--white form-50" data-form-type="sub_type">
                     <span class="placeholder">{{Form.sub_type}}</span>
                     <ul>
-                        <li>最佳廣告文案創意獎</li>
-                        <li>最佳社群文案創意獎</li>
-                        <li>最佳展示廣告創意獎</li>
-                        <li>最佳影片創意獎</li>
-                        <li>最佳短影片創意獎</li>
-                        <li>最佳互動影片創意獎</li>
-                        <li>最佳使用者體驗(UX)創意獎</li>
-                        <li>最佳活動網站及APP 創意獎</li>
-                        <li>最佳企業網站及APP 創意獎</li>
+                        <li v-for="(value, key, index) in vuexCategory.list[vuexCategory.data.selectedCategory]" :key="index">
+                            {{ value }}
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -300,6 +293,11 @@ export default {
 			},
 		};
 	},
+	computed: {
+		vuexCategory() {
+			return this.$store.state.worksCategory;
+		},
+	},
 	methods: {
 		// 初始化 下拉選單
 		initSelect() {
@@ -346,7 +344,7 @@ export default {
 
 		insertCoreMember() {
 			let index = this.Form.coremember.length;
-			
+
 			let countExist = this.Form.coremember.filter(function(item) {
 				return item.isExist === true;
 			}).length;
@@ -449,7 +447,6 @@ export default {
 
 			let coremember = $FormData.coremember
 				.reduce(function(accumulator, currentValue, currentIndex, array) {
-				
 					let strTemp =
 						`${currentValue.company_name}*^${currentValue.name}*^${
 							currentValue.job_title
@@ -463,8 +460,7 @@ export default {
 				.join('*$');
 
 			$FormData.coremember = coremember + '*$';
-		
-			
+
 			let payload = {
 				FormData: $FormData,
 				reqURL: '/portfolios.ashx',
@@ -513,10 +509,12 @@ export default {
 				isExist: false,
 			});
 		},
+		updateSelectedCategory(category) {
+			// this.Form.sub_type = '選擇參加項目';
+			this.$store.commit('worksCategory/updateSelectedCategory', category);
+		},
 	},
 	created() {
-		
-
 		let queryID = this.$route.query.id;
 
 		this.$axios({
