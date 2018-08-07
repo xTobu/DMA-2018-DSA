@@ -1,7 +1,10 @@
 <template>
-    <div class="wrapper">
-        <div class="head head_seminar">
-      <div class="tittle"><span>論壇活動</span><span class="sub">SEMINAR</span></div>
+  <div class="wrapper">
+    <div class="head head_seminar">
+      <div class="tittle">
+        <span>論壇活動</span>
+        <span class="sub">SEMINAR</span>
+      </div>
     </div>
     <main class="seminar">
       <div class="seminar-content">
@@ -10,23 +13,25 @@
         <div class="grey-bg">
           <div class="date">9/05~9/06 上午 9:00 ~17:00</div>
           <div class="speech">DSA 奇點論壇</div>
-          <div class="location">華南銀行國際會議廳  ( <a href="#">map</a> )</div>
+          <div class="location">華南銀行國際會議廳 (
+            <a href="#">map</a> )</div>
         </div>
         <div class="grey-bg">
           <div class="date">11/16 上午 14:00 ~17:00</div>
           <div class="speech">DigiAsia X DSA AI論壇</div>
-          <div class="location">花博公園爭艷館  ( <a href="#">
-              map )</a></div>
+          <div class="location">花博公園爭艷館 (
+            <a href="#">
+              map )</a>
+          </div>
         </div>
       </div>
     </main>
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-	asyncData({ redirect }) {
-	},
+	asyncData({ redirect }) {},
 	head() {
 		return {
 			title: '論壇活動',
@@ -37,9 +42,7 @@ export default {
 		return {};
 	},
 	methods: {},
-	created() {
-		
-	},
+	created() {},
 
 	mounted() {},
 };

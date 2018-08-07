@@ -8,6 +8,7 @@
             </div>
         </div>
         <indexHeader />
+        
 
         <transition name='layout' mode=''>
             <!-- <keep-alive> -->

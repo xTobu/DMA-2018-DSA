@@ -75,7 +75,7 @@ export default {
 			);
 		},
 		shareLine: function() {
-			var paramsTrack = '?';
+			var paramsTrack = '?site';
 			// var fb_url = is.mobile()
 			// 	? 'http://m.facebook.com/sharer.php?u='
 			// 	: 'http://www.facebook.com/sharer/sharer.php?u=';

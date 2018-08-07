@@ -1,7 +1,10 @@
 <template>
-    <div class="wrapper">
-        <div class="head head_rule">
-      <div class="tittle"><span>活動辦法</span><span class="sub">TERMS AND CONDITIONS</span></div>
+  <div class="wrapper">
+    <div class="head head_rule">
+      <div class="tittle">
+        <span>活動辦法</span>
+        <span class="sub">TERMS AND CONDITIONS</span>
+      </div>
     </div>
     <main class="rule">
       <div class="rule-content">
@@ -22,7 +25,9 @@
             </div>
             <div class="circle-date circle-green">
               <div class="date">SEP/05<br>|<br>SEP/06</div>
-              <div class="text">奇點論壇 <sup>1</sup></div>
+              <div class="text">奇點論壇
+                <sup>1</sup>
+              </div>
             </div>
             <div class="circle-date circle-green">
               <div class="date">OCT/08<br>|<br>OCT/17</div>
@@ -38,11 +43,21 @@
             </div>
             <div class="circle-date circle-red">
               <div class="date">NOV/16</div>
-              <div class="text wide">DigiAsia x DSA論壇 <sup>2</sup><br>數位奇點獎頒獎典禮 <sup>3</sup></div>
+              <div class="text wide">DigiAsia x DSA論壇
+                <sup>2</sup><br>數位奇點獎頒獎典禮
+                <sup>3</sup>
+              </div>
             </div>
           </div>
         </div>
-        <p><sup>註1</sup> 全天：華南銀行國際會議廳<span></span><span><sup>註2</sup> 白天：花博公園爭艷館</span><span><sup>註3</sup> 晚上：艾麗酒店 </span></p>
+        <p>
+          <sup>註1</sup> 全天：華南銀行國際會議廳
+          <span></span>
+          <span>
+            <sup>註2</sup> 白天：花博公園爭艷館</span>
+          <span>
+            <sup>註3</sup> 晚上：艾麗酒店 </span>
+        </p>
       </div>
       <div class="rule-content">
         <h5>參賽資格、報名方式、獎項內容、規格要求</h5>
@@ -88,14 +103,12 @@
         <p>收到報名確認信後，將款項匯入指定帳戶。</p>
       </div>
     </main>
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-	asyncData({ redirect }) {
-		
-	},
+	asyncData({ redirect }) {},
 	head() {
 		return {
 			title: '活動辦法',
@@ -106,9 +119,7 @@ export default {
 		return {};
 	},
 	methods: {},
-	created() {
-		
-	},
+	created() {},
 
 	mounted() {},
 };

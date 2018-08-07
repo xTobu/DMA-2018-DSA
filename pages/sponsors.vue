@@ -1,7 +1,10 @@
 <template>
-    <div class="wrapper">
-        <div class="head head_sponsors">
-      <div class="tittle"><span>贊助單位</span><span class="sub">SPONSORS</span></div>
+  <div class="wrapper">
+    <div class="head head_sponsors">
+      <div class="tittle">
+        <span>贊助單位</span>
+        <span class="sub">SPONSORS</span>
+      </div>
     </div>
     <main class="sponsors">
       <div class="sponsors-content">
@@ -67,13 +70,12 @@
         </div>
       </div>
     </main>
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-	asyncData({ redirect }) {
-	},
+	asyncData({ redirect }) {},
 	head() {
 		return {
 			title: '贊助單位',
@@ -84,9 +86,7 @@ export default {
 		return {};
 	},
 	methods: {},
-	created() {
-		
-	},
+	created() {},
 
 	mounted() {},
 };

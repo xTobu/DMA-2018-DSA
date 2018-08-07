@@ -38,9 +38,9 @@
                 </div>
             </div>
             <div class="granding-content-wrap">
-                 <a name="outline"></a>
+                <a name="outline"></a>
                 <div class="granding-content">
-                   
+
                     <h5>初審</h5>
                     <ul>
                         <li>進行線上初審通過/不通過，每位評審委員推薦30%的作品進入複審。</li>
@@ -60,7 +60,7 @@
                     </ul>
                     <a name="stage-one"></a>
                     <br><br>
-                    
+
                     <h5>初審評審名單</h5>
                     <h6>1.數位創意類</h6>
                     <div class="grey-bg">
@@ -174,7 +174,7 @@
                             <div class="tittle">網路基因<br>創辦人暨總經理</div>
                         </div>
                     </div>
-                     <a name="stage-two"></a>
+                    <a name="stage-two"></a>
                     <br><br>
                     <h5>複審評審名單</h5>
                     <h6>1.數位創意類</h6>

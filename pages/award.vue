@@ -351,18 +351,15 @@ export default {
 	}
 }
 @media screen and (min-width: 660px) {
-	
 	.btn-award-sub {
 		width: 100px;
 	}
 	.btn-award-sub .txt {
 		font-size: 13px;
 	}
-	
 }
 @media screen and (min-width: 768px) {
-	
-    .btn-award-sub {
+	.btn-award-sub {
 		width: 110px;
 	}
 	.btn-award-sub .txt {
@@ -370,11 +367,10 @@ export default {
 	}
 }
 @media screen and (min-width: 1024px) {
-	
-    .btn-award-sub {
+	.btn-award-sub {
 		width: 150px;
-    }
-    .btn-award-sub .arrow {
+	}
+	.btn-award-sub .arrow {
 		display: inline-block;
 	}
 	.btn-award-sub .txt {
