@@ -149,7 +149,7 @@
             <h5>團隊核心成員</h5>
             <div class="wrap-data">
                 <div class="wrap-coremember" v-for="(item, index) in Form.coremember" :key="index" v-if="item.isExist">
-                    <input type="button" value="delete" @click.prevent="deleteCoremember(index)">
+                    <!-- <input type="button" value="delete" @click.prevent="deleteCoremember(index)"> -->
                     <div class="input-container form-25">
                         <input class="input" :id="'mem-company'+index" type="text" pattern=".+" required v-model="item.company_name">
                         <label class="label" :for="'mem-company'+index">公司名稱</label>
@@ -166,7 +166,11 @@
                         <input class="input" :id="'mem-email'+index" type="text" pattern=".+" required v-model="item.email">
                         <label class="label" :for="'mem-email'+index">電子信箱</label>
                     </div>
-
+					<div class="btn-close-box"  @click.prevent="deleteCoremember(index)"> 
+                        <a class="btn-close2" href="#">
+                            <span class="close2"></span>
+                        </a>
+                    </div>
                 </div>
 
             </div>

@@ -794,7 +794,7 @@ body {
 
 .form-25 {
   margin-right: 2%;
-  width: 23.5%;
+  width: calc(22.5% - 5px);
 }
 
 @media screen and (max-width: 1024px) {
@@ -805,10 +805,6 @@ body {
   .form-25:nth-child(2n) {
     margin-right: 0;
   }
-}
-
-.form-25:nth-child(4n) {
-  margin-right: 0;
 }
 
 .add-more {
@@ -1053,6 +1049,65 @@ body {
 }
 
 .btn-close .close:after {
+  content: '';
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.btn-close-box {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  background-color: #a00000;
+  border-radius: 50%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .btn-close-box {
+    display: block;
+  }
+}
+
+.btn-close-box:hover {
+  background-color: #333;
+}
+
+.btn-close-box .btn-close2 {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  right: 3px;
+  top: 11px;
+  display: block;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.btn-close-box .btn-close2 .close2,
+.btn-close-box .btn-close2 .close2:after {
+  width: 3px;
+  height: 15px;
+  background: white;
+  display: inline-block;
+}
+
+.btn-close-box .btn-close2 .close2 {
+  margin-right: 0px;
+  vertical-align: middle;
+}
+
+.btn-close-box .btn-close2 .close2:after {
   content: '';
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
