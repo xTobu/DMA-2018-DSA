@@ -63,24 +63,19 @@
                 <div class="select select--white form-50" data-form-type="main_type">
                     <span class="placeholder">{{Form.main_type}}</span>
                     <ul>
-                        <li>數位創意類</li>
-                        <li>創新應用技術類</li>
-                        <li>整合行銷類</li>
-                        <li>媒體應用類</li>
+                        <li v-for="(value, key, index) in vuexCategory.list" :key="index" @click="updateSelectedCategory(key)">
+                            {{ key }}
+                        </li>
+
                     </ul>
                 </div>
                 <div class="select select--white form-50" data-form-type="sub_type">
                     <span class="placeholder">{{Form.sub_type}}</span>
                     <ul>
-                        <li>最佳廣告文案創意獎</li>
-                        <li>最佳社群文案創意獎</li>
-                        <li>最佳展示廣告創意獎</li>
-                        <li>最佳影片創意獎</li>
-                        <li>最佳短影片創意獎</li>
-                        <li>最佳互動影片創意獎</li>
-                        <li>最佳使用者體驗(UX)創意獎</li>
-                        <li>最佳活動網站及APP 創意獎</li>
-                        <li>最佳企業網站及APP 創意獎</li>
+                        <li v-for="(value, key, index) in vuexCategory.list[vuexCategory.data.selectedCategory]" :key="index">
+                            {{ value }}
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -264,6 +259,11 @@ export default {
 			recaptchaForm: undefined,
 		};
 	},
+	computed: {
+		vuexCategory() {
+			return this.$store.state.worksCategory;
+		},
+	},
 	methods: {
 		// 初始化 下拉選單
 		initSelect() {
@@ -316,8 +316,8 @@ export default {
 			// 	name: '',
 			// 	job_title: '',
 			// 	email: '',
-            // });
-            if (index >= 10) {
+			// });
+			if (index >= 10) {
 				return this.$swal({
 					type: 'error',
 					title: '對不起\n團隊核心成員最多十位',
@@ -436,8 +436,8 @@ export default {
 				reqURL: '/portfolios.ashx',
 				resTitle: '新增成功',
 				resText: '',
-            };
-            // console.log($FormData);
+			};
+			// console.log($FormData);
 			this.util_request(payload)
 				.then(data => {
 					$nuxt._router.push('/u/list');
@@ -463,17 +463,20 @@ export default {
 			this.Form.exposition_file = this.$refs.ExpositionFile.files[0];
 		},
 		deleteCoremember(index) {
-            this.Form.coremember.splice(index, 1);
+			this.Form.coremember.splice(index, 1);
+		},
+		updateSelectedCategory(category) {
+            this.Form.sub_type ='選擇參加項目'
+			this.$store.commit('worksCategory/updateSelectedCategory', category);
 		},
 	},
-	created() {
-		
-	},
+	created() {},
 
 	mounted() {
 		this.$nextTick(() => {
 			// 初始化下拉選單
 			this.initSelect();
+			console.log(this.vuexCategory);
 		});
 	},
 };
