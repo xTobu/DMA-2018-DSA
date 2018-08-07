@@ -1,27 +1,24 @@
 <template>
-    <div class="wrapper">
+	<div class="wrapper">
+		<main class="news">
+			<div class="popup-news" style="">
+				<div class="news-expand">
+					<a class="btn-close" href="#" @click.prevent="handleClose"></a>
+					<div class="news-date-expand">
+						<div class="wrap-date">
+							<div class="month">{{detail.dateMonth}}</div>
+							<div class="day">{{detail.dateDay}}</div>
+						</div>
+					</div><img :src="detail.imgURL">
+					<div class="wrap-news-content">
+						<h4>{{detail.title}}</h4>
+						<div class="newscontent" v-html="detail.content" />
+					</div>
+				</div>
+			</div>
 
-        <main class="news">
-            <div class="popup-news" style="">
-                <div class="news-expand">
-                    <a class="btn-close" href="#" @click.prevent="handleClose"></a>
-                    <div class="news-date-expand">
-                        <div class="wrap-date">
-                            <div class="month">{{detail.dateMonth}}</div>
-                            <div class="day">{{detail.dateDay}}</div>
-                        </div>
-                    </div><img :src="detail.imgURL">
-                    <div class="wrap-news-content">
-                        <h4>{{detail.title}}</h4>
-
-                        <div class="newscontent" v-html="detail.content" />
-
-                    </div>
-                </div>
-            </div>
-
-        </main>
-    </div>
+		</main>
+	</div>
 </template>
 
 <script>
