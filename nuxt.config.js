@@ -38,7 +38,7 @@ const config = {
 			},
 			{
 				property: 'og:image',
-				content: 'https://www.dsaawards.com/2018/2017_dsa_award_share.jpg',
+				content: 'https://www.dsaawards.com/2018/share.jpg',
 			},
 			// {
 			// 	property: 'og:image',
