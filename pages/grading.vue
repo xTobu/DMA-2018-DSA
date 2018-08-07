@@ -324,5 +324,15 @@ export default {
 		overflow: hidden;
 	}
 }
+@media screen and (max-width: 320px) {
+	.award-submenu2 {
+		width: 180%;
+	}
+}
+@media screen and (max-width: 600px) {
+	.award-submenu2 {
+		width: 160%;
+	}
+}
 </style>
 
