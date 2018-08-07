@@ -289,6 +289,7 @@ export default {
 
 		// 綁定地址資料
 		updateAreaData(country) {
+			// this.Form.district = '行政區域*'
 			this.$store.commit('registerArea/updateData', country);
 		},
 		// 綁定郵遞區號
