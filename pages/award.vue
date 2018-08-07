@@ -336,6 +336,12 @@ export default {
 <style scoped>
 @import '~/assets/css/award.css';
 
+
+@media screen and (max-width: 400px) {
+	.award-submenu2 {
+		width: 300%;
+	}
+}
 @media screen and (min-width: 600px) {
 	.award-submenu {
 		overflow: hidden;

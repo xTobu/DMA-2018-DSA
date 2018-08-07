@@ -50,7 +50,7 @@
             </div>
           </div>
         </div>
-        <p>
+        <p class="ba_p">
           <sup>註1</sup> 全天：華南銀行國際會議廳
           <span></span>
           <span>
@@ -127,7 +127,7 @@ export default {
 
 <style scoped>
 @import '~/assets/css/rule.css';
-.rule .rule-content p {
+.rule .rule-content .ba_p {
 	text-align: center;
 }
 </style>

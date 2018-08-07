@@ -42,7 +42,7 @@ export default {
 	},
 	methods: {
 		shareFacebook: function() {
-			var paramsTrack = '?Site';
+			var paramsTrack = '?website';
 			var fb_url = is.mobile()
 				? 'http://m.facebook.com/sharer.php?u='
 				: 'http://www.facebook.com/sharer/sharer.php?u=';
@@ -75,7 +75,7 @@ export default {
 			);
 		},
 		shareLine: function() {
-			var paramsTrack = '?Site';
+			var paramsTrack = '?website';
 			// var fb_url = is.mobile()
 			// 	? 'http://m.facebook.com/sharer.php?u='
 			// 	: 'http://www.facebook.com/sharer/sharer.php?u=';
