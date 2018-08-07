@@ -228,10 +228,10 @@
         </div>
         <div class="btn_wrap btn_wrap2">
             <a class="btn-confirm" href="#" @click.prevent="handleSubmit">
-                <span class="txt">確定上傳</span>
+                <span class="txt">確定修改</span>
                 <span class="arrow"></span>
             </a>
-            <a class="btn-cancel" href="#">
+            <a class="btn-cancel" href="#" @click.prevent="canvelEdit">
                 <span class="txt">取消編輯</span>
                 <span class="arrow"></span>
             </a>
@@ -513,6 +513,9 @@ export default {
 			// this.Form.sub_type = '選擇參加項目';
 			this.$store.commit('worksCategory/updateSelectedCategory', category);
 		},
+		canvelEdit(){
+            $nuxt._router.push('/u/list');
+        }
 	},
 	created() {
 		let queryID = this.$route.query.id;
