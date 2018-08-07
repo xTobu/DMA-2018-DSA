@@ -178,8 +178,9 @@ export default {
 	opacity: 0;
 } */
 
-.page-enter-active,
-.page-leave-active {
+.page-enter-active
+,.page-leave-active 
+{
 	transition: opacity 0.4s;
 }
 
