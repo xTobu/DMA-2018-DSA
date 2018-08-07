@@ -118,11 +118,11 @@
 			<div class="wrap-form">
 				<h5>你從哪裡得知的參賽信息</h5>
 				<div class="wrap-data">
-					<input class="radio-custom" id="from-dsa" name="from-wrap-data" type="radio" value="官網" v-model="Form.offical_channel">
+					<input class="radio-custom" id="from-dsa" name="from-wrap-data" type="radio" value="官網" v-model="Form.offical_channel" @click="onclickFrom('官網')">
 					<label class="radio-custom-label radio-country" for="from-dsa">數位奇點獎官網</label>
-					<input class="radio-custom" id="from-dsaFB" name="from-wrap-data" type="radio" value="臉書" v-model="Form.offical_channel">
+					<input class="radio-custom" id="from-dsaFB" name="from-wrap-data" type="radio" value="臉書" v-model="Form.offical_channel" @click="onclickFrom('臉書')">
 					<label class="radio-custom-label radio-country" for="from-dsaFB">數位奇點獎FB</label>
-					<input class="radio-custom" id="from-dsaEDM" name="from-wrap-data" type="radio" value="EDM" v-model="Form.offical_channel">
+					<input class="radio-custom" id="from-dsaEDM" name="from-wrap-data" type="radio" value="EDM" v-model="Form.offical_channel" @click="onclickFrom('EDM')">
 					<label class="radio-custom-label radio-country" for="from-dsaEDM">數位奇點獎EDM</label>
 				</div>
 				<div class="from">
@@ -193,7 +193,7 @@
 					<span class="arrow"></span>
 				</a>
 				<a class="btn-cancel" href="#" @click.prevent="resetForm">
-					<span class="txt">重新取得驗整碼</span>
+					<span class="txt">重設驗證碼</span>
 					<span class="arrow"></span>
 				</a>
 			</div>
@@ -325,13 +325,11 @@ export default {
 				.then(data => {
 					$nuxt._router.push('/login');
 				})
-				.catch(err => {
-					
-				});
+				.catch(err => {});
 		},
 		// 綁定地址資料
 		updateAreaData(country) {
-			this.Form.district = '行政區域*'
+			this.Form.district = '行政區域*';
 			this.$store.commit('registerArea/updateData', country);
 		},
 		// 綁定郵遞區號
@@ -344,6 +342,9 @@ export default {
 			// Object.assign(this.Form, templateRegisterForm());
 
 			grecaptcha.reset(this.recaptchaForm);
+		},
+		onclickFrom(from) {
+			if (this.Form.offical_channel === from) this.Form.offical_channel = '';
 		},
 	},
 	created() {},

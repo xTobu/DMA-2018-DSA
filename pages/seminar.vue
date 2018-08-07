@@ -14,13 +14,13 @@
           <div class="date">9/05~9/06 上午 9:00 ~17:00</div>
           <div class="speech">DSA 奇點論壇</div>
           <div class="location">華南銀行國際會議廳 (
-            <a href="#">map</a> )</div>
+            <a href="https://goo.gl/maps/2z9AAVtwHmD2" target="_blank">map</a> )</div>
         </div>
         <div class="grey-bg">
           <div class="date">11/16 上午 14:00 ~17:00</div>
           <div class="speech">DigiAsia X DSA AI論壇</div>
           <div class="location">花博公園爭艷館 (
-            <a href="#">
+            <a href="https://goo.gl/maps/CDCLLtRL8fw" target="_blank">
               map )</a>
           </div>
         </div>

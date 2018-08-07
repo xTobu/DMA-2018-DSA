@@ -98,11 +98,11 @@
 		<div class="wrap-form">
 			<h5>你從哪裡得知的參賽信息</h5>
 			<div class="wrap-data">
-				<input class="radio-custom" id="from-dsa" name="from-wrap-data" type="radio" value="官網" v-model="Form.offical_channel">
+				<input class="radio-custom" id="from-dsa" name="from-wrap-data" type="radio" value="官網" v-model="Form.offical_channel" @click="onclickFrom('官網')">
 				<label class="radio-custom-label radio-country" for="from-dsa">數位奇點獎官網</label>
-				<input class="radio-custom" id="from-dsaFB" name="from-wrap-data" type="radio" value="臉書" v-model="Form.offical_channel">
+				<input class="radio-custom" id="from-dsaFB" name="from-wrap-data" type="radio" value="臉書" v-model="Form.offical_channel" @click="onclickFrom('臉書')">
 				<label class="radio-custom-label radio-country" for="from-dsaFB">數位奇點獎FB</label>
-				<input class="radio-custom" id="from-dsaEDM" name="from-wrap-data" type="radio" value="EDM" v-model="Form.offical_channel">
+				<input class="radio-custom" id="from-dsaEDM" name="from-wrap-data" type="radio" value="EDM" v-model="Form.offical_channel" @click="onclickFrom('EDM')">
 				<label class="radio-custom-label radio-country" for="from-dsaEDM">數位奇點獎EDM</label>
 			</div>
 			<div class="from">
@@ -329,9 +329,7 @@ export default {
 				.then(data => {
 					$nuxt._router.push('/u/list');
 				})
-				.catch(err => {
-					
-				});
+				.catch(err => {});
 		},
 		resetForm() {
 			// $('input:radio').prop('checked', false);
@@ -339,6 +337,9 @@ export default {
 			// $('html, body').animate({ scrollTop: 0 }, '400');
 			// grecaptcha.reset(this.recaptchaForm);
 			$nuxt._router.push('/u/list');
+		},
+		onclickFrom(from) {
+			if (this.Form.offical_channel === from) this.Form.offical_channel = '';
 		},
 	},
 	created() {

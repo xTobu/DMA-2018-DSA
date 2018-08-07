@@ -127,5 +127,8 @@ export default {
 
 <style scoped>
 @import '~/assets/css/rule.css';
+.rule .rule-content p {
+	text-align: center;
+}
 </style>
 

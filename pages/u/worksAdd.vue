@@ -73,7 +73,7 @@
                     <span class="placeholder">{{Form.sub_type}}</span>
                     <ul>
                         <li v-for="(value, key, index) in vuexCategory.list[vuexCategory.data.selectedCategory]" :key="index">
-                            {{ value }}
+                            {{ key }}
                         </li>
 
                     </ul>
@@ -166,7 +166,7 @@
                         <input class="input" :id="'mem-email'+index" type="text" pattern=".+" required v-model="item.email">
                         <label class="label" :for="'mem-email'+index">電子信箱</label>
                     </div>
-                    <div class="btn-close-box"  @click.prevent="deleteCoremember(index)"> 
+                    <div class="btn-close-box" @click.prevent="deleteCoremember(index)">
                         <a class="btn-close2" href="#">
                             <span class="close2"></span>
                         </a>
@@ -341,62 +341,64 @@ export default {
 
 			$FormData.apply_country = JSON.stringify($FormData.apply_country);
 
-			let main_type = '';
-			switch ($FormData.main_type) {
-				case '數位創意類':
-					main_type = 'A';
-					break;
-				case '創新應用技術類':
-					main_type = 'B';
-					break;
-				case '整合行銷類':
-					main_type = 'C';
-					break;
-				case '媒體應用類':
-					main_type = 'D';
-					break;
-				default:
-					main_type = '';
-					break;
-			}
-			$FormData.main_type = main_type;
-
-			let sub_type = '';
-			switch ($FormData.sub_type) {
-				case '最佳廣告文案創意獎':
-					sub_type = 1;
-					break;
-				case '最佳社群文案創意獎':
-					sub_type = 2;
-					break;
-				case '最佳展示廣告創意獎':
-					sub_type = 3;
-					break;
-				case '最佳影片創意獎':
-					sub_type = 4;
-					break;
-				case '最佳短影片創意獎':
-					sub_type = 5;
-					break;
-				case '最佳互動影片創意獎':
-					sub_type = 6;
-					break;
-				case '最佳使用者體驗(UX)創意獎':
-					sub_type = 7;
-					break;
-				case '最佳活動網站及APP 創意獎':
-					sub_type = 8;
-					break;
-				case '最佳企業網站及APP 創意獎':
-					sub_type = 9;
-					break;
-
-				default:
-					main_type = '';
-					break;
-			}
-			$FormData.sub_type = sub_type;
-
+			
+			let objMainType = {
+				數位創意類: 'A',
+				創新應用技術類: 'B',
+				整合行銷類: 'C',
+				媒體應用類: 'D',
+			};
+			$FormData.main_type = objMainType[$FormData.main_type] || '';
+		
+			let objSubType = {
+				A: {
+					最佳廣告文案創意獎: 1,
+					最佳社群文案創意獎: 2,
+					最佳展示廣告創意獎: 3,
+					最佳影片創意獎: 4,
+					最佳短影片創意獎: 5,
+					最佳互動影片創意獎: 6,
+					'最佳使用者體驗(UX)創意獎': 7,
+					'最佳活動網站及APP 創意獎': 8,
+					'最佳企業網站及APP 創意獎': 9,
+				},
+				B: {
+					'最佳AR/VR 應用獎': 1,
+					最佳網站技術應用獎: 2,
+					最佳廣告技術應用獎: 3,
+					最佳互動裝置應用獎: 4,
+					最佳數位服務體驗應用獎: 5,
+					最佳數據應用獎: 6,
+					'最佳loT 應用獎': 7,
+					'最佳AI 應用獎': 8,
+				},
+				C: {
+					最佳社群行銷獎: 1,
+					最佳跨媒體整合行銷獎: 2,
+					最佳數位平台整合行銷獎: 3,
+					最佳內容行銷獎: 4,
+					最佳O2O行銷獎: 5,
+					最佳程序化行銷獎: 6,
+					最佳行動行銷獎: 7,
+					最佳策展行銷獎: 8,
+					最佳電子商務行銷獎: 9,
+					最佳KOL獎: 10,
+				},
+				D: {
+					最佳DMP應用獎: 1,
+					'最佳使用者體驗(UX)創意獎': 2,
+					最佳策展行銷獎: 3,
+					最佳媒體行銷技術獎: 4,
+					最佳媒體內容行銷獎: 5,
+					最佳直播行銷運用獎: 6,
+				},
+				undefined: { 選擇參加項目: '' },
+			};
+			if ($FormData.sub_type !== '選擇參加項目')
+				$FormData.sub_type =
+                    objSubType[$FormData.main_type][$FormData.sub_type] || '';
+            
+	
 			$FormData.online = $FormData.online ? 1 : 0;
 
 			let scope = '';
@@ -484,7 +486,6 @@ export default {
 		this.$nextTick(() => {
 			// 初始化下拉選單
 			this.initSelect();
-			console.log(this.vuexCategory);
 		});
 	},
 };
