@@ -195,7 +195,7 @@ const config = {
 	proxy: {
 		'/api': {
 			target:
-				// 'production','development'
+				// process.env.NODE_ENV 'production','development'
 				process.env.NODE_ENV !== 'production' ?
 				'https://dsaaward.iprefer.com.tw' : 'https://www.dsaawards.com',
 			// 路徑複寫
