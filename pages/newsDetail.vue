@@ -96,7 +96,8 @@ export default {
 				let imgURL =
 					(process.env.NODE_ENV !== 'production'
 						? 'https://dsaaward.iprefer.com.tw/upload/News/'
-						: 'https://www.dsaawards.com/upload/News/') + detail.img_name;
+						: 'https://www.dsaawards.com/upload/News/') +
+					detail.img_name;
 				var months = [
 					'JAN',
 					'FEB',
@@ -116,7 +117,8 @@ export default {
 					months[parseInt(detail.created_at.split('/')[1] - 1, 10)];
 				let dateDay = detail.created_at.split('/')[2];
 				let shortenTitle =
-					detail.title.substring(0, 25) + (detail.title.length > 24 ? '…' : '');
+					detail.title.substring(0, 25) +
+					(detail.title.length > 24 ? '…' : '');
 
 				// console.log(state.detail);
 				this.detail = Object.assign(detail, {
