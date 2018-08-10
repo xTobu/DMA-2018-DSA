@@ -1,4 +1,5 @@
 const resolve = require('path').resolve;
+
 const config = {
 	/*
 	 ** Headers of the page
