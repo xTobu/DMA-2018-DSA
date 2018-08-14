@@ -185,7 +185,8 @@ const config = {
 	modules: [
 		'@nuxtjs/axios', // With options
 		'@nuxtjs/proxy',
-	],
+    ],
+    
 	/**
 	 * @nuxtjs/axios 設定預設
 	 */
@@ -200,7 +201,10 @@ const config = {
 				process.env.NODE_ENV !== 'production' ?
 				'https://dsaaward.iprefer.com.tw' : 'https://www.dsaawards.com',
 			// 路徑複寫
-			// pathRewrite: { '^/api': '/api' },
+            // pathRewrite: { '^/api': '/api' },
+            "secure": false,
+            // "changeOrigin": true,
+            // "logLevel": "info"
 		},
 	},
 	generate: {

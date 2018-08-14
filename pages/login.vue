@@ -135,8 +135,8 @@ export default {
 			Form: {
 				login: {
 					act_mode: 'login',
-					uniformno: '',
-					password: '',
+					uniformno: '42656367',
+					password: 'wg0123',
 					// uniformno: '42656367',
 					// password: 'wg0123',
 				},
@@ -243,7 +243,6 @@ export default {
 	},
 	created() {},
 	mounted() {
-		console.log(this.loginURL);
 	},
 };
 </script>
