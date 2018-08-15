@@ -183,12 +183,12 @@
 			<h5>聲明*</h5>
 			<div class="wrap-data">
 				<div class="input-container form-rec">
-					<input class="input" id="date-begin" type="date" pattern=".+" required v-model="Form.s_date" @input='Form.s_date = $event.target.value'>
+					<input class="input" id="date-begin" min="2017-09-01"  max="2018-08-31" type="date" pattern=".+" required v-model="Form.s_date" @input='Form.s_date = $event.target.value' @change='Form.s_date = $event.target.value'>
 					<label class="label labelFocused" for="date-begin">參賽作品開始時間*</label>
 				</div>
 				<div class="rec-center">
 					<div class="input-container form-rec2">
-						<input class="input" id="date-end" type="date" pattern=".+" required v-model="Form.e_date" @input='Form.e_date = $event.target.value'>
+						<input class="input" id="date-end" min="2017-09-01" type="date" pattern=".+" required v-model="Form.e_date" @input='Form.e_date = $event.target.value' @change='Form.e_date = $event.target.value'>
 						<label class="label labelFocused" for="date-end">參賽作品結束時間*</label>
 					</div>
 					<span>或</span>

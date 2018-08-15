@@ -182,12 +182,12 @@
             <h5>聲明*</h5>
             <div class="wrap-data">
                 <div class="input-container form-rec">
-                    <input class="input" id="date-begin" type="date" pattern=".+" required v-model="Form.s_date" @input='Form.s_date = $event.target.value'>
+                    <input class="input" id="date-begin" min="2017-09-01" max="2018-08-31" type="date" pattern=".+" required v-model="Form.s_date" @input='Form.s_date = $event.target.value'>
                     <label class="label labelFocused" for="date-begin">參賽作品開始時間*</label>
                 </div>
                 <div class="rec-center">
                     <div class="input-container form-rec2">
-                        <input class="input" id="date-end" type="date" pattern=".+" required v-model="Form.e_date" @input='Form.e_date = $event.target.value'>
+                        <input class="input" id="date-end" min="2017-09-01" type="date" pattern=".+" required v-model="Form.e_date" @input='Form.e_date = $event.target.value'>
                         <label class="label labelFocused" for="date-end">參賽作品結束時間*</label>
                     </div>
                     <span>或</span>
@@ -341,7 +341,6 @@ export default {
 
 			$FormData.apply_country = JSON.stringify($FormData.apply_country);
 
-			
 			let objMainType = {
 				數位創意類: 'A',
 				創新應用技術類: 'B',
@@ -349,7 +348,7 @@ export default {
 				媒體應用類: 'D',
 			};
 			$FormData.main_type = objMainType[$FormData.main_type] || '';
-		
+
 			let objSubType = {
 				A: {
 					最佳廣告文案創意獎: 1,
@@ -396,9 +395,8 @@ export default {
 			};
 			if ($FormData.sub_type !== '選擇參加項目')
 				$FormData.sub_type =
-                    objSubType[$FormData.main_type][$FormData.sub_type] || '';
-            
-	
+					objSubType[$FormData.main_type][$FormData.sub_type] || '';
+
 			$FormData.online = $FormData.online ? 1 : 0;
 
 			let scope = '';
@@ -419,7 +417,12 @@ export default {
 			$FormData.scope = scope;
 
 			let coremember = $FormData.coremember
-				.reduce(function(accumulator, currentValue, currentIndex, array) {
+				.reduce(function(
+					accumulator,
+					currentValue,
+					currentIndex,
+					array
+				) {
 					// if (!currentValue.company_name) {
 					// 	return accumulator;
 					// }
@@ -433,11 +436,12 @@ export default {
 					// console.log(strTemp);
 
 					return accumulator;
-				}, [])
+				},
+				[])
 				.join('*$');
 
 			$FormData.coremember = coremember;
-
+			console.log($FormData);
 			let payload = {
 				FormData: $FormData,
 				reqURL: '/portfolios.ashx',
@@ -474,11 +478,17 @@ export default {
 		},
 		updateSelectedCategory(category) {
 			this.Form.sub_type = '選擇參加項目';
-			this.$store.commit('worksCategory/updateSelectedCategory', category);
+			this.$store.commit(
+				'worksCategory/updateSelectedCategory',
+				category
+			);
 		},
 		canvelEdit() {
 			$nuxt._router.push('/u/list');
 		},
+	},
+	beforeCreate() {
+		
 	},
 	created() {},
 
@@ -487,7 +497,8 @@ export default {
 			// 初始化下拉選單
 			this.initSelect();
 		});
-	},
+    },
+    middleware: 'dateValidate',
 };
 </script>
 
