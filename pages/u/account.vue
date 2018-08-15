@@ -191,7 +191,7 @@ export default {
 	},
 	head() {
 		return {
-			title: '線上報名',
+			title: '編輯個人資料',
 		};
 	},
 	layout: 'layoutUser',

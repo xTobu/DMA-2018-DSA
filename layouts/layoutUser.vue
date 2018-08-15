@@ -82,6 +82,11 @@ export default {
 	},
 	async fetch({ store, params, app }) {
 		// layout not fire fetch
+    },
+    head() {
+		return {
+			title: '會員專區',
+		};
 	},
 	computed: {
 		vuexUser() {

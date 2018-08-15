@@ -36,7 +36,7 @@ export default {
 	},
 	head() {
 		return {
-			title: '線上報名',
+			title: '更改密碼',
 		};
 	},
 	layout: 'layoutUser',

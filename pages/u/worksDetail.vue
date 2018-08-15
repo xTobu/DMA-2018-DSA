@@ -255,7 +255,7 @@ export default {
 	},
 	head() {
 		return {
-			title: '線上報名',
+			title: '作品詳情',
 		};
 	},
 	layout: 'layoutUser',
