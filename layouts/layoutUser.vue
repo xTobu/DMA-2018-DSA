@@ -82,8 +82,8 @@ export default {
 	},
 	async fetch({ store, params, app }) {
 		// layout not fire fetch
-    },
-    head() {
+	},
+	head() {
 		return {
 			title: '會員專區',
 		};
@@ -113,7 +113,6 @@ export default {
 				})
 				.catch(err => {
 					console.log(err);
-					
 				});
 		},
 	},

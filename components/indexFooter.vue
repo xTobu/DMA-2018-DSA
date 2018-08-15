@@ -16,7 +16,7 @@
 				<br> 地址：106 台北市大安區敦化南路2段2號4樓之1 (DMA)
 				<br> 官網網站：
 				<a href="http://www.dma.org.tw/" target="_blank">www.dma.org.tw</a> FB：
-				<a href="https://www.facebook.com/DMA.Taipei" target="_blank">www.facebook.com.tw/DMA.Taipei</a>
+				<a href="https://www.facebook.com/dsaawards/" target="_blank">https://www.facebook.com/dsaawards/</a>
 			</div>
 			<div class="share foot">
 				<p>SHARE</p>
