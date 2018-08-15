@@ -165,6 +165,8 @@ export default {
 				(count >= 10 ? 0.8 : 1) *
 				(this.data.member ? 3500 : 4000);
 
+            console.log('this.data.list',this.data.list);
+            console.log('price',price)
 			return this.util_thousandComma(price);
 		},
 
