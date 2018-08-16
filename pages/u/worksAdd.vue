@@ -101,10 +101,13 @@
             <div class="upload">
                 <div class="upload-item">
                     <span>上傳參賽表*</span>
+                    
                     <a class="btn-upload" @click.stop="onclickRegistrationFile">
                         <input type="file" id="RegistrationFile" ref="RegistrationFile" accept=".pdf" @change="onchangeRegistrationFile" style="display:none">
                         <span class="icon-folder"></span>瀏覽檔案
                     </a>
+                    <br>
+                    <span>參賽表：{{RegistrationFile}}</span>
                 </div>
                 <div class="upload-item">
                     <span>上傳作品說明*</span>
@@ -113,6 +116,8 @@
                         <span class="icon-folder">
                         </span>瀏覽檔案
                     </a>
+                    <br>
+                    <span>作品說明：{{ExpositionFile}}</span>
                 </div>
                 <div class="input-container form-upload">
                     <input class="input" id="uploadurl" type="text" pattern=".+" required v-model="Form.case_film_url">
@@ -261,7 +266,9 @@ export default {
 	data() {
 		return {
 			Form: templateWorksAddForm(),
-			recaptchaForm: undefined,
+            recaptchaForm: undefined,
+            RegistrationFile:'未選擇',
+            ExpositionFile:'未選擇',
 		};
 	},
 	computed: {
@@ -462,7 +469,8 @@ export default {
 			$('#RegistrationFile').click();
 		},
 		onchangeRegistrationFile() {
-			this.Form.registration_file = this.$refs.RegistrationFile.files[0];
+            this.Form.registration_file = this.$refs.RegistrationFile.files[0];
+            this.RegistrationFile = this.$refs.RegistrationFile.files[0].name
 		},
 		onclickExpositionFile(e) {
 			if ($(e.target).is('input')) {
@@ -471,7 +479,8 @@ export default {
 			$('#ExpositionFile').click();
 		},
 		onchangeExpositionFile() {
-			this.Form.exposition_file = this.$refs.ExpositionFile.files[0];
+            this.Form.exposition_file = this.$refs.ExpositionFile.files[0];
+            this.ExpositionFile = this.$refs.ExpositionFile.files[0].name
 		},
 		deleteCoremember(index) {
 			this.Form.coremember.splice(index, 1);
