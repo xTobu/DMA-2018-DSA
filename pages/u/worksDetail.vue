@@ -187,12 +187,12 @@
             <h5>聲明*</h5>
             <div class="wrap-data">
                 <div class="input-container form-rec">
-                    <input class="input" id="date-begin" min="2017-09-01" max="2018-08-31" type="date" pattern=".+" required v-model="Form.s_date" @input='Form.s_date = $event.target.value' @change='Form.s_date = $event.target.value'>
+                    <input class="input" id="date-begin" min="2017-09-01" max="2018-08-31" type="date" pattern=".+" required v-model="Form.s_date" @input='onchangeS_Date' @change='onchangeS_Date'>
                     <label class="label labelFocused" for="date-begin">參賽作品開始時間*</label>
                 </div>
                 <div class="rec-center">
                     <div class="input-container form-rec2">
-                        <input class="input" id="date-end" min="2017-09-01" type="date" pattern=".+" required v-model="Form.e_date" @input='Form.e_date = $event.target.value' @change='Form.e_date = $event.target.value'>
+                        <input class="input" id="date-end" min="2017-09-01" type="date" pattern=".+" required v-model="Form.e_date" @input='onchangeE_Date' @change='onchangeE_Date'>
                         <label class="label labelFocused" for="date-end">參賽作品結束時間*</label>
                     </div>
                     <!-- <span>或</span>
@@ -552,7 +552,8 @@ export default {
 		},
 		onchangeRegistrationFile() {
 			this.Form.registration_file = this.$refs.RegistrationFile.files[0];
-			this.RegistrationFile = "已選取："+this.$refs.RegistrationFile.files[0].name;
+			this.RegistrationFile =
+				'已選取：' + this.$refs.RegistrationFile.files[0].name;
 		},
 		onclickExpositionFile(e) {
 			if ($(e.target).is('input')) {
@@ -562,7 +563,8 @@ export default {
 		},
 		onchangeExpositionFile() {
 			this.Form.exposition_file = this.$refs.ExpositionFile.files[0];
-			this.ExpositionFile = "已選取："+this.$refs.ExpositionFile.files[0].name;
+			this.ExpositionFile =
+				'已選取：' + this.$refs.ExpositionFile.files[0].name;
 		},
 		onclickSelect() {
 			this.$swal({
@@ -591,10 +593,23 @@ export default {
 		},
 		canvelEdit() {
 			$nuxt._router.push('/u/list');
-        },
-        onchanges_date(){
-            
-        }
+		},
+		onchangeS_Date(e) {
+			if (new Date(e.target.value) < new Date(e.target.min)) {
+				this.Form.s_date = e.target.min;
+			} else if (new Date(e.target.value) > new Date(e.target.max)) {
+				this.Form.s_date = e.target.max;
+			} else {
+				this.Form.s_date = e.target.value;
+			}
+		},
+		onchangeE_Date(e) {
+            if (new Date(e.target.value) < new Date(e.target.min)) {
+				this.Form.e_date = e.target.min;
+			}  else {
+				this.Form.e_date = e.target.value;
+			}
+		},
 	},
 	created() {
 		let queryID = this.$route.query.id;
