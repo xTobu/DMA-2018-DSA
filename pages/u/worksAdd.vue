@@ -195,9 +195,9 @@
                         <input class="input" id="date-end" min="2017-09-01" type="date" pattern=".+" required v-model="Form.e_date" @input='Form.e_date = $event.target.value'>
                         <label class="label labelFocused" for="date-end">參賽作品結束時間*</label>
                     </div>
-                    <span>或</span>
+                    <!-- <span>或</span>
                     <input class="radio-custom" id="radio-still" name="radio-group" type="checkbox" unchecked v-model="Form.online">
-                    <label class="radio-custom-label" for="radio-still">仍在繼續</label>
+                    <label class="radio-custom-label" for="radio-still">仍在繼續</label> -->
                 </div>
                 <div class="select select--white form-rec" data-form-type="scope">
                     <span class="placeholder">{{Form.scope}}</span>
