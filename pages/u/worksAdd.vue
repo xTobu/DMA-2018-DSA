@@ -107,7 +107,7 @@
                         <span class="icon-folder"></span>瀏覽檔案
                     </a>
                     <br>
-                    <span>參賽表：{{RegistrationFile}}</span>
+                    <span style="top: 10px;position: relative;">{{RegistrationFile}}</span>
                 </div>
                 <div class="upload-item">
                     <span>上傳作品說明*</span>
@@ -117,7 +117,7 @@
                         </span>瀏覽檔案
                     </a>
                     <br>
-                    <span>作品說明：{{ExpositionFile}}</span>
+                    <span style="top: 10px;position: relative;">{{ExpositionFile}}</span>
                 </div>
                 <div class="input-container form-upload">
                     <input class="input" id="uploadurl" type="text" pattern=".+" required v-model="Form.case_film_url">
@@ -267,8 +267,8 @@ export default {
 		return {
 			Form: templateWorksAddForm(),
             recaptchaForm: undefined,
-            RegistrationFile:'未選擇',
-            ExpositionFile:'未選擇',
+            RegistrationFile:'',
+            ExpositionFile:'',
 		};
 	},
 	computed: {
@@ -470,7 +470,7 @@ export default {
 		},
 		onchangeRegistrationFile() {
             this.Form.registration_file = this.$refs.RegistrationFile.files[0];
-            this.RegistrationFile = this.$refs.RegistrationFile.files[0].name
+            this.RegistrationFile = "已選取："+this.$refs.RegistrationFile.files[0].name
 		},
 		onclickExpositionFile(e) {
 			if ($(e.target).is('input')) {
@@ -480,7 +480,7 @@ export default {
 		},
 		onchangeExpositionFile() {
             this.Form.exposition_file = this.$refs.ExpositionFile.files[0];
-            this.ExpositionFile = this.$refs.ExpositionFile.files[0].name
+            this.ExpositionFile = "已選取："+this.$refs.ExpositionFile.files[0].name
 		},
 		deleteCoremember(index) {
 			this.Form.coremember.splice(index, 1);

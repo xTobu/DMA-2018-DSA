@@ -42,12 +42,15 @@
                             <img v-if="item.registration_file" src="~assets/svg/circle.svg">
                             <img v-else src="~assets/svg/cross.svg">
                         </span>
+                        
+
                     </li>
                     <li>作品說明
                         <span>
                             <img v-if="item.exposition_file" src="~assets/svg/circle.svg">
                             <img v-else src="~assets/svg/cross.svg">
                         </span>
+
                     </li>
                     <li>影片連結
                         <span>
@@ -165,8 +168,7 @@ export default {
 				(count >= 10 ? 0.8 : 1) *
 				(this.data.member ? 3500 : 5000);
 
-            
-			return this.util_thousandComma(parseInt(price,10));
+			return this.util_thousandComma(parseInt(price, 10));
 		},
 
 		computedListCount() {
@@ -248,6 +250,31 @@ export default {
 		handleGoDetail(id) {
 			$nuxt._router.push({ name: 'u-worksDetail', query: { id: id } });
 			// $nuxt._router.push({ name: 'news-id', params: { id: id } });
+		},
+		async getRegistrationFileName(p_key) {
+			this.$axios({
+				method: 'POST',
+				data: $.param({ act_mode: 'getportfolio', p_key }),
+				url: '/portfolios.ashx',
+			})
+				.then(res => {
+                    console.log(res.data.portfolio.registration_file)
+					return res.data.portfolio.registration_file;
+				})
+				.catch(err => {});
+			// return p_key;
+		},
+		getExpositionFileName(p_key) {
+			this.$axios({
+				method: 'POST',
+				data: $.param({ act_mode: 'getportfolio', p_key }),
+				url: '/portfolios.ashx',
+			})
+				.then(res => {
+					return res.data.portfolio.exposition_file;
+				})
+				.catch(err => {});
+			// return p_key;
 		},
 	},
 	created() {},
