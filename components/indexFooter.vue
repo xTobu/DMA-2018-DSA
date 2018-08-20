@@ -15,7 +15,8 @@
 				<a href="mailto:office@dma.org.tw">office@dma.org.tw</a>
 				<br> 地址：106 台北市大安區敦化南路2段2號4樓之1 (DMA)
 				<br> 官網網站：
-				<a href="http://www.dma.org.tw/" target="_blank">www.dma.org.tw</a> FB：
+				<a href="http://www.dma.org.tw/" target="_blank">www.dma.org.tw</a> 
+                <br>DSA粉絲專頁：
 				<a href="https://www.facebook.com/dsaawards/" target="_blank">https://www.facebook.com/dsaawards/</a>
 			</div>
 			<div class="share foot">
