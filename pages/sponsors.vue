@@ -14,58 +14,37 @@
                         <li><img src="~assets/img/logo/logo-01-01.jpg"></li>
                     </ul>
                 </div>
-                <h5>創新夥伴</h5>
-                <div class="logo-content">
-                    <ul>
-                        <li><img src="~assets/img/logo/logo-01-01.jpg"></li>
-                    </ul>
-                </div>
-                <h5>創新夥伴</h5>
-                <div class="logo-content">
-                    <ul>
-                        <li><img src="~assets/img/logo/logo-01-01.jpg"></li>
-                    </ul>
-                </div>
                 <h5>奇點夥伴</h5>
                 <div class="logo-content">
                     <ul>
-                        <li><img src="~assets/img/logo/logo-01-01.jpg"></li>
+                        <li><img src="~assets/img/sponsors_logo/1/FB.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/1/google.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/1/oath.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/1/TAmedia.png"></li>
                     </ul>
                 </div>
-                <h5>鑽石級贊助</h5>
+                <h5>創新夥伴</h5>
                 <div class="logo-content">
                     <ul>
-                        <li><img src="~assets/img/logo/logo-01-01.jpg"></li>
+                        <li><img src="~assets/img/sponsors_logo/2/chocotv.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/2/deloitte.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/2/line.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/2/medialand.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/2/microsoft.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/2/PIXNET.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/2/SPE3d.png"></li>
                     </ul>
                 </div>
-                <h5>白金級贊助</h5>
+                <h5>推動夥伴</h5>
                 <div class="logo-content">
                     <ul>
-                        <li><img src="~assets/img/logo/logo-01-01.jpg"></li>
+                        <li><img src="~assets/img/sponsors_logo/3/BrideWell.png"></li>
                     </ul>
                 </div>
-                <h5>金級贊助</h5>
+                <h5>創意夥伴</h5>
                 <div class="logo-content">
                     <ul>
-                        <li><img src="~assets/img/logo/logo-01-01.jpg"></li>
-                    </ul>
-                </div>
-                <h5>協辦單位</h5>
-                <div class="logo-content">
-                    <ul>
-                        <li><img src="~assets/img/logo/logo-01-01.jpg"></li>
-                    </ul>
-                </div>
-                <h5>執行單位</h5>
-                <div class="logo-content">
-                    <ul>
-                        <li><img src="~assets/img/logo/logo-01-01.jpg"></li>
-                    </ul>
-                </div>
-                <h5>網路空間贊助</h5>
-                <div class="logo-content">
-                    <ul>
-                        <li><img src="~assets/img/logo/logo-01-01.jpg"></li>
+                         <li><img src="~assets/img/sponsors_logo/4/webgene.png"></li>
                     </ul>
                 </div>
             </div>
