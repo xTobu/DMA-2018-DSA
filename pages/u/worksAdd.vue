@@ -123,9 +123,9 @@
                     <input class="input" id="uploadurl" type="text" pattern=".+" required v-model="Form.case_film_url">
                     <label class="label" for="uploadurl">上傳影片連結 (若您有製作case film 請由此處上傳)</label>
                     <br>
-                    <span style="top: 15px;position: relative;">case film 影片參考案例：<a href="https://www.youtube.com/watch?v=c2EmgozGPUE&feature=youtu.be" target="_blank" style="color: #080808; text-decoration: underline;">點擊此連結</a></span>
+                    <span style="top: 15px;position: relative;font-size: 15px;opacity: 0.9;">case film 影片參考案例：<a href="https://www.youtube.com/watch?v=c2EmgozGPUE&feature=youtu.be" target="_blank" style="color: #080808; text-decoration: underline;">點擊此連結</a></span>
                     <br>
-                     <span style="top: 20px;position: relative;">*感謝小魚廣告網提供範例影片，前往可看更多範例*</span>
+                     <span style="top: 20px;position: relative;font-size: 15px;opacity: 0.9;">*感謝小魚廣告網提供範例影片，前往可看更多範例*</span>
                 </div>
             </div>
         </div>
