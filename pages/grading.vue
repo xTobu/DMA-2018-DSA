@@ -61,235 +61,237 @@
                     </ul>
                     <a name="stage-one"></a>
                     <br><br>
+                    <template v-if="false">
 
-                    <h5>初審評審名單</h5>
-                    <h6>1.數位創意類</h6>
-                    <div class="grey-bg">
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                        <h5>初審評審名單</h5>
+                        <h6>1.數位創意類</h6>
+                        <div class="grey-bg">
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
                         </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                        <h6>2.整合行銷類</h6>
+                        <div class="grey-bg">
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
                         </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                        <h6>3.創新應用技術類</h6>
+                        <div class="grey-bg">
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
                         </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                        <h6>4.媒體應用類</h6>
+                        <div class="grey-bg">
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
                         </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                        <a name="stage-two"></a>
+                        <br><br>
+                        <h5>複審評審名單</h5>
+                        <h6>1.數位創意類</h6>
+                        <div class="grey-bg">
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
                         </div>
-                    </div>
-                    <h6>2.整合行銷類</h6>
-                    <div class="grey-bg">
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                        <h6>2.整合行銷類</h6>
+                        <div class="grey-bg">
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
                         </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                        <h6>3.創新應用技術類</h6>
+                        <div class="grey-bg">
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
                         </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                        <h6>4.媒體應用類</h6>
+                        <div class="grey-bg">
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
+                            <div class="judge-item">
+                                <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
+                                <div class="name">施俊宇</div>
+                                <div class="tittle">網路基因<br>創辦人暨總經理</div>
+                            </div>
                         </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                    </div>
-                    <h6>3.創新應用技術類</h6>
-                    <div class="grey-bg">
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                    </div>
-                    <h6>4.媒體應用類</h6>
-                    <div class="grey-bg">
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                    </div>
-                    <a name="stage-two"></a>
-                    <br><br>
-                    <h5>複審評審名單</h5>
-                    <h6>1.數位創意類</h6>
-                    <div class="grey-bg">
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                    </div>
-                    <h6>2.整合行銷類</h6>
-                    <div class="grey-bg">
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                    </div>
-                    <h6>3.創新應用技術類</h6>
-                    <div class="grey-bg">
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                    </div>
-                    <h6>4.媒體應用類</h6>
-                    <div class="grey-bg">
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                        <div class="judge-item">
-                            <div class="photo"><img src="~assets/img/jp-01-01.jpg"></div>
-                            <div class="name">施俊宇</div>
-                            <div class="tittle">網路基因<br>創辦人暨總經理</div>
-                        </div>
-                    </div>
+                    </template>
                 </div>
             </div>
         </main>

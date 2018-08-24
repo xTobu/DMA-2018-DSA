@@ -17,10 +17,10 @@
                 <h5>奇點夥伴</h5>
                 <div class="logo-content">
                     <ul>
-                        <li><img src="~assets/img/sponsors_logo/1/FB.png"></li>
                         <li><img src="~assets/img/sponsors_logo/1/google.png"></li>
                         <li><img src="~assets/img/sponsors_logo/1/oath.png"></li>
                         <li><img src="~assets/img/sponsors_logo/1/TAmedia.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/1/FB.png"></li>
                     </ul>
                 </div>
                 <h5>創新夥伴</h5>
@@ -44,7 +44,7 @@
                 <h5>創意夥伴</h5>
                 <div class="logo-content">
                     <ul>
-                         <li><img src="~assets/img/sponsors_logo/4/webgene.png"></li>
+                        <li><img src="~assets/img/sponsors_logo/4/webgene.png"></li>
                     </ul>
                 </div>
             </div>

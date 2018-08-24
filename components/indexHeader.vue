@@ -9,7 +9,8 @@
             <div class="menu2">
                 <ul>
                     <li>
-                        <a href="#" @click.prevent="$swal({type: 'info',title: '敬請期待',text:'(๑•̀ω•́)ノ'})">報名文件</a>
+                        <!-- <a href="#" @click.prevent="$swal({type: 'info',title: '敬請期待',text:'(๑•̀ω•́)ノ'})">報名文件</a> -->
+                        <a href="/2018/RegistrationDocument.zip">報名文件</a>
                     </li>
                     <li>
                         <a href="login" @click.prevent="util_LinkTo('/u/list')">線上報名</a>

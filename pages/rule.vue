@@ -12,15 +12,15 @@
         <div class="grey-bg">
           <div class="timeline">
             <div class="circle-date">
-              <div class="date">AUG/02</div>
-              <div class="text">北京徵件<br>說明會</div>
-            </div>
-            <div class="circle-date">
-              <div class="date">AUG/15</div>
+              <div class="date">AUG/17</div>
               <div class="text">台北徵件<br>說明會</div>
             </div>
+            <div class="circle-date">
+              <div class="date">AUG/22</div>
+              <div class="text">北京徵件<br>說明會</div>
+            </div>
             <div class="circle-date circle-green">
-              <div class="date">AUG/20<br>|<br>SEP/20</div>
+              <div class="date">AUG/27<br>|<br>SEP/20</div>
               <div class="text">徵件期</div>
             </div>
             <div class="circle-date circle-green">
