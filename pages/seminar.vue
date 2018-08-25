@@ -19,6 +19,14 @@
                         <a href="https://goo.gl/maps/2z9AAVtwHmD2" target="_blank">map</a> )</div>
                 </div>
                 <div class="grey-bg">
+                    <div class="date">11/13 下午 14:00 ~17:00</div>
+                    <div class="speech">DSA創新論壇</div>
+                    <div class="location">信義誠品6樓視聽室 (
+                        <a href="https://goo.gl/maps/8dXTCSe7QLn" target="_blank">
+                            map )</a>
+                    </div>
+                </div>
+                <div class="grey-bg">
                     <div class="date">11/16 下午 14:00 ~17:00</div>
                     <div class="speech">DigiAsia X DSA AI論壇</div>
                     <div class="location">花博公園爭艷館 (
