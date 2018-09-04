@@ -39,7 +39,7 @@
 				</div>
 				<div class="input-container form-50">
 					<input class="input" id="acc-phone" type="text" pattern=".+" required maxlength="30" v-model="Form.phone">
-					<label class="label" for="acc-phone">市話</label>
+					<label class="label" for="acc-phone">市話*</label>
 				</div>
 				<div class="input-container form-50">
 					<input class="input" id="acc-mobile" type="text" pattern=".+" required maxlength="10" v-model="Form.mobile">
