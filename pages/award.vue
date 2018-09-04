@@ -179,7 +179,7 @@
                 </div>
                 <div class="award-content">
                     <h5>獎項介紹</h5>
-                    <p>數位創意類、創新應用技術類、整合行銷類、媒體應用類：由各類項中各選出金獎、銀獎、銅獎一名，頒予獎座乙座。</p>
+                    <p>數位創意類、創新應用技術類、整合行銷類、媒體應用類：由各類項中各選出金獎、銀獎、銅獎，頒予獎座乙座。</p>
                 </div>
                 <a name="digital-creative"></a>
                 <div class="award-content">
