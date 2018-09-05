@@ -157,7 +157,7 @@
 }
 
 .grey-bg .date::before {
-  background-image: url("~assets/svg/calendar.svg");
+  background-image: url("~/assets/svg/calendar.svg");
 }
 
 .grey-bg .speech {
@@ -165,7 +165,7 @@
 }
 
 .grey-bg .speech::before {
-  background-image: url("~assets/svg/speech.svg");
+  background-image: url("~/assets/svg/speech.svg");
 }
 
 .grey-bg .location {
@@ -184,7 +184,7 @@
 }
 
 .grey-bg .location::before {
-  background-image: url("~assets/svg/location.svg");
+  background-image: url("~/assets/svg/location.svg");
 }
 
 /*# sourceMappingURL=seminar.css.map */

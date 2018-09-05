@@ -29,12 +29,6 @@ body {
   background-image: url("../img/bg_head_regist.png");
 }
 
-@media only screen and (max-device-width: 1024px) {
-  .head_regist {
-    display: none;
-  }
-}
-
 .login {
   width: 806px;
   height: 540px;
@@ -107,6 +101,24 @@ body {
   margin: 12px 0 60px 0;
 }
 
+.login .right .wrap_right .extra {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.login .right .wrap_right .extra a {
+  font-size: 16px;
+  color: #b88b01;
+  text-decoration: underline;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.login .right .wrap_right .extra a:hover {
+  color: #333;
+}
+
 .login .right .wrap_right .bottom {
   text-align: center;
 }
@@ -129,6 +141,159 @@ body {
   border-right: 1px solid #686868;
 }
 
+.extra-area {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.extra-area a {
+  font-size: 16px;
+  color: #b88b01;
+  text-decoration: underline;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.extra-area a:hover {
+  color: #333;
+}
+
+.extra-area table {
+  width: 100%;
+  border: 1px solid #999999;
+  font-size: 16px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.extra-area table tr {
+  border-bottom: 1px solid #999999;
+}
+
+.extra-area table td {
+  padding: 20px;
+  border-left: 1px solid #999999;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.extra-left {
+  width: 30%;
+  background: #f5f5f5;
+}
+
+.extra-right {
+  width: 70%;
+}
+
+.extra-right2 {
+  width: 35%;
+}
+
+.rule {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0px auto 70px auto;
+  text-align: left;
+}
+
+@media screen and (max-width: 1170px) {
+  .rule {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .rule {
+    width: 90%;
+  }
+}
+
+.rule .big {
+  font-size: 26px;
+  margin-bottom: 30px;
+}
+
+.rule .rule-content {
+  margin-bottom: 60px;
+}
+
+.rule .rule-content h6 {
+  margin-top: 30px;
+  color: #b88b01;
+  font-size: 18px;
+  line-height: 2;
+}
+
+.rule .rule-content p {
+  line-height: 2;
+  text-align: justify;
+  text-justify: inter-ideographic;
+  margin-bottom: 30px;
+}
+
+.rule .rule-content p a {
+  color: #b88b01;
+  text-decoration: underline;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.rule .rule-content p a:hover {
+  color: #a00000;
+}
+
+.rule .rule-content span {
+  margin-right: 35px;
+}
+
+.rule .rule-content ul {
+  list-style-type: decimal;
+  margin-bottom: 40px;
+}
+
+.rule .rule-content li {
+  margin-left: 20px;
+  line-height: 30px;
+  word-break: break-all;
+}
+
+.rule .rule-content li a {
+  color: #b88b01;
+  text-decoration: underline;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.rule .rule-content li a:hover {
+  color: #a00000;
+}
+
+.rule .grey-bg {
+  width: 100%;
+  background: #f5f5f5;
+  text-align: center;
+  font-size: 0;
+  padding: 5% 0 10% 0;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 1170px) {
+  .rule .grey-bg {
+    padding: 5% 10%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .rule .grey-bg {
+    padding: 20% 0;
+  }
+}
+
 .btn_login {
   width: 155px;
   height: 45px;
@@ -143,7 +308,7 @@ body {
   box-sizing: border-box;
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
-  margin-bottom: 95px;
+  margin-bottom: 25px;
 }
 
 .btn_login:hover {
@@ -165,6 +330,58 @@ body {
 }
 
 .btn_login .arrow {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 6px;
+  height: 6px;
+  border: 2px solid white;
+  border-left: 0;
+  border-bottom: 0;
+  -webkit-transform: rotate(45deg) translateY(0);
+  transform: rotate(45deg) translateY(0);
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.btn_extra {
+  width: 240px;
+  height: 75px;
+  background-color: #b88b01;
+  border-radius: 5px;
+  color: white;
+  line-height: 75px;
+  font-weight: 500;
+  position: relative;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  display: block;
+}
+
+.btn_extra:hover {
+  color: #fff;
+  background-color: #333;
+}
+
+.btn_extra:hover .arrow {
+  -webkit-transform: rotate(45deg) translate(5px, -5px);
+  transform: rotate(45deg) translate(5px, -5px);
+  border-color: white;
+}
+
+.btn_extra .txt {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.btn_extra .arrow {
   position: relative;
   display: inline-block;
   vertical-align: middle;
