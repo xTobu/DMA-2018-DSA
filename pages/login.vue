@@ -108,7 +108,7 @@
 							<span class="arrow"></span>
 						</a>
 					</div>
-                    <div class="extra"><a href="extra.html">大陆报名请点此</a></div>
+                    <div class="extra"><a href="./extra">大陆报名请点此</a></div>
 					<div class="bottom">
 						<a href="#" @click.prevent="openPassword">忘記密碼?</a>
 						<a href="#" @click.prevent="openEmail">重發驗證信</a>
