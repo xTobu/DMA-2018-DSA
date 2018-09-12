@@ -187,12 +187,12 @@
             <h5>聲明*</h5>
             <div class="wrap-data">
                 <div class="input-container form-rec">
-                    <input class="input" id="date-begin" min="2017-09-01" max="2018-08-31" type="date" pattern=".+" required v-model="Form.s_date" @input='onchangeS_Date' @change='onchangeS_Date'>
+                    <input  placeholder="yyyy/mm/dd" class="input" id="date-begin" min="2017-09-01" max="2018-08-31" type="date" pattern=".+" required v-model="Form.s_date" @input='onchangeS_Date' @change='onchangeS_Date'>
                     <label class="label labelFocused" for="date-begin">參賽作品開始時間*</label>
                 </div>
                 <div class="rec-center">
                     <div class="input-container form-rec2">
-                        <input class="input" id="date-end" min="2017-09-01" type="date" pattern=".+" required v-model="Form.e_date" @input='onchangeE_Date' @change='onchangeE_Date'>
+                        <input placeholder="yyyy/mm/dd" class="input" id="date-end" min="2017-09-01" type="date" pattern=".+" required v-model="Form.e_date" @input='onchangeE_Date' @change='onchangeE_Date'>
                         <label class="label labelFocused" for="date-end">參賽作品結束時間*</label>
                     </div>
                     <!-- <span>或</span>
@@ -378,7 +378,44 @@ export default {
 		},
 		handleSubmit() {
 			let $FormData = Object.assign({}, this.Form);
+            
+            if (
+				!Date.parse($FormData.s_date) ||
+				!Date.parse($FormData.e_date)
+			) {
+				this.$swal({
+					type: 'warn',
+					title: '格式錯誤',
+					text: '作品開始時間 或 作品結束時間',
+				});
+				return;
+			}
+			let min_s_date = new Date('2017-09-01');
+			let max_s_date = new Date('2018-08-31');
+			if (
+				min_s_date > new Date($FormData.s_date) ||
+				max_s_date < new Date($FormData.s_date)
+			) {
+				this.$swal({
+					type: 'warn',
+					// html:true,
+					title: '作品開始時間錯誤',
+					text: '不在規定範圍內，2017-09-01~2018-08-31',
+				});
+				return;
+			}
 
+			let min_e_date = new Date('2017-09-01');
+			if (min_s_date > new Date($FormData.e_date)) {
+				this.$swal({
+					type: 'warn',
+					// html:true,
+					title: '作品結束時間錯誤',
+					text: '不在規定範圍內，必須大於 2017-09-01',
+				});
+				return;
+            }
+            
 			$FormData.apply_country = JSON.stringify($FormData.apply_country);
 
 			// let main_type = '';
@@ -595,20 +632,22 @@ export default {
 			$nuxt._router.push('/u/list');
 		},
 		onchangeS_Date(e) {
-			if (new Date(e.target.value) < new Date(e.target.min)) {
-				this.Form.s_date = e.target.min;
-			} else if (new Date(e.target.value) > new Date(e.target.max)) {
-				this.Form.s_date = e.target.max;
-			} else {
-				this.Form.s_date = e.target.value;
-			}
+			// if (new Date(e.target.value) < new Date(e.target.min)) {
+			// 	this.Form.s_date = e.target.min;
+			// } else if (new Date(e.target.value) > new Date(e.target.max)) {
+			// 	this.Form.s_date = e.target.max;
+			// } else {
+			// 	this.Form.s_date = e.target.value;
+            // }
+            this.Form.s_date = e.target.value;
 		},
 		onchangeE_Date(e) {
-            if (new Date(e.target.value) < new Date(e.target.min)) {
-				this.Form.e_date = e.target.min;
-			}  else {
-				this.Form.e_date = e.target.value;
-			}
+            // if (new Date(e.target.value) < new Date(e.target.min)) {
+			// 	this.Form.e_date = e.target.min;
+			// }  else {
+			// 	this.Form.e_date = e.target.value;
+            // }
+            this.Form.e_date = e.target.value;
 		},
 	},
 	created() {

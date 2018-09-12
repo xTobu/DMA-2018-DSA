@@ -101,7 +101,7 @@
             <div class="upload">
                 <div class="upload-item">
                     <span>上傳參賽表*</span>
-                    
+
                     <a class="btn-upload" @click.stop="onclickRegistrationFile">
                         <input type="file" id="RegistrationFile" ref="RegistrationFile" accept=".pdf" @change="onchangeRegistrationFile" style="display:none">
                         <span class="icon-folder"></span>瀏覽檔案
@@ -123,9 +123,11 @@
                     <input class="input" id="uploadurl" type="text" pattern=".+" required v-model="Form.case_film_url">
                     <label class="label" for="uploadurl">上傳影片連結 (若您有製作case film 請由此處上傳)</label>
                     <br>
-                    <span style="top: 15px;position: relative;font-size: 15px;opacity: 0.9;">case film 影片參考案例：<a href="https://www.youtube.com/watch?v=c2EmgozGPUE&feature=youtu.be" target="_blank" style="color: #080808; text-decoration: underline;">點擊此連結</a></span>
+                    <span style="top: 15px;position: relative;font-size: 15px;opacity: 0.9;">case film 影片參考案例：
+                        <a href="https://www.youtube.com/watch?v=c2EmgozGPUE&feature=youtu.be" target="_blank" style="color: #080808; text-decoration: underline;">點擊此連結</a>
+                    </span>
                     <br>
-                     <span style="top: 20px;position: relative;font-size: 15px;opacity: 0.9;">*感謝小魚廣告網提供範例影片，前往可看更多範例*</span>
+                    <span style="top: 20px;position: relative;font-size: 15px;opacity: 0.9;">*感謝小魚廣告網提供範例影片，前往可看更多範例*</span>
                 </div>
             </div>
         </div>
@@ -191,12 +193,12 @@
             <h5>聲明*</h5>
             <div class="wrap-data">
                 <div class="input-container form-rec">
-                    <input class="input" id="date-begin" min="2017-09-01" max="2018-08-31" type="date" pattern=".+" required v-model="Form.s_date" @input='onchangeS_Date' @change='onchangeS_Date'>
+                    <input placeholder="yyyy/mm/dd" class="input" id="date-begin" min="2017-09-01" max="2018-08-31" type="date" pattern=".+" required v-model="Form.s_date" @input='onchangeS_Date' @change='onchangeS_Date'>
                     <label class="label labelFocused" for="date-begin">參賽作品開始時間*</label>
                 </div>
                 <div class="rec-center">
                     <div class="input-container form-rec2">
-                        <input class="input" id="date-end" min="2017-09-01" type="date" pattern=".+" required v-model="Form.e_date" @input='onchangeE_Date' @change='onchangeE_Date'>
+                        <input placeholder="yyyy/mm/dd" class="input" id="date-end" min="2017-09-01" type="date" pattern=".+" required v-model="Form.e_date" @input='onchangeE_Date' @change='onchangeE_Date'>
                         <label class="label labelFocused" for="date-end">參賽作品結束時間*</label>
                     </div>
                     <!-- <span>或</span>
@@ -270,9 +272,9 @@ export default {
 	data() {
 		return {
 			Form: templateWorksAddForm(),
-            recaptchaForm: undefined,
-            RegistrationFile:'',
-            ExpositionFile:'',
+			recaptchaForm: undefined,
+			RegistrationFile: '',
+			ExpositionFile: '',
 		};
 	},
 	computed: {
@@ -350,6 +352,42 @@ export default {
 		handleSubmit() {
 			let $FormData = Object.assign({}, this.Form);
 
+			if (
+				!Date.parse($FormData.s_date) ||
+				!Date.parse($FormData.e_date)
+			) {
+				this.$swal({
+					type: 'warn',
+					title: '格式錯誤',
+					text: '作品開始時間 或 作品結束時間',
+				});
+				return;
+			}
+			let min_s_date = new Date('2017-09-01');
+			let max_s_date = new Date('2018-08-31');
+			if (
+				min_s_date > new Date($FormData.s_date) ||
+				max_s_date < new Date($FormData.s_date)
+			) {
+				this.$swal({
+					type: 'warn',
+					// html:true,
+					title: '作品開始時間錯誤',
+					text: '不在規定範圍內，2017-09-01~2018-08-31',
+				});
+				return;
+			}
+
+			let min_e_date = new Date('2017-09-01');
+			if (min_s_date > new Date($FormData.e_date)) {
+				this.$swal({
+					type: 'warn',
+					// html:true,
+					title: '作品結束時間錯誤',
+					text: '不在規定範圍內，必須大於 2017-09-01',
+				});
+				return;
+			}
 			$FormData.apply_country = JSON.stringify($FormData.apply_country);
 
 			let objMainType = {
@@ -452,7 +490,6 @@ export default {
 				.join('*$');
 
 			$FormData.coremember = coremember;
-			console.log($FormData);
 			let payload = {
 				FormData: $FormData,
 				reqURL: '/portfolios.ashx',
@@ -473,8 +510,9 @@ export default {
 			$('#RegistrationFile').click();
 		},
 		onchangeRegistrationFile() {
-            this.Form.registration_file = this.$refs.RegistrationFile.files[0];
-            this.RegistrationFile = "已選取："+this.$refs.RegistrationFile.files[0].name
+			this.Form.registration_file = this.$refs.RegistrationFile.files[0];
+			this.RegistrationFile =
+				'已選取：' + this.$refs.RegistrationFile.files[0].name;
 		},
 		onclickExpositionFile(e) {
 			if ($(e.target).is('input')) {
@@ -483,8 +521,9 @@ export default {
 			$('#ExpositionFile').click();
 		},
 		onchangeExpositionFile() {
-            this.Form.exposition_file = this.$refs.ExpositionFile.files[0];
-            this.ExpositionFile = "已選取："+this.$refs.ExpositionFile.files[0].name
+			this.Form.exposition_file = this.$refs.ExpositionFile.files[0];
+			this.ExpositionFile =
+				'已選取：' + this.$refs.ExpositionFile.files[0].name;
 		},
 		deleteCoremember(index) {
 			this.Form.coremember.splice(index, 1);
@@ -498,27 +537,27 @@ export default {
 		},
 		canvelEdit() {
 			$nuxt._router.push('/u/list');
-        },
-        onchangeS_Date(e) {
-			if (new Date(e.target.value) < new Date(e.target.min)) {
-				this.Form.s_date = e.target.min;
-			} else if (new Date(e.target.value) > new Date(e.target.max)) {
-				this.Form.s_date = e.target.max;
-			} else {
-				this.Form.s_date = e.target.value;
-			}
+		},
+		onchangeS_Date(e) {
+			// if (new Date(e.target.value) < new Date(e.target.min)) {
+			// 	this.Form.s_date = e.target.min;
+			// } else if (new Date(e.target.value) > new Date(e.target.max)) {
+			// 	this.Form.s_date = e.target.max;
+			// } else {
+			// 	this.Form.s_date = e.target.value;
+			// }
+			this.Form.s_date = e.target.value;
 		},
 		onchangeE_Date(e) {
-            if (new Date(e.target.value) < new Date(e.target.min)) {
-				this.Form.e_date = e.target.min;
-			}  else {
-				this.Form.e_date = e.target.value;
-			}
+			// if (new Date(e.target.value) < new Date(e.target.min)) {
+			// 	this.Form.e_date = e.target.min;
+			// }  else {
+			// 	this.Form.e_date = e.target.value;
+			// }
+			this.Form.e_date = e.target.value;
 		},
 	},
-	beforeCreate() {
-		
-	},
+	beforeCreate() {},
 	created() {},
 
 	mounted() {
@@ -526,8 +565,8 @@ export default {
 			// 初始化下拉選單
 			this.initSelect();
 		});
-    },
-    middleware: 'dateValidate',
+	},
+	middleware: 'dateValidate',
 };
 </script>
 
@@ -540,14 +579,13 @@ export default {
 	pointer-events: none;
 }
 .form-upload {
-    width: 40%;
+	width: 40%;
 }
-.upload {    
-    height: 150px;
-  
+.upload {
+	height: 150px;
 }
 .upload .upload-item {
-   vertical-align: baseline;
+	vertical-align: baseline;
 }
 </style>
 
