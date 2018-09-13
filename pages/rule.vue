@@ -20,7 +20,7 @@
               <div class="text">北京徵件<br>說明會</div>
             </div>
             <div class="circle-date circle-green">
-              <div class="date">AUG/27<br>|<br>SEP/20</div>
+              <div class="date">AUG/27<br>|<br>SEP/27</div>
               <div class="text">徵件期</div>
             </div>
             <div class="circle-date circle-green">
@@ -64,7 +64,7 @@
         <h6>參賽資格</h6>
         <p>2017年9月1日起至2018年8月31日止，刊載於世界各地之數位媒體與裝置，包含數位科技運用，均可由台灣政府核准立案之廣告代理公司、數位科技公司或含數位相關、製作公司與廣告主報名參加。</p>
         <h6>報名方式</h6>
-        <p>請於2018年9月20日報名截止前，於數位奇點獎官網註冊登錄：</p>
+        <p>請於2018年9月27日報名截止前，於數位奇點獎官網註冊登錄：</p>
         <ul>
           <li>所有參賽作品提交方式皆為網路線上提交。</li>
           <li>請於官網註冊報名後，即可上傳報名作品，並請同時完成繳費動作。</li>
