@@ -42,7 +42,6 @@
                             <img v-if="item.registration_file" src="~assets/svg/circle.svg">
                             <img v-else src="~assets/svg/cross.svg">
                         </span>
-                        
 
                     </li>
                     <li>作品說明
@@ -126,6 +125,7 @@
                 <li>匯款帳號後五碼</li>
                 <li>匯款之專案名稱，如有多筆，需全數列出</li>
                 <li>收據收件人姓名 / 收件地址 / 連絡電話</li>
+                <li>收據抬頭及統編</li>
             </ul>
             <p>備妥上述資訊寄送至活動主辨單位窗口（ 02-7718-0056，dsa＠dma.org.tw，連小姐 ）收到匯款後，DSA數位奇點獎執委會會儘快依據您所提供的訊息，寄送收據給您，請確保線上填寫資料的正確性，最遲不超過頒獎典禮後一個月。</p>
             <p>
@@ -258,7 +258,7 @@ export default {
 				url: '/portfolios.ashx',
 			})
 				.then(res => {
-                    console.log(res.data.portfolio.registration_file)
+					console.log(res.data.portfolio.registration_file);
 					return res.data.portfolio.registration_file;
 				})
 				.catch(err => {});
