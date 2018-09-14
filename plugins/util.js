@@ -42,7 +42,7 @@ Vue.mixin({
 									});
 								})
 								.catch(response => {
-                                    console.log(response);
+									console.log(response);
 									let text = response.data.message.replace(
 										/\\n/g,
 										'\n\n'
@@ -80,6 +80,13 @@ Vue.mixin({
 				}
 				return num;
 			}
+		},
+
+		// 字符轉換
+		util_convertEscapeChar(obj) {
+			var ele = document.createElement('div');
+			ele.innerHTML = JSON.stringify(obj);
+			return JSON.parse(ele.childNodes[0].nodeValue);
 		},
 	},
 });
